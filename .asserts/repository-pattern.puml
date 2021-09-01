@@ -14,6 +14,20 @@ package Optsol.Compoentes.Repository {
             }
 
             interface IAggregateRoot<TKey>
+
+            abstract Entity<TKey> implements IEntity
+            class EntityGuid extends Entity
+
+            abstract AggregateRoot<TKey> implements IAggregateRoot
+            class AggregateRootGuid extends AggregateRoot
+
+            abstract ValueObject {
+                {static} EqualOperator(left: ValueObject, right: ValueObject): bool
+                {static} NotEqualOperator(left: ValueObject, right: ValueObject): bool
+                {abstract} GetEqualityComponents(): IEnumerable<object>
+                ^ Equals(): bool
+                ^ GetHashCode(): int
+            }
         }
         package Repositories {
             interface IReadRepository<? TEntity extends IAggregateRoot, ? TKey> {
