@@ -1,0 +1,47 @@
+@startuml repository-pattern
+
+'Interfaces e Classes
+
+interface IEquatable<IEntity<TKey>>
+interface IEntity<TKey> {
+    <<readonly>>
+    + Id: TKey
+    <<readonly>>
+    + CreateDate: DateTime
+}
+
+interface IAggregateRoot<TKey> 
+
+interface IReadRepository<? TEntity extends IAggregateRoot, ? TKey> {
+    GetByIdAsync(id: TKey): Task<TEntity>
+    GetByIdsAsync(ids: IEnumerable<TKey>): Task<IEnumerable<TEntity>>
+    GetAllAsync(): Task<IEnumerable<TEntity>>
+    GetWithRawSqlAsync(query: string, parameters: object[]): Task<IEnumerable<TEntity>>
+    GetWithExpressionAsync(filter: Expression<Func<TEntity, bool>>): Task<IEnumerable<TEntity>>
+}
+
+interface IWriteRepository<? TEntity extends IAggregateRoot, TKey> {
+    InsertAsync(entity: TEntity): Task
+    UpdateEntity(entity: TEntity): Task
+    DeleteAsync(entity: TEntity): Task
+    SaveChangesAsync(): Task<int>
+}
+
+interface IRepository<? TEntity extends IAggregateRoot, TKey>
+
+'Relacionamentos
+
+IEquatable <|-- IEntity
+IEntity <|-- IAggregateRoot
+
+IAggregateRoot -* IReadRepository
+IAggregateRoot -* IWriteRepository
+IAggregateRoot -* IRepository
+
+IReadRepository <|-- IRepository
+IWriteRepository <|-- IRepository
+
+
+IRepository --|> IDisposable
+
+@enduml
