@@ -15,34 +15,42 @@ package Optsol.Compoentes.Repository {
 
             interface IAggregateRoot<TKey>
 
+            interface IDeletable {
+                <<readonly>>
+                + isDeleted: bool
+                <<readonly>>
+                + DeletedDate: DateTime
+                + Delete(): void
+            }
+
             abstract Entity<TKey> implements IEntity
-            class EntityGuid extends Entity
+            class EntityGuid extends Entity implements IDeletable
 
             abstract AggregateRoot<TKey> implements IAggregateRoot
-            class AggregateRootGuid extends AggregateRoot
+            class AggregateRootGuid extends AggregateRoot implements IDeletable
 
             abstract ValueObject {
-                {static} EqualOperator(left: ValueObject, right: ValueObject): bool
-                {static} NotEqualOperator(left: ValueObject, right: ValueObject): bool
-                {abstract} GetEqualityComponents(): IEnumerable<object>
-                ^ Equals(): bool
-                ^ GetHashCode(): int
+                + {static} EqualOperator(left: ValueObject, right: ValueObject): bool
+                + {static} NotEqualOperator(left: ValueObject, right: ValueObject): bool
+                + {abstract} GetEqualityComponents(): IEnumerable<object>
+                + ^ Equals(): bool
+                + ^ GetHashCode(): int
             }
         }
         package Repositories {
             interface IReadRepository<? TEntity extends IAggregateRoot, ? TKey> {
-                GetByIdAsync(id: TKey): Task<TEntity>
-                GetByIdsAsync(ids: IEnumerable<TKey>): Task<IEnumerable<TEntity>>
-                GetAllAsync(): Task<IEnumerable<TEntity>>
-                GetWithRawSqlAsync(query: string, parameters: object[]): Task<IEnumerable<TEntity>>
-                GetWithExpressionAsync(filter: Expression<Func<TEntity, bool>>): Task<IEnumerable<TEntity>>
+                + GetByIdAsync(id: TKey): Task<TEntity>
+                + GetByIdsAsync(ids: IEnumerable<TKey>): Task<IEnumerable<TEntity>>
+                + GetAllAsync(): Task<IEnumerable<TEntity>>
+                + GetWithRawSqlAsync(query: string, parameters: object[]): Task<IEnumerable<TEntity>>
+                + GetWithExpressionAsync(filter: Expression<Func<TEntity, bool>>): Task<IEnumerable<TEntity>>
             }
 
             interface IWriteRepository<? TEntity extends IAggregateRoot, TKey> {
-                InsertAsync(entity: TEntity): Task
-                UpdateEntity(entity: TEntity): Task
-                DeleteAsync(entity: TEntity): Task
-                SaveChangesAsync(): Task<int>
+                + InsertAsync(entity: TEntity): Task
+                + UpdateEntity(entity: TEntity): Task
+                + DeleteAsync(entity: TEntity): Task
+                + SaveChangesAsync(): Task<int>
             }
 
             interface IRepository<? TEntity extends IAggregateRoot, TKey>
