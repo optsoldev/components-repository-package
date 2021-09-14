@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Optsol.Components.Repositor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Optsol.Components.Repository.Test", "test\Optsol.Components.Repository.Test\Optsol.Components.Repository.Test.csproj", "{E35C0FC4-6A8E-458F-8C57-B3AA993C7FE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Optsol.Components.Repository.Infra", "src\Optsol.Components.Repository.Infra\Optsol.Components.Repository.Infra.csproj", "{D9A6DCA7-7448-4DC2-B5FA-51E39FC34F29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Optsol.Components.Repository.Infra.Entity", "src\Optsol.Components.Repository.Infra\Optsol.Components.Repository.Infra.Entity.csproj", "{D9A6DCA7-7448-4DC2-B5FA-51E39FC34F29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Optsol.Components.Repository.Infra.Mock", "src\Optsol.Components.Repository.Infra.Mock\Optsol.Components.Repository.Infra.Mock.csproj", "{05ED5F33-2947-46F8-BA40-4569A39EF291}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,18 @@ Global
 		{D9A6DCA7-7448-4DC2-B5FA-51E39FC34F29}.Release|x64.Build.0 = Release|Any CPU
 		{D9A6DCA7-7448-4DC2-B5FA-51E39FC34F29}.Release|x86.ActiveCfg = Release|Any CPU
 		{D9A6DCA7-7448-4DC2-B5FA-51E39FC34F29}.Release|x86.Build.0 = Release|Any CPU
+		{05ED5F33-2947-46F8-BA40-4569A39EF291}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05ED5F33-2947-46F8-BA40-4569A39EF291}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05ED5F33-2947-46F8-BA40-4569A39EF291}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{05ED5F33-2947-46F8-BA40-4569A39EF291}.Debug|x64.Build.0 = Debug|Any CPU
+		{05ED5F33-2947-46F8-BA40-4569A39EF291}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{05ED5F33-2947-46F8-BA40-4569A39EF291}.Debug|x86.Build.0 = Debug|Any CPU
+		{05ED5F33-2947-46F8-BA40-4569A39EF291}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05ED5F33-2947-46F8-BA40-4569A39EF291}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05ED5F33-2947-46F8-BA40-4569A39EF291}.Release|x64.ActiveCfg = Release|Any CPU
+		{05ED5F33-2947-46F8-BA40-4569A39EF291}.Release|x64.Build.0 = Release|Any CPU
+		{05ED5F33-2947-46F8-BA40-4569A39EF291}.Release|x86.ActiveCfg = Release|Any CPU
+		{05ED5F33-2947-46F8-BA40-4569A39EF291}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

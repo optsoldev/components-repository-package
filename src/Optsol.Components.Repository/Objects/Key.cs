@@ -7,11 +7,6 @@ namespace Optsol.Components.Repository.Domain.Objects
     {
         public object Id { get; private set; }
 
-        public Key(object id)
-        {
-            Id = id;
-        }
-
         public Guid AsGuid()
         {
             try
@@ -24,7 +19,7 @@ namespace Optsol.Components.Repository.Domain.Objects
             }
             catch (FormatException)
             {
-                throw new KeyException($"{nameof(Id)} Bab Format: {Id}");
+                throw new KeyException($"{nameof(Id)} bad format: {Id}");
             }
         }
 
@@ -58,6 +53,14 @@ namespace Optsol.Components.Repository.Domain.Objects
         public override int GetHashCode()
         {
             return Id.GetHashCode();
+        }
+
+        public static Key Create(object id)
+        {
+            Key newCreateKey = new();
+            newCreateKey.Id = id;
+
+            return newCreateKey;
         }
     }
 }
