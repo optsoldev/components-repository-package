@@ -1,4 +1,4 @@
-﻿using Optsol.Components.Repository.Domain.Objects;
+﻿using Optsol.Components.Repository.Domain.ValueObjects;
 using System;
 
 namespace Optsol.Components.Repository.Domain.Entities

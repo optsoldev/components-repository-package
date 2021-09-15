@@ -1,4 +1,4 @@
-﻿using Optsol.Components.Repository.Domain.Objects;
+﻿using Optsol.Components.Repository.Domain.ValueObjects;
 using System;
 
 namespace Optsol.Components.Repository.Domain.Entities
@@ -15,6 +15,15 @@ namespace Optsol.Components.Repository.Domain.Entities
             CreateDate = DateValue.Create();
         }
 
-        public abstract bool Equals(IEntity other);
+        public bool Equals(IEntity other)
+        {
+            if (other is null) return false;
+
+            return GetType() == other.GetType() && Id == other.Id;
+        }
+
+        public override bool Equals(object obj) => Equals(obj as AggregateRoot);
+
+        public override int GetHashCode() => Id.GetHashCode();
     }
 }

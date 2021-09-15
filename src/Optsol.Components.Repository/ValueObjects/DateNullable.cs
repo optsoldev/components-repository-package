@@ -1,9 +1,10 @@
 ﻿using Optsol.Components.Repository.Domain.Exceptions;
 using System;
+using System.Collections.Generic;
 
-namespace Optsol.Components.Repository.Domain.Objects
+namespace Optsol.Components.Repository.Domain.ValueObjects
 {
-    public class DateNullable
+    public sealed class DateNullable : ValueObject
     {
         public DateTime? Date { get; private set; }
 
@@ -17,6 +18,11 @@ namespace Optsol.Components.Repository.Domain.Objects
         public override string ToString()
         {
             return Date.HasValue ? Date?.ToShortDateString() : "00-00-0000";
+        }
+
+        public override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return Date;
         }
 
         public static DateNullable Create => new();

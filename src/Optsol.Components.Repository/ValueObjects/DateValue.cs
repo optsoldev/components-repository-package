@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace Optsol.Components.Repository.Domain.Objects
+namespace Optsol.Components.Repository.Domain.ValueObjects
 {
-    public class DateValue
+    public class DateValue : ValueObject
     {
         public DateTime Date { get; private set; }
 
@@ -11,17 +12,22 @@ namespace Optsol.Components.Repository.Domain.Objects
             Date = DateTime.Now;
         }
 
+        public override string ToString()
+        {
+            return Date.ToShortDateString();
+        }
+
+        public override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return Date;
+        }
+
         public static DateValue Create()
         {
             DateValue newDateValue = new();
             newDateValue.SetDateValueWithDateOfNow();
 
             return newDateValue;
-        }
-
-        public override string ToString()
-        {
-            return Date.ToShortDateString();
         }
     }
 }

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ValueObjects\" />
+    <Folder Include="Operators\" />
   </ItemGroup>
 
 </Project>

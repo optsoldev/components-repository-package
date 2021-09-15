@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using Optsol.Components.Repository.Domain.Objects;
+using Optsol.Components.Repository.Domain.ValueObjects;
 using Xunit;
 
 namespace Optsol.Components.Repository.Test
@@ -11,8 +11,8 @@ namespace Optsol.Components.Repository.Test
         public void DeveCompararDoisObjetosTipoKeyVerdadeiro()
         {
             //given
-            var objetoKeyUm = new Key(1);
-            var objetoKeyDois = new Key(1);
+            var objetoKeyUm = Key.Create(1);
+            var objetoKeyDois = Key.Create(1);
 
             //when
             var comparacaoEquals = objetoKeyUm.Equals(objetoKeyDois);
@@ -28,8 +28,8 @@ namespace Optsol.Components.Repository.Test
         public void DeveCompararDoisObjetosTipoKeyFalse()
         {
             //given
-            var objetoKeyUm = new Key(1);
-            var objetoKeyDois = new Key(2);
+            var objetoKeyUm = Key.Create(1);
+            var objetoKeyDois = Key.Create(2);
 
             //when
             var comparacao = objetoKeyUm != objetoKeyDois;

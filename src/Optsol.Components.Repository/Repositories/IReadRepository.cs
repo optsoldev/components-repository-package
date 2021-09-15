@@ -1,5 +1,5 @@
 ﻿using Optsol.Components.Repository.Domain.Entities;
-using Optsol.Components.Repository.Domain.Objects;
+using Optsol.Components.Repository.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
