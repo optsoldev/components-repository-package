@@ -6,6 +6,11 @@ namespace Optsol.Components.Repository.Domain.ValueObjects
     public class DateValue : ValueObject
     {
         public DateTime Date { get; private set; }
+                
+        public DateValue()
+        {
+            Date = DateTime.MinValue;
+        }
 
         public void SetDateValueWithDateOfNow()
         {
@@ -22,12 +27,6 @@ namespace Optsol.Components.Repository.Domain.ValueObjects
             yield return Date;
         }
 
-        public static DateValue Create()
-        {
-            DateValue newDateValue = new();
-            newDateValue.SetDateValueWithDateOfNow();
-
-            return newDateValue;
-        }
+        public static DateValue Create() => new();
     }
 }

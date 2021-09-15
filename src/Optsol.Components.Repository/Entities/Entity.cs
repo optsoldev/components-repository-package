@@ -21,6 +21,6 @@ namespace Optsol.Components.Repository.Domain.Entities
 
         public override bool Equals(object obj) => Equals(obj as Entity);
 
-        public override int GetHashCode() => Id.GetHashCode();
+        public override int GetHashCode() => $"{GetType()}{Id.GetHashCode()}".GetHashCode();
     }
 }

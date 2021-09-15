@@ -7,7 +7,7 @@ namespace Optsol.Components.Repository.Test.ValueObjects
     public class KeySpec
     {
         [Trait("Value Objects", "Comparar Objetos")]
-        [Fact(DisplayName = "Duas Keys com os mesmo Id deve retornar verdadeiro")]
+        [Fact(DisplayName = "Duas Keys com os mesmos Ids deve retornar verdadeiro")]
         public void DeveCompararDoisObjetosTipoKeyVerdadeiro()
         {
             //given
@@ -24,7 +24,7 @@ namespace Optsol.Components.Repository.Test.ValueObjects
         }
 
         [Trait("Value Objects", "Comparar Objetos")]
-        [Fact(DisplayName = "Duas Keys com os diferentes Id deve retornar false")]
+        [Fact(DisplayName = "Duas Keys com diferentes Ids deve retornar false")]
         public void DeveCompararDoisObjetosTipoKeyFalse()
         {
             //given
@@ -37,6 +37,5 @@ namespace Optsol.Components.Repository.Test.ValueObjects
             //then
             comparacao.Should().BeTrue("Ids não devem ser iguais");
         }
-
     }
 }

@@ -17,17 +17,17 @@ namespace Optsol.Components.Repository.Domain.ValueObjects
 
         public static bool operator ==(ValueObject left, ValueObject right)
         {
-            if (left is null ^ right is null)
-            {
-                return false;
-            }
+
+            if (left is null && right is null) return true;
+
+            if (left is null ^ right is null) return false;
 
             return left.Equals(right);
         }
 
         public static bool operator !=(ValueObject left, ValueObject right) => !(left == right);
 
-        public override bool Equals(object obj) => Equals((obj as ValueObject));
+        public override bool Equals(object obj) => Equals(obj as ValueObject);
 
         public override int GetHashCode()
         {
