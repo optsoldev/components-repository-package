@@ -2,11 +2,11 @@
 using Optsol.Components.Repository.Domain.ValueObjects;
 using Xunit;
 
-namespace Optsol.Components.Repository.Test
+namespace Optsol.Components.Repository.Test.ValueObjects
 {
     public class KeySpec
     {
-        [Trait("Object Key", "Comparar Objetos")]
+        [Trait("Value Objects", "Comparar Objetos")]
         [Fact(DisplayName = "Duas Keys com os mesmo Id deve retornar verdadeiro")]
         public void DeveCompararDoisObjetosTipoKeyVerdadeiro()
         {
@@ -23,7 +23,7 @@ namespace Optsol.Components.Repository.Test
             comparacaoOperaror.Should().BeTrue("Ids devem ser iguais");
         }
 
-        [Trait("Object Key", "Comparar Objetos")]
+        [Trait("Value Objects", "Comparar Objetos")]
         [Fact(DisplayName = "Duas Keys com os diferentes Id deve retornar false")]
         public void DeveCompararDoisObjetosTipoKeyFalse()
         {

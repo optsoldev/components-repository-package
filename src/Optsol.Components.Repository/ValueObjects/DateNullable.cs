@@ -25,6 +25,6 @@ namespace Optsol.Components.Repository.Domain.ValueObjects
             yield return Date;
         }
 
-        public static DateNullable Create => new();
+        public static DateNullable Create() => new();
     }
 }
