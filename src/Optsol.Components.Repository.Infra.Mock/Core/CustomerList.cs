@@ -32,14 +32,14 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
 
         public void Delete(Customer customer)
         {
-            Customers.Remove(customer);
+            customers.Remove(customer);
         }
 
         public IEnumerable<Customer> Init()
         {
             Insert(Customer.Create(
                 Person.Create("Weslley Bruno", "Carneiro"),
-                Email.Create().SetAddressValue("weslley.carneiro@optsol.com.br"),
+                Email.Create("weslley.carneiro@optsol.com.br"),
                 DateValue.Create().SetDateValueWithDate(DateTime.Parse("21/11/1985"))
             ));
 
@@ -48,7 +48,7 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
 
         internal Customer FindByKey(Key id)
         {
-            return FindByKeys(id).First();
+            return FindByKeys(id).FirstOrDefault();
         }
 
         internal IEnumerable<Customer> FindWithExpression(Expression<Func<Customer, bool>> filterExpression)

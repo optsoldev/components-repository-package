@@ -8,11 +8,11 @@ using System.Linq.Expressions;
 
 namespace Optsol.Components.Repository.Infra.Mock.Repositories
 {
-    public class Repository : IRepository<Customer>
+    public class MockRepository : IRepository<Customer>
     {
         protected Context Context { get; set; }
 
-        public Repository()
+        public MockRepository()
         {
             Context = new Context();
         }

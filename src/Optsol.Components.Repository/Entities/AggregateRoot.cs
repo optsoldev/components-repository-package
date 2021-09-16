@@ -12,7 +12,7 @@ namespace Optsol.Components.Repository.Domain.Entities
         public AggregateRoot()
         {
             Id = Key.Create(Guid.NewGuid());
-            CreateDate = DateValue.Create();
+            CreateDate = DateValue.Create().SetDateValueWithDateOfNow();
         }
 
         public bool Equals(IEntity other)
@@ -24,6 +24,6 @@ namespace Optsol.Components.Repository.Domain.Entities
 
         public override bool Equals(object obj) => Equals(obj as AggregateRoot);
 
-        public override int GetHashCode() => Id.GetHashCode();
+        public override int GetHashCode() => $"{GetType()}{Id.GetHashCode()}".GetHashCode();
     }
 }

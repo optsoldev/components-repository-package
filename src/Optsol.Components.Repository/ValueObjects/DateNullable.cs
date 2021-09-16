@@ -17,7 +17,7 @@ namespace Optsol.Components.Repository.Domain.ValueObjects
 
         public override string ToString()
         {
-            return Date.HasValue ? Date?.ToShortDateString() : "00-00-0000";
+            return Date.HasValue ? Date?.ToShortDateString() : "null";
         }
 
         public override IEnumerable<object> GetEqualityComponents()

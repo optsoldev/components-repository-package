@@ -9,12 +9,17 @@ namespace Optsol.Components.Repository.Infra.Mock.Entities.Core
     {
         const string regexEmailPattern = @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
 
+        private Email(string address)
+        {
+            SetAddressValue(address);
+        }
+
         public string Address { get; private set; }
 
         public Email SetAddressValue(string address)
         {
-            var checkEmailIsValid = Regex.IsMatch(Address, regexEmailPattern);
-            if (checkEmailIsValid)
+            var checkEmailIsInvalid = !Regex.IsMatch(address, regexEmailPattern);
+            if (checkEmailIsInvalid)
                 throw new InvalidOperationException(nameof(SetAddressValue));
 
             Address = address;
@@ -27,6 +32,6 @@ namespace Optsol.Components.Repository.Infra.Mock.Entities.Core
             yield return Address;
         }
 
-        public static Email Create() => new();
+        public static Email Create(string address) => new(address);
     }
 }
