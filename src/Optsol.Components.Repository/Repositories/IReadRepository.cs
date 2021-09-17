@@ -9,11 +9,11 @@ namespace Optsol.Components.Repository.Domain.Repositories
     public interface IReadRepository<TEntity>
         where TEntity : IAggregateRoot
     {
-        TEntity GetById(Key id);
+        TEntity GetByKey(Key key);
 
         IEnumerable<TEntity> GetAll();
 
-        IEnumerable<TEntity> GetAllByIds(params Key[] ids);
+        IEnumerable<TEntity> GetAllByKeys(params Key[] keys);
 
         IEnumerable<TEntity> GetWithExpression(Expression<Func<TEntity, bool>> filterExpression);
     }

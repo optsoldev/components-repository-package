@@ -5,7 +5,7 @@ namespace Optsol.Components.Repository.Domain.Entities
 {
     public abstract class Entity : IEntity
     {
-        public Key Id { get; private set; }
+        public Key Id { get; protected set; }
 
         protected Entity()
         {

@@ -37,7 +37,7 @@ namespace Optsol.Components.Repository.Test.Repositories
             IReadRepository<Customer> readRepository = new MockRepository();
             var customer = readRepository.GetAll().First();
             //when
-            var customerById = readRepository.GetById(customer.Id);
+            var customerById = readRepository.GetByKey(customer.Id);
 
             //then
             customerById.Should().NotBeNull("Não pode estar nulo");
@@ -53,7 +53,7 @@ namespace Optsol.Components.Repository.Test.Repositories
             var customer = CreateCustomer();
 
             //when
-            var customerById = readRepository.GetById(customer.Id);
+            var customerById = readRepository.GetByKey(customer.Id);
 
             //then
             customerById.Should().BeNull("Não pode retornar um customer");
@@ -70,7 +70,7 @@ namespace Optsol.Components.Repository.Test.Repositories
             var customersIds = customers.Select(customer => customer.Id).ToArray();
 
             //when
-            var customersById = readRepository.GetAllByIds(customersIds);
+            var customersById = readRepository.GetAllByKeys(customersIds);
 
             //then
             customersById.Should().NotBeNull("Não pode estar nulo");
