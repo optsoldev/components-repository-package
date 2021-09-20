@@ -2,11 +2,9 @@
 
 namespace Optsol.Components.Repository.Infra.EFCore.Exceptions
 {
-    [Serializable]
-    internal class EntityConfigurationException : Exception
+    public class EntityConfigurationException : Exception
     {
-        public EntityConfigurationException(string message) 
-            : base(message)
+        public EntityConfigurationException(string message) : base(message)
         {
         }
     }
