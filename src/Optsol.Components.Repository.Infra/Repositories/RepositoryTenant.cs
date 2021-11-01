@@ -23,8 +23,8 @@ namespace Optsol.Components.Repository.Infra.EFCore.Repositories
             TentantProvider = tentantProvider;
         }
 
-        
-        public override void Inset(TEntity entity)
+
+        public override void Insert(TEntity entity)
         {
             ((IEntityTenantable)entity).SetTenantKey(TentantProvider.GetTenantKey());
 

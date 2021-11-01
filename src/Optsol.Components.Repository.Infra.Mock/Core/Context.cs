@@ -16,7 +16,7 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
         }
 
         public int SaveChanges()
-        {
+        {            
             return Customers.Total;
         }
     }

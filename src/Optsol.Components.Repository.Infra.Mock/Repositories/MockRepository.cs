@@ -44,7 +44,7 @@ namespace Optsol.Components.Repository.Infra.Mock.Repositories
             return Context.Customers.FindWithExpression(filterExpression);
         }
 
-        public void Inset(Customer entity)
+        public void Insert(Customer entity)
         {
             Context.Customers.Insert(entity);
         }

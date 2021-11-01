@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31825.309
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".items", ".items", "{AFD9E1BF-56CF-4BBC-9960-BC1D2736C8B8}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		azure-pipelines.yml = azure-pipelines.yml
 		README.md = README.md
-		.asserts\repository-pattern.puml = .asserts\repository-pattern.puml
+		.items\repository-pattern.png = .items\repository-pattern.png
+		.items\repository-pattern.puml = .items\repository-pattern.puml
 		version-bump.ps1 = version-bump.ps1
 	EndProjectSection
 EndProject
@@ -18,6 +20,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Optsol.Components.Repository.Infra.EFCore", "src\Optsol.Components.Repository.Infra\Optsol.Components.Repository.Infra.EFCore.csproj", "{D9A6DCA7-7448-4DC2-B5FA-51E39FC34F29}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Optsol.Components.Repository.Infra.Mock", "src\Optsol.Components.Repository.Infra.Mock\Optsol.Components.Repository.Infra.Mock.csproj", "{05ED5F33-2947-46F8-BA40-4569A39EF291}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Packages", "1. Packages", "{03581B11-2B9F-4A1E-9CD4-78608027C29A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Internal", "2. Internal", "{9C6CC440-4413-481F-8A92-10DDB3815EAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,6 +86,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AFDE1E66-2BB3-4E36-AF4D-F9FACD2D3B93} = {03581B11-2B9F-4A1E-9CD4-78608027C29A}
+		{E35C0FC4-6A8E-458F-8C57-B3AA993C7FE1} = {9C6CC440-4413-481F-8A92-10DDB3815EAE}
+		{D9A6DCA7-7448-4DC2-B5FA-51E39FC34F29} = {03581B11-2B9F-4A1E-9CD4-78608027C29A}
+		{05ED5F33-2947-46F8-BA40-4569A39EF291} = {9C6CC440-4413-481F-8A92-10DDB3815EAE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0EED129D-EB8B-424E-BDF2-7B1BA78CDA90}

@@ -7,7 +7,7 @@ namespace Optsol.Components.Repository.Test.ValueObjects
     public class DateNullableSpec
     {
         [Trait("Value Objects", "Comparar Objetos")]
-        [Fact(DisplayName = "Duas DateNullables com os mesmos valores deve retornar verdadeiro")]
+        [Fact(DisplayName = "Deve comparar duas DateNullables com os mesmos valores deve retornar verdadeiro")]
         public void DeveCompararDoisObjetosTipoDateNullableVerdadeiro()
         {
             //given
@@ -24,7 +24,7 @@ namespace Optsol.Components.Repository.Test.ValueObjects
         }
 
         [Trait("Value Objects", "Comparar Objetos")]
-        [Fact(DisplayName = "Duas DateNullables com os valores diferentes devem retornar false")]
+        [Fact(DisplayName = "Deve comaprar duas DateNullables com os valores diferentes devem retornar false")]
         public void DeveCompararDoisObjetosTipoDateNullableFalse()
         {
             //given
