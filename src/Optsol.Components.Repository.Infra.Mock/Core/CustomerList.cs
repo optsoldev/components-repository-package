@@ -40,7 +40,7 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
             Insert(Customer.Create(
                 Person.Create("Weslley Bruno", "Carneiro"),
                 Email.Create("weslley.carneiro@optsol.com.br"),
-                DateValue.Create().SetDateValueWithDate(DateTime.Parse("21/11/1985"))
+                DateValue.Create().SetDateValueWithDate(DateTime.Parse("1985-11-21"))
             ));
 
             return customers;

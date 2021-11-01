@@ -10,7 +10,7 @@ namespace Optsol.Components.Repository.Test.Entities
     {
         [Trait("Entities", "Construir Objetos")]
         [Theory(DisplayName = "Deve Inicializar o CreaditCard com CreateDate preenchido com a data atual")]
-        [InlineData("5328647840011771", 795, "16/05/2023")]
+        [InlineData("5328647840011771", 795, "2023-05-16")]
         public void DeveInicializarEntidadePreenchidoDataAtual(string number, int code, string validity)
         {
             //given 
