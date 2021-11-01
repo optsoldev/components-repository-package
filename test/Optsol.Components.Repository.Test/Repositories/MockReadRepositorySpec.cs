@@ -107,7 +107,7 @@ namespace Optsol.Components.Repository.Test.Repositories
             IWriteRepository<Customer> writeRepository = new MockRepository();
 
             //when
-            Action execute = () => writeRepository.Inset(newCustumer);
+            Action execute = () => writeRepository.Insert(newCustumer);
 
             //then
             execute.Should().NotThrow();
@@ -123,7 +123,7 @@ namespace Optsol.Components.Repository.Test.Repositories
             var newCustumer = CreateCustomer();
 
             IWriteRepository<Customer> writeRepository = new MockRepository();
-            writeRepository.Inset(newCustumer);
+            writeRepository.Insert(newCustumer);
             
             var updateCustumer = newCustumer;
             updateCustumer.BirthDate.SetDateValueWithDate(DateTime.Parse("2009-02-15"));
@@ -146,7 +146,7 @@ namespace Optsol.Components.Repository.Test.Repositories
             var newCustumer = CreateCustomer();
 
             IWriteRepository<Customer> writeRepository = new MockRepository();
-            writeRepository.Inset(newCustumer);
+            writeRepository.Insert(newCustumer);
 
             //when
             Action execute = () => writeRepository.Delete(newCustumer);
@@ -157,7 +157,7 @@ namespace Optsol.Components.Repository.Test.Repositories
 
         }
 
-        private static Customer CreateCustomer()
+        public static Customer CreateCustomer()
         {
             var novaPessoa = Person.Create("Novo Customer", "Teste");
             var novoEmail = Email.Create("email@optsol.com.br");

@@ -36,7 +36,7 @@ namespace Optsol.Components.Repository.Infra.EFCore.Repositories
             return Set.Where(filterExpression.Compile());
         }
 
-        public virtual void Inset(TEntity entity) => Set.Add(entity);
+        public virtual void Insert(TEntity entity) => Set.Add(entity);
 
         public virtual void Update(TEntity entity)
         {
