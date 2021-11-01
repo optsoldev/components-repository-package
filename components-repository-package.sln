@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Optsol.Components.Repositor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Optsol.Components.Repository.Infra.Mock", "src\Optsol.Components.Repository.Infra.Mock\Optsol.Components.Repository.Infra.Mock.csproj", "{05ED5F33-2947-46F8-BA40-4569A39EF291}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Nuget", "1. Nuget", "{03581B11-2B9F-4A1E-9CD4-78608027C29A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Packages", "1. Packages", "{03581B11-2B9F-4A1E-9CD4-78608027C29A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Internal", "2. Internal", "{9C6CC440-4413-481F-8A92-10DDB3815EAE}"
 EndProject
