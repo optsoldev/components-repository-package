@@ -161,7 +161,7 @@ namespace Optsol.Components.Repository.Test.Repositories
         {
             var novaPessoa = Person.Create("Novo Customer", "Teste");
             var novoEmail = Email.Create("email@optsol.com.br");
-            var novaDataNascimento = DateValue.Create().SetDateValueWithDate(DateTime.Parse("01-01-2011"));
+            var novaDataNascimento = DateValue.Create().SetDateValueWithDate(DateTime.Parse("01/01/2011"));
 
             //when
             var customerObject = Customer.Create(novaPessoa, novoEmail, novaDataNascimento);

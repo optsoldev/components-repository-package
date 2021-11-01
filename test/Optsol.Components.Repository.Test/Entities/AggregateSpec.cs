@@ -10,7 +10,7 @@ namespace Optsol.Components.Repository.Test.Entities
     {
         [Trait("Entities", "Construir Objetos")]
         [Theory(DisplayName = "Deve Inicializar o Customer com CreateDate preenchido com a data atual")]
-        [InlineData("Guilherme", "Rodrigues", "guilherme.conrado@optsol.com.br", "01-01-1984")]
+        [InlineData("Guilherme", "Rodrigues", "guilherme.conrado@optsol.com.br", "01/01/1984")]
         public void DeveInicializarEntidadePreenchidoDataAtual(string nome, string sobreNome, string email, string dataNascimento)
         {
             //given 
