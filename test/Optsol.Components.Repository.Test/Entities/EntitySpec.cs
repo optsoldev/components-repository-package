@@ -17,7 +17,7 @@ namespace Optsol.Components.Repository.Test.Entities
             var novaDataValidade = DateValue.Create().SetDateValueWithDate(DateTime.Parse(validity));
 
             //when
-            var novoCartao = CreaditCard.Create(number, code, novaDataValidade);
+            var novoCartao = CreditCard.Create(number, code, novaDataValidade);
 
             //then
             novoCartao.CreateDate.Date.Date.Should().Be(DateTime.Now.Date, "As datas deveriam ser iguais");
