@@ -38,7 +38,7 @@ namespace Optsol.Components.Repository.Test.Entities
             //given
             IReadRepository<Customer> readRepository = new MockRepository();
             var customerUm = readRepository.GetAll().First();
-            var customerDois = MockReadRepositorySpec.CreateCustomer();
+            var customerDois = MockRepositorySpec.CreateCustomer();
 
             //when
             var comparacaoEquals = !customerUm.Person.Equals(customerDois.Person);

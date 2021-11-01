@@ -11,7 +11,7 @@ using Xunit;
 
 namespace Optsol.Components.Repository.Test.Repositories
 {
-    public class MockReadRepositorySpec
+    public class MockRepositorySpec
     {
         [Trait("Repositories", "Métodos Leitura")]
         [Fact(DisplayName = "Deve retornar a lista com todos os Customers disponíveis")]
@@ -102,12 +102,12 @@ namespace Optsol.Components.Repository.Test.Repositories
         public void DeveInserirNovoCustomer()
         {
             //given
-            var newCustumer = CreateCustomer();
+            var newCustomer = CreateCustomer();
 
             IWriteRepository<Customer> writeRepository = new MockRepository();
 
             //when
-            Action execute = () => writeRepository.Insert(newCustumer);
+            Action execute = () => writeRepository.Insert(newCustomer);
 
             //then
             execute.Should().NotThrow();
@@ -120,12 +120,12 @@ namespace Optsol.Components.Repository.Test.Repositories
         public void DeveAtualizarCustomer()
         {
             //given
-            var newCustumer = CreateCustomer();
+            var newCustomer = CreateCustomer();
 
             IWriteRepository<Customer> writeRepository = new MockRepository();
-            writeRepository.Insert(newCustumer);
-            
-            var updateCustumer = newCustumer;
+            writeRepository.Insert(newCustomer);
+
+            var updateCustumer = newCustomer;
             updateCustumer.BirthDate.SetDateValueWithDate(DateTime.Parse("2009-02-15"));
 
             //when
@@ -133,7 +133,7 @@ namespace Optsol.Components.Repository.Test.Repositories
 
             //then
             execute.Should().NotThrow("Não deveria de acontecer erro");
-            (newCustumer == updateCustumer).Should().BeTrue("Devem ser a mesma entidade");
+            (newCustomer == updateCustumer).Should().BeTrue("Devem ser a mesma entidade");
             (writeRepository as MockRepository).GetAll().Should().HaveCount(2);
 
         }
@@ -143,18 +143,35 @@ namespace Optsol.Components.Repository.Test.Repositories
         public void DeveDeletarCustomer()
         {
             //given
-            var newCustumer = CreateCustomer();
+            var newCustomer = CreateCustomer();
 
             IWriteRepository<Customer> writeRepository = new MockRepository();
-            writeRepository.Insert(newCustumer);
+            writeRepository.Insert(newCustomer);
 
             //when
-            Action execute = () => writeRepository.Delete(newCustumer);
+            Action execute = () => writeRepository.Delete(newCustomer);
 
             //then
             execute.Should().NotThrow();
             (writeRepository as MockRepository).GetAll().Should().HaveCount(1);
+        }
 
+
+        [Trait("Repositories", "Métodos Escrita")]
+        [Fact(DisplayName = "Deve salvar mudanças no contexto")]
+        public void DeveSalvarMudancasNoContexto()
+        {
+            //given
+            var newCustomer = CreateCustomer();
+
+            IWriteRepository<Customer> writeRepository = new MockRepository();
+
+            //when
+            writeRepository.Insert(newCustomer);
+            var totalItems = writeRepository.SaveChanges();
+
+            //then
+            totalItems.Should().Be(2);
         }
 
         public static Customer CreateCustomer()
