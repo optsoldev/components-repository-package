@@ -126,7 +126,7 @@ namespace Optsol.Components.Repository.Test.Repositories
             writeRepository.Inset(newCustumer);
             
             var updateCustumer = newCustumer;
-            updateCustumer.BirthDate.SetDateValueWithDate(DateTime.Parse("15-02-2009"));
+            updateCustumer.BirthDate.SetDateValueWithDate(DateTime.Parse("2009-02-15"));
 
             //when
             Action execute = () => writeRepository.Update(updateCustumer);
