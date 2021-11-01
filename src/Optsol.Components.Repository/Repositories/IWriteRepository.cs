@@ -5,7 +5,7 @@ namespace Optsol.Components.Repository.Domain.Repositories
     public interface IWriteRepository<TEntity>
         where TEntity: IAggregateRoot 
     {
-        void Inset(TEntity entity);
+        void Insert(TEntity entity);
         
         void Update(TEntity entity);
         
