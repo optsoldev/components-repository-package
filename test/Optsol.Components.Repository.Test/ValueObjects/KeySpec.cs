@@ -1,6 +1,9 @@
 ﻿using FluentAssertions;
 using Optsol.Components.Repository.Domain.ValueObjects;
+using static Optsol.Components.Repository.Domain.ValueObjects.KeyExtensions;
+using System;
 using Xunit;
+using Optsol.Components.Repository.Domain.Exceptions;
 
 namespace Optsol.Components.Repository.Test.ValueObjects
 {
@@ -37,5 +40,49 @@ namespace Optsol.Components.Repository.Test.ValueObjects
             //then
             comparacao.Should().BeTrue("Ids não devem ser iguais");
         }
-    }
+
+        [Trait("Value Objects", "Comparar Objetos")]
+        [Fact(DisplayName = "Duas Keys nulas deve retornar false")]
+        public void DeveCompararDoisObjetosTipoKeyNuloFalse()
+        {
+            //given
+            Key objetoKeyUm = null;
+            Key objetoKeyDois = null;
+
+            //when
+            var comparacao = objetoKeyUm == objetoKeyDois;
+
+            //then
+            comparacao.Should().BeFalse("Ids não devem ser iguais");
+        }
+
+        [Trait("Value Objects", "Exceção")]
+        [Fact(DisplayName = "Deve lançar exceção quando informar MinValue do DateTime")]
+        public void DeveLancarExcecaoQuandoConverter()
+        {
+            //given
+            int id = 1;
+            var keyValueObject = Key.Create(id);
+
+            //when
+            Action action = () => keyValueObject.AsGuid();
+
+            //then
+            action.Should().Throw<KeyException>();
+        }
+
+        [Trait("Value Objects", "Exceção")]
+        [Fact(DisplayName = "Deve lançar exceção quando informar key como nulo")]
+        public void DeveLancarExcecaoQuandoConverterKeyNula()
+        {
+            //given
+            Key keyValueObject = null;
+
+            //when
+            Action action = () => keyValueObject.AsGuid();
+
+            //then
+            action.Should().Throw<KeyException>();
+        }
+    },
 }

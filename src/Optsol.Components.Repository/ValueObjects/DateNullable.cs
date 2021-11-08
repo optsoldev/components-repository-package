@@ -8,9 +8,11 @@ namespace Optsol.Components.Repository.Domain.ValueObjects
     {
         public DateTime? Date { get; private set; }
 
-        public void SetDateValueWithDateOfNow()
+        public DateNullable SetDateValueWithDateOfNow()
         {
             Date = DateTime.Now;
+
+            return this;
         }
 
         public bool DateHasValue() => Date.HasValue;

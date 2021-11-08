@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Optsol.Components.Repository.Domain.ValueObjects;
+using System;
 using Xunit;
 
 namespace Optsol.Components.Repository.Test.ValueObjects
@@ -37,6 +38,21 @@ namespace Optsol.Components.Repository.Test.ValueObjects
 
             //then
             comparacao.Should().BeTrue("Os valores não devem ser iguais");
+        }
+
+        [Trait("Value Objects", "Método")]
+        [Fact(DisplayName = "Deve exibir o valor da classe formatado como string")]
+        public void DeveExibirValorClasseComoString()
+        {
+            //given
+            var data = new DateTime(2021, 11, 21, 23, 00, 00);
+            var dateValueNullableValueObject = new DateValue().SetDateValueWithDate(data);
+
+            //when
+            var comoString = dateValueNullableValueObject.ToString();
+
+            //then
+            comoString.Should().Be(data.ToShortDateString());
         }
     }
 }

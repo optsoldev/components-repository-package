@@ -156,7 +156,6 @@ namespace Optsol.Components.Repository.Test.Repositories
             (writeRepository as MockRepository).GetAll().Should().HaveCount(1);
         }
 
-
         [Trait("Repositories", "Métodos Escrita")]
         [Fact(DisplayName = "Deve salvar mudanças no contexto")]
         public void DeveSalvarMudancasNoContexto()

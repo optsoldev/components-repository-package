@@ -4,11 +4,11 @@ namespace Optsol.Components.Repository.Domain.Notifications
 {
     public class Notification
     {
-        public string Key { get; private set; }
+        public string Key { get; protected set; }
 
-        public string Message { get; private set; }
+        public string Message { get; protected set; }
 
-        public Notification(string key, string message)
+        public static Notification Create(string key, string message)
         {
             if (string.IsNullOrEmpty(key))
             {
@@ -20,9 +20,14 @@ namespace Optsol.Components.Repository.Domain.Notifications
                 throw new NotificationException($"{nameof(message)} is null");
             }
 
+            var notification = new Notification
+            {
+                Key = key,
+                Message = message
+            };
 
-            Key = key;
-            Message = message;
+            return notification;
+
         }
     }
 }

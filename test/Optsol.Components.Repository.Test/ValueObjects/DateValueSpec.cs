@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using Optsol.Components.Repository.Domain.Exceptions;
 using Optsol.Components.Repository.Domain.ValueObjects;
 using System;
 using Xunit;
@@ -39,5 +40,36 @@ namespace Optsol.Components.Repository.Test.ValueObjects
             //then
             comparacao.Should().BeTrue("Os valores não devem ser iguais");
         }
+
+        [Trait("Value Objects", "Exceção")]
+        [Fact(DisplayName = "Deve lançar exceção quando informar MinValue do DateTime")]
+        public void DeveLancarExcecaoQuandoInformarMinDateValue()
+        {
+            //given
+            var data = DateTime.MinValue;
+            var dateValueValueObject = new DateValue();
+
+            //when
+            Action action = () => dateValueValueObject.SetDateValueWithDate(data);
+
+            //then
+            action.Should().Throw<DateValueException>();
+        }
+
+        [Trait("Value Objects", "Método")]
+        [Fact(DisplayName = "Deve exibir o valor da classe formatado como string")]
+        public void DeveExibirValorClasseComoString()
+        {
+            //given
+            var data = new DateTime(2021, 11, 21, 23, 00, 00);
+            var dateValueValueObject = new DateValue().SetDateValueWithDate(data);
+
+            //when
+            var comoString = dateValueValueObject.ToString();
+
+            //then
+            comoString.Should().Be(data.ToShortDateString());
+        }
+
     }
 }

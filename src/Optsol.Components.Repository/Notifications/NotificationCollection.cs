@@ -32,7 +32,10 @@ namespace Optsol.Components.Repository.Domain.Notifications
         public void Delete(Notification notification) =>
             notifications.Remove(notification);
 
-        public IEnumerable<Notification> FindByKey(params string[] Keys) =>
+        public Notification FindByKey(string key) => 
+            FindByKeys(key).FirstOrDefault();
+
+        public IEnumerable<Notification> FindByKeys(params string[] Keys) =>
             notifications.Where(notification => Keys.Contains(notification.Key));
         
         public static NotificationCollection Create() => new();
