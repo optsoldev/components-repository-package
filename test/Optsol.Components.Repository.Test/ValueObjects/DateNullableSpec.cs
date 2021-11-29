@@ -9,7 +9,7 @@ namespace Optsol.Components.Repository.Test.ValueObjects
     {
         [Trait("Value Objects", "Comparar Objetos")]
         [Fact(DisplayName = "Deve comparar duas DateNullables com os mesmos valores deve retornar verdadeiro")]
-        public void DeveCompararDoisObjetosTipoDateNullableVerdadeiro()
+        public void Deve_Comparar_Dois_Objetos_Tipo_Date_Nullable_Verdadeiro()
         {
             //given
             var objetoDateNullableUm = DateNullable.Create();
@@ -26,7 +26,7 @@ namespace Optsol.Components.Repository.Test.ValueObjects
 
         [Trait("Value Objects", "Comparar Objetos")]
         [Fact(DisplayName = "Deve comaprar duas DateNullables com os valores diferentes devem retornar false")]
-        public void DeveCompararDoisObjetosTipoDateNullableFalse()
+        public void Deve_Comparar_Dois_Objetos_Tipo_Date_Nullable_False()
         {
             //given
             var objetoDateNullableUm = DateNullable.Create();
@@ -42,7 +42,7 @@ namespace Optsol.Components.Repository.Test.ValueObjects
 
         [Trait("Value Objects", "Método")]
         [Fact(DisplayName = "Deve exibir o valor da classe formatado como string")]
-        public void DeveExibirValorClasseComoString()
+        public void Deve_Exibir_Valor_Classe_Como_String()
         {
             //given
             var data = new DateTime(2021, 11, 21, 23, 00, 00);

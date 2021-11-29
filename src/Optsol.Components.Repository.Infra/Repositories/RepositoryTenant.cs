@@ -2,14 +2,14 @@
 using Optsol.Components.Repository.Domain.Entities;
 using Optsol.Components.Repository.Domain.Repositories;
 using Optsol.Components.Repository.Domain.ValueObjects;
-using Optsol.Components.Repository.Infra.EFCore.Contexts;
-using Optsol.Components.Repository.Infra.EFCore.Providers;
+using Optsol.Components.Repository.Infra.EntityFrameworkCore.Contexts;
+using Optsol.Components.Repository.Infra.EntityFrameworkCore.Providers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Optsol.Components.Repository.Infra.EFCore.Repositories
+namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
 {
     public class RepositoryTenant<TEntity> : Repository<TEntity>, IRepository<TEntity>
         where TEntity : class, IAggregateRoot, ITentantProvider, IDisposable

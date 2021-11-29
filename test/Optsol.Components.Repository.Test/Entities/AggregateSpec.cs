@@ -22,7 +22,7 @@ namespace Optsol.Components.Repository.Test.Entities
 
         [Trait("Entities", "Construir Objetos")]
         [Fact(DisplayName = "Deve contruir um AggregateRoot com os dados padrões")]
-        public void DeveContruirUmAggregateRootDadosPadroes()
+        public void Deve_Contruir_AggregateRoot_Dados_Padroes()
         {
             //given
             AggregateRoot aggregateRoot;
@@ -39,7 +39,7 @@ namespace Optsol.Components.Repository.Test.Entities
         [Trait("Entities", "Construir Objetos")]
         [Theory(DisplayName = "Deve Inicializar o Customer com CreateDate preenchido com a data atual")]
         [InlineData("Guilherme", "Rodrigues", "guilherme.conrado@optsol.com.br", "1984-01-01")]
-        public void DeveInicializarEntidadePreenchidoDataAtual(string nome, string sobreNome, string email, string dataNascimento)
+        public void Deve_Inicializar_Entidade_Preenchido_Data_Atual(string nome, string sobreNome, string email, string dataNascimento)
         {
             //given 
             var novaPessoa = Person.Create(nome, sobreNome);
@@ -55,7 +55,7 @@ namespace Optsol.Components.Repository.Test.Entities
 
         [Trait("Entities", "Comparar Objetos")]
         [Fact(DisplayName = "Deve comparar dois AggregateRoot")]
-        public void DeveCompararDoisAggregateRoot()
+        public void Deve_Comparar_Dois_AggregateRoot()
         {
             //given
             var aggregateRootUm = Aggregate.Create();
@@ -70,7 +70,7 @@ namespace Optsol.Components.Repository.Test.Entities
 
         [Trait("Entities", "Comparar Objetos")]
         [Fact(DisplayName = "Deve verificar HashCode único para cada AggregateRoot")]
-        public void DeveVerificarHashCodeUnicoParaAggregateRoot()
+        public void Deve_Verificar_HashCode_Unico_Para_AggregateRoot()
         {
             //given
             IAggregateRoot aggregateRootUm = Aggregate.Create();
@@ -90,7 +90,7 @@ namespace Optsol.Components.Repository.Test.Entities
 
         [Trait("Entities", "Comparar Objetos")]
         [Fact(DisplayName = "Deve comparar dois Aggregates do mesmo tipo e Id e retornar verdadeiro")]
-        public void DeveCompararDoisObjetosTipoAggregateVerdadeiro()
+        public void Deve_Comparar_Dois_Objetos_Tipo_Aggregate_Verdadeiro()
         {
             //given
             IReadRepository<Customer> readRepository = new MockRepository();
@@ -109,7 +109,7 @@ namespace Optsol.Components.Repository.Test.Entities
 
         [Trait("Entities", "Comparar Objetos")]
         [Fact(DisplayName = "Deve comparar dois Aggregates diferentes e retornar falso")]
-        public void DeveCompararDoisObjetosTipoAggregateFalso()
+        public void Deve_Comparar_Dois_Objetos_Tipo_Aggregate_Falso()
         {
             //given
             IReadRepository<Customer> readRepository = new MockRepository();

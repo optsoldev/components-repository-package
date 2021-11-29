@@ -11,7 +11,7 @@ namespace Optsol.Components.Repository.Test.ValueObjects
     {
         [Trait("Value Objects", "Comparar Objetos")]
         [Fact(DisplayName = "Duas Keys com os mesmos Ids deve retornar verdadeiro")]
-        public void DeveCompararDoisObjetosTipoKeyVerdadeiro()
+        public void Deve_Comparar_Dois_Objetos_Tipo_Key_Verdadeiro()
         {
             //given
             var objetoKeyUm = Key.Create(1);
@@ -28,7 +28,7 @@ namespace Optsol.Components.Repository.Test.ValueObjects
 
         [Trait("Value Objects", "Comparar Objetos")]
         [Fact(DisplayName = "Duas Keys com diferentes Ids deve retornar false")]
-        public void DeveCompararDoisObjetosTipoKeyFalse()
+        public void Deve_Comparar_Dois_Objetos_Tipo_Key_False()
         {
             //given
             var objetoKeyUm = Key.Create(1);
@@ -43,7 +43,7 @@ namespace Optsol.Components.Repository.Test.ValueObjects
 
         [Trait("Value Objects", "Comparar Objetos")]
         [Fact(DisplayName = "Duas Keys nulas deve retornar false")]
-        public void DeveCompararDoisObjetosTipoKeyNuloFalse()
+        public void Deve_Comparar_Dois_Objetos_Tipo_Key_Nulo_False()
         {
             //given
             Key objetoKeyUm = null;
@@ -58,7 +58,7 @@ namespace Optsol.Components.Repository.Test.ValueObjects
 
         [Trait("Value Objects", "Exceção")]
         [Fact(DisplayName = "Deve lançar exceção quando informar MinValue do DateTime")]
-        public void DeveLancarExcecaoQuandoConverter()
+        public void Deve_Lancar_Excecao_Quando_Converter()
         {
             //given
             int id = 1;
@@ -73,7 +73,7 @@ namespace Optsol.Components.Repository.Test.ValueObjects
 
         [Trait("Value Objects", "Exceção")]
         [Fact(DisplayName = "Deve lançar exceção quando informar key como nulo")]
-        public void DeveLancarExcecaoQuandoConverterKeyNula()
+        public void Deve_Lancar_Excecao_Quando_Converter_Key_Nula()
         {
             //given
             Key keyValueObject = null;
@@ -84,5 +84,5 @@ namespace Optsol.Components.Repository.Test.ValueObjects
             //then
             action.Should().Throw<KeyException>();
         }
-    },
+    }
 }

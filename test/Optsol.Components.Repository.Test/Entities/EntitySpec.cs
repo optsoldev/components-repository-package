@@ -30,7 +30,7 @@ namespace Optsol.Components.Repository.Test.Entities
 
         [Trait("Entities", "Construir Objetos")]
         [Fact(DisplayName = "Deve contruir uma Entity com os dados padrões")]
-        public void DeveContruirUmaEntidadeDadosPadroes()
+        public void Deve_Contruir_Entidade_Dados_Padroes()
         {
             //given
             Entidade aggregateRoot;
@@ -46,7 +46,7 @@ namespace Optsol.Components.Repository.Test.Entities
         [Trait("Entities", "Construir Objetos")]
         [Theory(DisplayName = "Deve Inicializar o CreaditCard com CreateDate preenchido com a data atual")]
         [InlineData("5328647840011771", 795, "2023-05-16")]
-        public void DeveInicializarEntidadePreenchidoDataAtual(string number, int code, string validity)
+        public void Deve_Inicializar_Entidade_Preenchido_DataAtual(string number, int code, string validity)
         {
             //given 
             var novaDataValidade = DateValue.Create().SetDateValueWithDate(DateTime.Parse(validity));
@@ -60,7 +60,7 @@ namespace Optsol.Components.Repository.Test.Entities
 
         [Trait("Entities", "Comparar Objetos")]
         [Fact(DisplayName = "Deve comparar duas Entity pela interface IEntity")]
-        public void DeveCompararDuasEntidadesPelaInterface()
+        public void Deve_Comparar_Duas_Entidades_Pela_Interface()
         {
             //given
             IEntity entityUm = Entidade.Create();
@@ -75,7 +75,7 @@ namespace Optsol.Components.Repository.Test.Entities
 
         [Trait("Entities", "Comparar Objetos")]
         [Fact(DisplayName = "Deve comparar duas Entity iguais")]
-        public void DeveCompararDuasEntidadesIguais()
+        public void Deve_Comparar_Duas_Entidades_Iguais()
         {
             //given
             var entity = Entidade.Create();
@@ -90,7 +90,7 @@ namespace Optsol.Components.Repository.Test.Entities
 
         [Trait("Entities", "Comparar Objetos")]
         [Fact(DisplayName = "Deve comparar duas Entity pela classe")]
-        public void DeveCompararDuasEntidadesPelaClasse()
+        public void Deve_Comparar_Duas_Entidades_Pela_Classe()
         {
             //given
             object entityUm = Entidade.Create();
@@ -105,7 +105,7 @@ namespace Optsol.Components.Repository.Test.Entities
 
         [Trait("Entities", "Comparar Objetos")]
         [Fact(DisplayName = "Deve comparar uma Entity com um objeto Null")]
-        public void DeveCompararDuasEntidadesPelaClasseComObjetoNull()
+        public void Deve_Comparar_Duas_Entidades_Pela_Classe_Com_Objeto_Null()
         {
             //given
             object entityUm = Entidade.Create();
@@ -120,7 +120,7 @@ namespace Optsol.Components.Repository.Test.Entities
 
         [Trait("Entities", "Comparar Objetos")]
         [Fact(DisplayName = "Deve verificar HashCode único para cada Entity")]
-        public void DeveVerificarHashCodeUnicoParaEntity()
+        public void Deve_Verificar_HashCode_Unico_Para_Entity()
         {
             //given
             var entityUm = Entidade.Create();
@@ -140,7 +140,7 @@ namespace Optsol.Components.Repository.Test.Entities
 
         [Trait("Entities", "Comparar Objetos")]
         [Fact(DisplayName = "Deve comparar dois Aggregates do mesmo tipo e Id e retornar verdadeiro")]
-        public void DeveCompararDoisObjetosTipoAggregateVerdadeiro()
+        public void Deve_Comparar_Dois_Objetos_Tipo_Aggregate_Verdadeiro()
         {
             //given
             IReadRepository<Customer> readRepository = new MockRepository();
@@ -159,7 +159,7 @@ namespace Optsol.Components.Repository.Test.Entities
 
         [Trait("Entities", "Comparar Objetos")]
         [Fact(DisplayName = "Deve comparar dois Aggregates diferentes e retornar falso")]
-        public void DeveCompararDoisObjetosTipoAggregateFalso()
+        public void Deve_Comparar_Dois_Objetos_Tipo_Aggregate_Falso()
         {
             //given
             IReadRepository<Customer> readRepository = new MockRepository();
@@ -178,7 +178,7 @@ namespace Optsol.Components.Repository.Test.Entities
 
         [Trait("Entities", "Métodos")]
         [Fact(DisplayName = "Deve excluir uma Entity logicamente implementando interface IEntity")]
-        public void DeveExcluirEntityLogicamente()
+        public void Deve_Excluir_Entidade_Logicamente()
         {
             //given
             IEntityDeletable entidade = Entidade.Create();
