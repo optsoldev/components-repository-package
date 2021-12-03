@@ -56,7 +56,7 @@ namespace Optsol.Components.Repository.Infra.Mock.Repositories
 
         public void Update(Customer entity)
         {
-            var customerRemoved = Context.Customers.FindByKey(entity.Id);
+            var customerRemoved = Context.Customers.FindByKey(entity.Key);
             Context.Customers.Delete(customerRemoved);
             Context.Customers.Insert(entity);
         }

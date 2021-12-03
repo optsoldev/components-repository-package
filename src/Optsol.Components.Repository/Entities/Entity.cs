@@ -5,22 +5,22 @@ namespace Optsol.Components.Repository.Domain.Entities
 {
     public abstract class Entity : IEntity
     {
-        public Key Id { get; protected set; }
+        public Key Key { get; protected set; }
 
         protected Entity()
         {
-            Id = Key.Create(Guid.NewGuid());
+            Key = Key.Create(Guid.NewGuid());
         }
 
         public bool Equals(IEntity other)
         {
             if (other is null) return false;
 
-            return GetType() == other.GetType() && Id == other.Id;
+            return GetType() == other.GetType() && Key == other.Key;
         }
 
         public override bool Equals(object obj) => Equals(obj as IEntity);
 
-        public override int GetHashCode() => $"{GetType()}{Id.GetHashCode()}".GetHashCode();
+        public override int GetHashCode() => $"{GetType()}{Key.GetHashCode()}".GetHashCode();
     }
 }

@@ -26,7 +26,7 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
 
         public virtual IEnumerable<TEntity> GetAllByKeys(params Key[] keys)
         {
-            return Set.Where(entity => keys.Any(key => key == entity.Id));
+            return Set.Where(entity => keys.Any(key => key == entity.Key));
         }
 
         public virtual IEnumerable<TEntity> GetAll() => Set.AsEnumerable();
@@ -40,7 +40,7 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
 
         public virtual void Update(TEntity entity)
         {
-            var entityInLocal = Set.Local?.Any(localEntity => localEntity.Id == entity.Id) ?? false;
+            var entityInLocal = Set.Local?.Any(localEntity => localEntity.Key == entity.Key) ?? false;
 
             if (entityInLocal)
             {
