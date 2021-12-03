@@ -13,7 +13,7 @@ namespace Optsol.Components.Repository.Domain.Entities
             CreateDate = DateValue.Create().SetDateValueWithDateOfNow();
         }
 
-        public override bool Equals(object obj) => Equals(obj as AggregateRoot);
+        public override bool Equals(object obj) => Equals(obj as IAggregateRoot);
 
         public override int GetHashCode() => $"{GetType()}{Id.GetHashCode()}".GetHashCode();
     }

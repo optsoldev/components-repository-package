@@ -1,7 +1,6 @@
 ﻿using Optsol.Components.Repository.Domain.Entities;
 using Optsol.Components.Repository.Domain.ValueObjects;
 using Optsol.Components.Repository.Infra.Mock.Exceptions;
-using System;
 using System.Text.RegularExpressions;
 
 namespace Optsol.Components.Repository.Infra.Mock.Core
@@ -19,7 +18,7 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
         {
             var codeIsInvalid = Regex.IsMatch(code.ToString(), regexCodePattern);
             if (codeIsInvalid)
-                throw new CreaditCardException("Invalid code verification");
+                throw new CreditCardException("Invalid code verification");
 
             Code = code;
         }

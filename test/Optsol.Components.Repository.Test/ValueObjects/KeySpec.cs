@@ -8,7 +8,7 @@ namespace Optsol.Components.Repository.Test.ValueObjects
     {
         [Trait("Value Objects", "Comparar Objetos")]
         [Fact(DisplayName = "Duas Keys com os mesmos Ids deve retornar verdadeiro")]
-        public void DeveCompararDoisObjetosTipoKeyVerdadeiro()
+        public void Deve_Comparar_Dois_Objetos_Tipo_Key_Verdadeiro()
         {
             //given
             var objetoKeyUm = Key.Create(1);
@@ -25,7 +25,7 @@ namespace Optsol.Components.Repository.Test.ValueObjects
 
         [Trait("Value Objects", "Comparar Objetos")]
         [Fact(DisplayName = "Duas Keys com diferentes Ids deve retornar false")]
-        public void DeveCompararDoisObjetosTipoKeyFalse()
+        public void Deve_Comparar_Dois_Objetos_Tipo_Key_False()
         {
             //given
             var objetoKeyUm = Key.Create(1);
@@ -33,6 +33,21 @@ namespace Optsol.Components.Repository.Test.ValueObjects
 
             //when
             var comparacao = objetoKeyUm != objetoKeyDois;
+
+            //then
+            comparacao.Should().BeTrue("Ids não devem ser iguais");
+        }
+
+        [Trait("Value Objects", "Comparar Objetos")]
+        [Fact(DisplayName = "Duas Keys nulas deve retornar false")]
+        public void Deve_Comparar_Dois_Objetos_Tipo_Key_Nulo_False()
+        {
+            //given
+            Key objetoKeyUm = null;
+            Key objetoKeyDois = null;
+
+            //when
+            var comparacao = objetoKeyUm == objetoKeyDois;
 
             //then
             comparacao.Should().BeTrue("Ids não devem ser iguais");
