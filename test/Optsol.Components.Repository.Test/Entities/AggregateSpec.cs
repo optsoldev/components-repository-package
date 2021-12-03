@@ -62,7 +62,7 @@ namespace Optsol.Components.Repository.Test.Entities
             var aggregateRootDois = Aggregate.Create();
 
             //when
-            var comparacao = aggregateRootUm.Equals(aggregateRootDois);
+            var comparacao = aggregateRootUm.Equals(aggregateRootDois) && aggregateRootDois.Equals(aggregateRootUm);
 
             //then
             comparacao.Should().BeFalse();

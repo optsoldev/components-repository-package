@@ -43,7 +43,6 @@ namespace Optsol.Components.Repository.Test.Notifications
             notificationContext.Notifications.Total.Should().Be(1);
         }
 
-
         [Trait("Notifications", "Métodos")]
         [Fact(DisplayName = "Deve adicionar uma notificação")]
         public void Deve_Adicionar_Notificacoes_Contexto()

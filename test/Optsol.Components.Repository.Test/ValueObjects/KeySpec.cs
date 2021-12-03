@@ -1,9 +1,6 @@
 ﻿using FluentAssertions;
 using Optsol.Components.Repository.Domain.ValueObjects;
-using static Optsol.Components.Repository.Domain.ValueObjects.KeyExtensions;
-using System;
 using Xunit;
-using Optsol.Components.Repository.Domain.Exceptions;
 
 namespace Optsol.Components.Repository.Test.ValueObjects
 {
@@ -53,36 +50,7 @@ namespace Optsol.Components.Repository.Test.ValueObjects
             var comparacao = objetoKeyUm == objetoKeyDois;
 
             //then
-            comparacao.Should().BeFalse("Ids não devem ser iguais");
-        }
-
-        [Trait("Value Objects", "Exceção")]
-        [Fact(DisplayName = "Deve lançar exceção quando informar MinValue do DateTime")]
-        public void Deve_Lancar_Excecao_Quando_Converter()
-        {
-            //given
-            int id = 1;
-            var keyValueObject = Key.Create(id);
-
-            //when
-            Action action = () => keyValueObject.AsGuid();
-
-            //then
-            action.Should().Throw<KeyException>();
-        }
-
-        [Trait("Value Objects", "Exceção")]
-        [Fact(DisplayName = "Deve lançar exceção quando informar key como nulo")]
-        public void Deve_Lancar_Excecao_Quando_Converter_Key_Nula()
-        {
-            //given
-            Key keyValueObject = null;
-
-            //when
-            Action action = () => keyValueObject.AsGuid();
-
-            //then
-            action.Should().Throw<KeyException>();
+            comparacao.Should().BeTrue("Ids não devem ser iguais");
         }
     }
 }

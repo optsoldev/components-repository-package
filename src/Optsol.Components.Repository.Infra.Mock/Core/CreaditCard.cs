@@ -18,7 +18,7 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
         {
             var codeIsInvalid = Regex.IsMatch(code.ToString(), regexCodePattern);
             if (codeIsInvalid)
-                throw new CreaditCardException("Invalid code verification");
+                throw new CreditCardException("Invalid code verification");
 
             Code = code;
         }

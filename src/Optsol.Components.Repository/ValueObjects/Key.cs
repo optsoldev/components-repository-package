@@ -15,23 +15,4 @@ namespace Optsol.Components.Repository.Domain.ValueObjects
             yield return Id;
         }
     }
-
-    public static class KeyExtensions
-    {
-        public static Guid AsGuid(this Key key)
-        {
-            try
-            {
-                return Guid.ParseExact(key.Id?.ToString(), "B");
-            }
-            catch (NullReferenceException)
-            {
-                throw new KeyException($"{nameof(key.Id)} is null");
-            }
-            catch (FormatException)
-            {
-                throw new KeyException($"{nameof(key.Id)} bad format: {key.Id}");
-            }
-        }
-    }
 }

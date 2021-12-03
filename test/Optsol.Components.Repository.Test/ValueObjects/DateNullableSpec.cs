@@ -46,13 +46,27 @@ namespace Optsol.Components.Repository.Test.ValueObjects
         {
             //given
             var data = new DateTime(2021, 11, 21, 23, 00, 00);
-            var dateValueNullableValueObject = new DateValue().SetDateValueWithDate(data);
+            var dateValueNullableValueObject = DateNullable.Create().SetDateValueWithDate(data);
 
             //when
             var comoString = dateValueNullableValueObject.ToString();
 
             //then
             comoString.Should().Be(data.ToShortDateString());
+        }
+
+        [Trait("Value Objects", "Método")]
+        [Fact(DisplayName = "Deve exibir 'null' como valor da classe caso a data não sena informada")]
+        public void Deve_Palava_Null_Exibir_Valor_Classe_Caso_Data_Nao_Informada()
+        {
+            //given
+            var dateValueNullableValueObject = DateNullable.Create();
+
+            //when
+            var comoString = dateValueNullableValueObject.ToString();
+
+            //then
+            comoString.Should().Be("null");
         }
     }
 }
