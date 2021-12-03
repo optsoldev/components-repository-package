@@ -8,7 +8,7 @@ namespace Optsol.Components.Repository.Test.Notifications
     {
         [Trait("Notifications", "Construir Objetos")]
         [Fact(DisplayName = "Deve construir um NotificationCollection com os dados padrões")]
-        public void DeveConstruirUmNotificationCollectionComDadosPadroes()
+        public void Deve_Construir_Notification_Collection_Dados_Padroes()
         {
             //given
             string key = "Chave";
@@ -27,7 +27,7 @@ namespace Optsol.Components.Repository.Test.Notifications
 
         [Trait("Notifications", "Métodos")]
         [Fact(DisplayName = "Deve limpar todos os registros da lista de notificações")]
-        public void DeveLimparOsRegistrosDaListaDeNotificacoes()
+        public void Deve_Limpar_Registros_Lista_Notificacoes()
         {
             //given
             string key = "Chave";
@@ -49,7 +49,7 @@ namespace Optsol.Components.Repository.Test.Notifications
 
         [Trait("Notifications", "Métodos")]
         [Fact(DisplayName = "Deve buscar notificação pela chave")]
-        public void DeveBuscarNotificacaoPelaChave()
+        public void Deve_Buscar_Notificacao_Pela_Chave()
         {
             //given
             string key = "Chave";
@@ -70,7 +70,7 @@ namespace Optsol.Components.Repository.Test.Notifications
 
         [Trait("Notifications", "Métodos")]
         [Fact(DisplayName = "Deve buscar notificação por chaves")]
-        public void DeveBuscarNotificacaoPorChaves()
+        public void Deve_Buscar_Notificacao_Por_Chaves()
         {
             //given
             string key = "Chave";
@@ -92,7 +92,7 @@ namespace Optsol.Components.Repository.Test.Notifications
 
         [Trait("Notifications", "Métodos")]
         [Fact(DisplayName = "Deve remover registro da lista de notificações")]
-        public void DeveRemoverRegistroDaListaDeNotificacoes()
+        public void Deve_Remover_Registro_Lista_Notificacoes()
         {
             //given
             string key = "Chave";

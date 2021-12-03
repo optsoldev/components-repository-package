@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Optsol.Components.Repository.Domain.Entities;
-using Optsol.Components.Repository.Infra.EFCore.Extensions;
+using Optsol.Components.Repository.Infra.EntityFrameworkCore.Extensions;
 
-namespace Optsol.Components.Repository.Infra.EFCore.Configurations
+namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Configurations
 {
     public class AggregateConfiguration<TAggregate> : IEntityTypeConfiguration<TAggregate>
         where TAggregate : AggregateRoot

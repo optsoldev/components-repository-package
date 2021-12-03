@@ -8,9 +8,26 @@ namespace Optsol.Components.Repository.Domain.ValueObjects
     {
         public DateTime? Date { get; private set; }
 
+        public DateNullable()
+        {
+            Date = null;
+        }
+
         public DateNullable SetDateValueWithDateOfNow()
         {
             Date = DateTime.Now;
+
+            return this;
+        }
+
+        public DateNullable SetDateValueWithDate(DateTime date)
+        {
+            if (date == DateTime.MinValue)
+            {
+                throw new DateValueException($"{Date} not is min value");
+            }
+
+            Date = date;
 
             return this;
         }
@@ -19,7 +36,10 @@ namespace Optsol.Components.Repository.Domain.ValueObjects
 
         public override string ToString()
         {
-            return Date.HasValue ? Date?.ToShortDateString() : "null";
+            if (Date is null)
+                return "null";
+
+            return Date.Value.ToShortDateString();
         }
 
         public override IEnumerable<object> GetEqualityComponents()

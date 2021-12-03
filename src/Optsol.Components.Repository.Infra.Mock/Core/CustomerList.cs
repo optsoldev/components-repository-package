@@ -46,12 +46,12 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
             return customers;
         }
 
-        internal Customer FindByKey(Key id)
+        public Customer FindByKey(Key id)
         {
             return FindByKeys(id).FirstOrDefault();
         }
 
-        internal IEnumerable<Customer> FindWithExpression(Expression<Func<Customer, bool>> filterExpression)
+        public IEnumerable<Customer> FindWithExpression(Expression<Func<Customer, bool>> filterExpression)
         {
             return customers.Where(filterExpression.Compile());
         }

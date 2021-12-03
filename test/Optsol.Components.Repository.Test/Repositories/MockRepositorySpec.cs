@@ -15,7 +15,7 @@ namespace Optsol.Components.Repository.Test.Repositories
     {
         [Trait("Repositories", "Métodos Leitura")]
         [Fact(DisplayName = "Deve retornar a lista com todos os Customers disponíveis")]
-        public void DeveRetornarTodosCustomers()
+        public void Deve_Retornar_Todos_Customers()
         {
             //given
             IReadRepository<Customer> readRepository = new MockRepository();
@@ -31,7 +31,7 @@ namespace Optsol.Components.Repository.Test.Repositories
 
         [Trait("Repositories", "Métodos Leitura")]
         [Fact(DisplayName = "Deve retornar somente o customer com o id informado")]
-        public void DeveRetornarCustomerPorId()
+        public void Deve_Retornar_Customer_Por_Id()
         {
             //given
             IReadRepository<Customer> readRepository = new MockRepository();
@@ -46,7 +46,7 @@ namespace Optsol.Components.Repository.Test.Repositories
 
         [Trait("Repositories", "Métodos Leitura")]
         [Fact(DisplayName = "Não deve retornar nenhum customer com o id informado inexistente")]
-        public void NaoDeveRetornarCustomerPorId()
+        public void Nao_Deve_Retornar_Customer_Por_Id()
         {
             //given
             IReadRepository<Customer> readRepository = new MockRepository();
@@ -62,7 +62,7 @@ namespace Optsol.Components.Repository.Test.Repositories
 
         [Trait("Repositories", "Métodos Leitura")]
         [Fact(DisplayName = "Deve retornar somente os customers com os ids informados")]
-        public void DeveRetornarCustomerPorIds()
+        public void Deve_Retornar_Customer_Por_Ids()
         {
             //given
             IReadRepository<Customer> readRepository = new MockRepository();
@@ -81,7 +81,7 @@ namespace Optsol.Components.Repository.Test.Repositories
 
         [Trait("Repositories", "Métodos Leitura")]
         [Fact(DisplayName = "Deve retornar somente os customers com os ids informados")]
-        public void DeveRetornarCustomersPorExpression()
+        public void Deve_Retornar_Customers_Por_Expression()
         {
             //given
             IReadRepository<Customer> readRepository = new MockRepository();
@@ -99,7 +99,7 @@ namespace Optsol.Components.Repository.Test.Repositories
 
         [Trait("Repositories", "Métodos Escrita")]
         [Fact(DisplayName = "Deve inserir um novo customer no contexto")]
-        public void DeveInserirNovoCustomer()
+        public void Deve_Inserir_Novo_Customer()
         {
             //given
             var newCustomer = CreateCustomer();
@@ -117,7 +117,7 @@ namespace Optsol.Components.Repository.Test.Repositories
 
         [Trait("Repositories", "Métodos Escrita")]
         [Fact(DisplayName = "Deve atualizar um customer adicionado no contexto")]
-        public void DeveAtualizarCustomer()
+        public void Deve_Atualizar_Customer()
         {
             //given
             var newCustomer = CreateCustomer();
@@ -140,7 +140,7 @@ namespace Optsol.Components.Repository.Test.Repositories
 
         [Trait("Repositories", "Métodos Escrita")]
         [Fact(DisplayName = "Deve remover um customer do contexto")]
-        public void DeveDeletarCustomer()
+        public void Deve_Deletar_Customer()
         {
             //given
             var newCustomer = CreateCustomer();
@@ -158,7 +158,7 @@ namespace Optsol.Components.Repository.Test.Repositories
 
         [Trait("Repositories", "Métodos Escrita")]
         [Fact(DisplayName = "Deve salvar mudanças no contexto")]
-        public void DeveSalvarMudancasNoContexto()
+        public void Deve_Salvar_Mudancas_Contexto()
         {
             //given
             var newCustomer = CreateCustomer();

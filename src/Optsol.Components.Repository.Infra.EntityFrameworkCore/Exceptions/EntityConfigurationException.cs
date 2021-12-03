@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Optsol.Components.Repository.Infra.EFCore.Exceptions
+namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Exceptions
 {
     public class EntityConfigurationException : Exception
     {

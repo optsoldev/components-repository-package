@@ -11,7 +11,7 @@ namespace Optsol.Components.Repository.Test.Notifications
     {
         [Trait("Notifications", "Construir Objetos")]
         [Fact(DisplayName = "Deve contruir um NotificationContext com os dados padrões")]
-        public void DeveContruirUmAggregateRootDadosPadroes()
+        public void Deve_Contruir_AggregateRoot_DadosPadroes()
         {
             //given
             NotificationContext notificationContext;
@@ -26,7 +26,7 @@ namespace Optsol.Components.Repository.Test.Notifications
 
         [Trait("Notifications", "Métodos")]
         [Fact(DisplayName = "Deve adicionar uma notificação")]
-        public void DeveAdicionarNotificacaoNoContexto()
+        public void Deve_Adicionar_Notificacao_Contexto()
         {
             //given
             var notification = Notification.Create("Chave", "Mensagem");
@@ -43,10 +43,9 @@ namespace Optsol.Components.Repository.Test.Notifications
             notificationContext.Notifications.Total.Should().Be(1);
         }
 
-
         [Trait("Notifications", "Métodos")]
         [Fact(DisplayName = "Deve adicionar uma notificação")]
-        public void DeveAdicionarNotificacoesNoContexto()
+        public void Deve_Adicionar_Notificacoes_Contexto()
         {
             //given
             var validationResult = new ValidationResult(new List<ValidationFailure>() { new ValidationFailure("prop", "erro", "x") { ErrorCode = "codigo" } });
@@ -75,7 +74,7 @@ namespace Optsol.Components.Repository.Test.Notifications
 
         [Trait("Notifications", "Métodos")]
         [Fact(DisplayName = "Deve limpar todas as notificações no contexto")]
-        public void DeveLimparNotificacoesNoContexto()
+        public void Deve_Limpar_Notificacoes_Contexto()
         {
             //given
             var notification = Notification.Create("Chave", "Mensagem");

@@ -12,7 +12,7 @@ namespace Optsol.Components.Repository.Test.Notifications
     {
         [Trait("Notifications", "Construir Objetos")]
         [Fact(DisplayName = "Deve construir um Notification com os dados padrões")]
-        public void DeveConstruirUmNotificationComDadosPadroes()
+        public void Deve_Construir_Notification_DadosPadroes()
         {
             //given
             string key = "Chave";
@@ -33,7 +33,7 @@ namespace Optsol.Components.Repository.Test.Notifications
         [Theory(DisplayName = "Deve lançar exceção quando informar MinValue do DateTime")]
         [InlineData("chave", "")]
         [InlineData("", "mensagem")]
-        public void DeveLancarExcecaoQuandoInformarMinDateValue(string key, string message)
+        public void Deve_Lancar_Excecao_Quando_Informar_MinDateValue(string key, string message)
         {
             //given
             string keyValue = key;
