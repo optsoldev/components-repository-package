@@ -58,7 +58,7 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
 
         public IEnumerable<Customer> FindByKeys(params Key[] ids)
         {
-            return customers.Where(customer => ids.Contains(customer.Id));
+            return customers.Where(customer => ids.Contains(customer.Key));
         }
     }
 }

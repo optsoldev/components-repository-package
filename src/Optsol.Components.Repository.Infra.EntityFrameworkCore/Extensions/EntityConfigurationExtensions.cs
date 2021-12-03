@@ -16,7 +16,7 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Extensions
         public static EntityTypeBuilder<TAggregateRoot> BuildKey<TAggregateRoot>(this EntityTypeBuilder<TAggregateRoot> builder)
             where TAggregateRoot : AggregateRoot
         {
-            builder.OwnsOne(entity => entity.Id, key =>
+            builder.OwnsOne(entity => entity.Key, key =>
             {
                 key.HasKey(key => key.Id);
             });
