@@ -20,6 +20,7 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
         public Repository(Context context)
         {
             Context = context;
+            Set = context.Set<TEntity>(); 
         }
 
         public virtual TEntity GetByKey(Key key) => Set.Find(key.Id);
