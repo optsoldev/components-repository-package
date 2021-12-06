@@ -8,7 +8,7 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Configurations
     public class AggregateConfiguration<TAggregate> : IEntityTypeConfiguration<TAggregate>
         where TAggregate : AggregateRoot
     {
-        public void Configure(EntityTypeBuilder<TAggregate> builder)
+        public virtual void Configure(EntityTypeBuilder<TAggregate> builder)
         {
             builder.BuildKey();
             builder.BuildDeletable();
