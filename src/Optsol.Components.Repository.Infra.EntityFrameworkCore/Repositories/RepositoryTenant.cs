@@ -26,7 +26,7 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
 
         public override void Insert(TEntity entity)
         {
-            ((IEntityTenantable)entity).SetTenantKey(TentantProvider.GetTenantKey());
+            ((IEntityTenantable)entity).SetTenantKey(TentantProvider.GetTenantId());
 
             Set.Add(entity);
         }

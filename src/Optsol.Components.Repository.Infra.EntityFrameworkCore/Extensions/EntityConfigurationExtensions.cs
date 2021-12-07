@@ -11,21 +11,19 @@ using System.Linq.Expressions;
 
 namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Extensions
 {
-    public static class EntityConfigurationExtensions
+    public static class AggregateConfigurationExtensions
     {
-        public static EntityTypeBuilder<TAggregateRoot> BuildKey<TAggregateRoot>(this EntityTypeBuilder<TAggregateRoot> builder)
-            where TAggregateRoot : AggregateRoot
+        public static EntityTypeBuilder<TEntity> BuildKey<TEntity>(this EntityTypeBuilder<TEntity> builder)
+            where TEntity : AggregateRoot, IEntity
         {
-            builder.OwnsOne(entity => entity.Key, valueObject =>
-            {
-                valueObject.HasKey(key => key.Id);
-            });
+            builder.HasKey(entity => entity.Id);
+            builder.Property(entity => entity.Id).ValueGeneratedNever();
 
             return builder;
         }
 
-        public static EntityTypeBuilder<TAggregateRoot> BuildCreatable<TAggregateRoot>(this EntityTypeBuilder<TAggregateRoot> builder)
-            where TAggregateRoot : AggregateRoot
+        public static EntityTypeBuilder<TEntity> BuildCreatable<TEntity>(this EntityTypeBuilder<TEntity> builder)
+            where TEntity : AggregateRoot
         {
             builder.OwnsOne(entity => entity.CreateDate, createDate =>
             {
@@ -96,7 +94,7 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Extensions
 
             var innerExpression = Expression.Lambda<Func<AggregateRoot, bool>>(
                 Expression.Equal(Expression.Property(aggregateParameter, nameof(IEntityTenantable.TentantKey)),
-                Expression.Constant(tentnatProvider.GetTenantKey().Id)),
+                Expression.Constant(tentnatProvider.GetTenantId())),
                 aggregateParameter);
 
             return Expression.Lambda<Func<TAggregateRoot, bool>>(Expression.AndAlso(expression.Body, innerExpression.Body), innerExpression.Parameters);
@@ -115,12 +113,12 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Extensions
             return Expression.Lambda<Func<TAggregateRoot, bool>>(Expression.AndAlso(expression.Body, innerExpression.Body), innerExpression.Parameters);
         }
 
-        private static bool AggregateIsDeletable(this Type aggregateType) => aggregateType.AggregateIs(typeof(IEntityDeletable));
+        internal static bool AggregateIsDeletable(this Type aggregateType) => aggregateType.AggregateIs(typeof(IEntityDeletable));
 
-        private static bool AggregateIsTenantable(this Type aggregateType) => aggregateType.AggregateIs(typeof(IEntityTenantable));
+        internal static bool AggregateIsTenantable(this Type aggregateType) => aggregateType.AggregateIs(typeof(IEntityTenantable));
 
-        private static bool AggregateIs(this Type aggregateType, Type type) => aggregateType.GetInterfaces().Contains(type);
+        internal static bool AggregateIs(this Type aggregateType, Type type) => aggregateType.GetInterfaces().Contains(type);
 
-        public static Expression<Func<T, bool>> True<T>() { return exp => true; }
+        internal static Expression<Func<T, bool>> True<T>() { return exp => true; }
     }
 }

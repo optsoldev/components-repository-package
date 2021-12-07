@@ -33,7 +33,7 @@ namespace Optsol.Components.Repository.Test.Entities
             //then
             aggregateRoot.Should().NotBeNull();
             aggregateRoot.CreateDate.Should().NotBeNull();
-            aggregateRoot.Key.Should().NotBeNull();
+            aggregateRoot.Id.Should().NotBeEmpty();
         }
 
         [Trait("Entities", "Construir Objetos")]
@@ -84,8 +84,8 @@ namespace Optsol.Components.Repository.Test.Entities
 
             //then
             comparacao.Should().BeFalse();
-            hashCodeUm.Should().Be($"{aggregateRootUm.GetType()}{aggregateRootUm.Key.GetHashCode()}".GetHashCode());
-            hashCodeDois.Should().Be($"{aggregateRootDois.GetType()}{aggregateRootDois.Key.GetHashCode()}".GetHashCode());
+            hashCodeUm.Should().Be($"{aggregateRootUm.GetType()}{aggregateRootUm.Id.GetHashCode()}".GetHashCode());
+            hashCodeDois.Should().Be($"{aggregateRootDois.GetType()}{aggregateRootDois.Id.GetHashCode()}".GetHashCode());
         }
 
         [Trait("Entities", "Comparar Objetos")]
@@ -96,7 +96,7 @@ namespace Optsol.Components.Repository.Test.Entities
             IReadRepository<Customer> readRepository = new MockRepository();
 
             var customerUm = readRepository.GetAll().First();
-            var customerDois = readRepository.GetByKey(customerUm.Key);
+            var customerDois = readRepository.GetById(customerUm.Id);
 
             //when
             var comparacaoEquals = customerUm.Equals(customerDois);

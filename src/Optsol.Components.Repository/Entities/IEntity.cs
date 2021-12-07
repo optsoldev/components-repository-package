@@ -1,10 +1,9 @@
-﻿using Optsol.Components.Repository.Domain.ValueObjects;
-using System;
+﻿using System;
 
 namespace Optsol.Components.Repository.Domain.Entities
 {
     public interface IEntity : IEquatable<IEntity>
     {
-        KeyGuid Key { get; }
+        Guid Id { get; }
     }
 }
