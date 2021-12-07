@@ -29,7 +29,7 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Extensions
             {
                 createDate.Property(date => date.Date)
                     .HasColumnName(nameof(IEntityCreatable.CreateDate))
-                    .HasColumnName("datetime")
+                    .HasColumnType("datetime")
                     .IsRequired();
             });
 
@@ -46,7 +46,7 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Extensions
             {
                 createDate.Property(date => date.Date)
                     .HasColumnName(nameof(IEntityDeletable.DeletedDate))
-                    .HasColumnName("datetime");
+                    .HasColumnType("datetime");
             });
 
             return builder;
