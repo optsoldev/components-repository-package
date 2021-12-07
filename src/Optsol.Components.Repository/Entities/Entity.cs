@@ -5,11 +5,11 @@ namespace Optsol.Components.Repository.Domain.Entities
 {
     public abstract class Entity : IEntity
     {
-        public Key Key { get; protected set; }
+        public KeyGuid Key { get; protected set; }
 
         protected Entity()
         {
-            Key = Key.Create(Guid.NewGuid());
+            Key = KeyGuid.Create(Guid.NewGuid());
         }
 
         public bool Equals(IEntity other)

@@ -5,11 +5,11 @@ namespace Optsol.Components.Repository.Domain.Entities
 {
     public abstract class AggregateRoot : Entity, IAggregateRoot
     {
-        public DateValue CreateDate { get; }
+        public DateValue CreateDate { get; private set; }
 
         public AggregateRoot()
         {
-            Key = Key.Create(Guid.NewGuid());
+            Key = KeyGuid.Create(Guid.NewGuid());
             CreateDate = DateValue.Create().SetDateValueWithDateOfNow();
         }
 

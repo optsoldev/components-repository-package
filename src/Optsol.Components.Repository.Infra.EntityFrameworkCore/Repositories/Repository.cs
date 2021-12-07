@@ -23,9 +23,9 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
             Set = context.Set<TEntity>(); 
         }
 
-        public virtual TEntity GetByKey(Key key) => Set.Find(key.Id);
+        public virtual TEntity GetByKey(KeyGuid key) => Set.Find(key.Id);
 
-        public virtual IEnumerable<TEntity> GetAllByKeys(params Key[] keys)
+        public virtual IEnumerable<TEntity> GetAllByKeys(params KeyGuid[] keys)
         {
             return Set.Where(entity => keys.Any(key => key == entity.Key));
         }
