@@ -27,15 +27,15 @@ namespace Optsol.Components.Repository.Infra.Mock.Repositories
             return Context.Customers.GetCustomers();
         }
 
-        public IEnumerable<Customer> GetAllByKeys(params KeyGuid[] ids)
+        public IEnumerable<Customer> GetAllByIds(params Guid[] ids)
         {
             var customers = Context.Customers.FindByKeys(ids);
             return customers;
         }
 
-        public Customer GetByKey(KeyGuid id)
+        public Customer GetById(Guid id)
         {
-            var customer = Context.Customers.FindByKey(id);
+            var customer = Context.Customers.FindById(id);
             return customer;
         }
 
@@ -56,7 +56,7 @@ namespace Optsol.Components.Repository.Infra.Mock.Repositories
 
         public void Update(Customer entity)
         {
-            var customerRemoved = Context.Customers.FindByKey(entity.Key);
+            var customerRemoved = Context.Customers.FindById(entity.Id);
             Context.Customers.Delete(customerRemoved);
             Context.Customers.Insert(entity);
         }

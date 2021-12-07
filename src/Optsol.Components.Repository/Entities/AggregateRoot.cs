@@ -9,12 +9,12 @@ namespace Optsol.Components.Repository.Domain.Entities
 
         public AggregateRoot()
         {
-            Key = KeyGuid.Create(Guid.NewGuid());
+            Id = Guid.NewGuid();
             CreateDate = DateValue.Create().SetDateValueWithDateOfNow();
         }
 
         public override bool Equals(object obj) => Equals(obj as IAggregateRoot);
 
-        public override int GetHashCode() => $"{GetType()}{Key.GetHashCode()}".GetHashCode();
+        public override int GetHashCode() => $"{GetType()}{Id.GetHashCode()}".GetHashCode();
     }
 }

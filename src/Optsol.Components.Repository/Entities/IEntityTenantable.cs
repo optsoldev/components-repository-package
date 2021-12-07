@@ -5,8 +5,8 @@ namespace Optsol.Components.Repository.Domain.Entities
 {
     public interface IEntityTenantable
     {
-        Key<Guid> TentantKey { get; }
+        Guid TentantKey { get; }
 
-        void SetTenantKey(Key<Guid> tentantKey);
+        void SetTenantKey(Guid tentantKey);
     }
 }

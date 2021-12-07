@@ -5,6 +5,6 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Providers
 {
     public interface ITentantProvider
     {
-        Key<Guid> GetTenantKey();
+        Guid GetTenantId();
     }
 }
