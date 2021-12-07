@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Optsol.Components.Repository.Infra.EntityFrameworkCore\Optsol.Components.Repository.Infra.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\..\src\Optsol.Components.Repository.Infra.Mock\Optsol.Components.Repository.Infra.Mock.csproj" />
     <ProjectReference Include="..\..\src\Optsol.Components.Repository\Optsol.Components.Repository.Domain.csproj" />
   </ItemGroup>
