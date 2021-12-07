@@ -73,7 +73,9 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Extensions
         public static EntityTypeBuilder<TAggregateRoot> BuildQueryFilter<TAggregateRoot>(this EntityTypeBuilder<TAggregateRoot> builder, ITentantProvider tentnatProvider = null)
             where TAggregateRoot : AggregateRoot
         {
-            var expression = Expression.Lambda(Expression.Default(typeof(bool)));
+            Expression<Func<TAggregateRoot, bool>> @default = aggregateRoot => true;
+
+            var expression = Expression.Lambda(@default);
             var aggregateParameter = Expression.Parameter(typeof(TAggregateRoot), "aggregateRoot");
 
             expression = QueryFilterDeletable<TAggregateRoot>(expression, aggregateParameter);
