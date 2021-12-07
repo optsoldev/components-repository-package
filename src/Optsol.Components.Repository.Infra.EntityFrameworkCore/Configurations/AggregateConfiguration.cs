@@ -11,8 +11,9 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Configurations
         public virtual void Configure(EntityTypeBuilder<TAggregate> builder)
         {
             builder.BuildKey();
+            builder.BuildCreatable();         
             builder.BuildDeletable();
-            builder.BuildTenantable();
+            builder.BuildTenantable();            
             builder.BuildQueryFilter();
         }
     }
