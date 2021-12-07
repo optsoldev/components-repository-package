@@ -55,7 +55,7 @@ namespace Optsol.Components.Repository.Test.Entities
             var novoCartao = CreditCard.Create(number, code, novaDataValidade);
 
             //then
-            novoCartao.CreateDate.Date.Date.Should().Be(DateTime.Now.Date, "As datas deveriam ser iguais");
+            novoCartao.CreatedDate.Date.Date.Should().Be(DateTime.Now.Date, "As datas deveriam ser iguais");
         }
 
         [Trait("Entities", "Comparar Objetos")]

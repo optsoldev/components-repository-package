@@ -32,7 +32,7 @@ namespace Optsol.Components.Repository.Test.Entities
 
             //then
             aggregateRoot.Should().NotBeNull();
-            aggregateRoot.CreateDate.Should().NotBeNull();
+            aggregateRoot.CreatedDate.Should().NotBeNull();
             aggregateRoot.Id.Should().NotBeEmpty();
         }
 
@@ -50,7 +50,7 @@ namespace Optsol.Components.Repository.Test.Entities
             var customerObject = Customer.Create(novaPessoa, novoEmail, novaDataNascimento);
 
             //then
-            customerObject.CreateDate.Date.Date.Should().Be(DateTime.Now.Date, "As datas deveriam ser iguais");
+            customerObject.CreatedDate.Date.Date.Should().Be(DateTime.Now.Date, "As datas deveriam ser iguais");
         }
 
         [Trait("Entities", "Comparar Objetos")]

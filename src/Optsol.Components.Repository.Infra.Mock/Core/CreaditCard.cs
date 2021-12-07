@@ -11,7 +11,7 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
 
         public CreditCard()
         {
-            CreateDate = DateValue.Create().SetDateValueWithDateOfNow();
+            CreatedDate = DateValue.Create().SetDateValueWithDateOfNow();
         }
 
         private void SetCardCode(int code)
@@ -29,7 +29,7 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
 
         public DateValue Validity { get; private set; }
 
-        public DateValue CreateDate { get; private set; }
+        public DateValue CreatedDate { get; private set; }
 
         public static CreditCard Create(string number, int code, DateValue validity)
         {
