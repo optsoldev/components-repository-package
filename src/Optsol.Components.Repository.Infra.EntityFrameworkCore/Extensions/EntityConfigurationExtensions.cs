@@ -25,10 +25,10 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Extensions
         public static EntityTypeBuilder<TEntity> BuildCreatable<TEntity>(this EntityTypeBuilder<TEntity> builder)
             where TEntity : AggregateRoot
         {
-            builder.OwnsOne(entity => entity.CreateDate, createDate =>
+            builder.OwnsOne(entity => entity.CreatedDate, createDate =>
             {
                 createDate.Property(date => date.Date)
-                    .HasColumnName(nameof(IEntityCreatable.CreateDate))
+                    .HasColumnName(nameof(IEntityCreatable.CreatedDate))
                     .HasColumnType("datetime")
                     .IsRequired();
             });

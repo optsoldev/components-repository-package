@@ -5,12 +5,12 @@ namespace Optsol.Components.Repository.Domain.Entities
 {
     public abstract class AggregateRoot : Entity, IAggregateRoot
     {
-        public DateValue CreateDate { get; private set; }
+        public DateValue CreatedDate { get; private set; }
 
         public AggregateRoot()
         {
             Id = Guid.NewGuid();
-            CreateDate = DateValue.Create().SetDateValueWithDateOfNow();
+            CreatedDate = DateValue.Create().SetDateValueWithDateOfNow();
         }
 
         public override bool Equals(object obj) => Equals(obj as IAggregateRoot);
