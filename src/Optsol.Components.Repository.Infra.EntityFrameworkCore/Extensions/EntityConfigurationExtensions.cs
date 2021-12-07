@@ -41,6 +41,9 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Extensions
         public static EntityTypeBuilder<TAggregateRoot> BuildDeletable<TAggregateRoot>(this EntityTypeBuilder<TAggregateRoot> builder)
            where TAggregateRoot : AggregateRoot
         {
+            if (typeof(TAggregateRoot).AggregateIsDeletable() is not true)
+                return builder;
+
             builder.OwnsOne(entity => ((IEntityDeletable)entity).DeletedDate, createDate =>
             {
                 createDate.Property(date => date.Date)
@@ -54,6 +57,9 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Extensions
         public static EntityTypeBuilder<TAggregateRoot> BuildTenantable<TAggregateRoot>(this EntityTypeBuilder<TAggregateRoot> builder)
            where TAggregateRoot : AggregateRoot
         {
+            if (typeof(TAggregateRoot).AggregateIsTenantable() is not true)
+                return builder;
+
             builder.OwnsOne(entity => ((IEntityTenantable)entity), createDate =>
             {
                 createDate.Property(date => date.TentantKey)
@@ -72,7 +78,7 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Extensions
 
             expression = QueryFilterDeletable<TAggregateRoot>(expression, aggregateParameter);
             expression = QueryFilterTenantable<TAggregateRoot>(expression, aggregateParameter, tentnatProvider);
-            
+
             return builder.HasQueryFilter(expression);
         }
 
@@ -109,13 +115,10 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Extensions
             return Expression.Lambda<Func<TAggregateRoot, bool>>(Expression.AndAlso(expression.Body, innerExpression.Body), innerExpression.Parameters);
         }
 
-        private static bool AggregateIsDeletable(this Type aggregateType) =>
-            aggregateType.AggregateIs(typeof(IEntityDeletable));
+        private static bool AggregateIsDeletable(this Type aggregateType) => aggregateType.AggregateIs(typeof(IEntityDeletable));
 
-        private static bool AggregateIsTenantable(this Type aggregateType) =>
-            aggregateType.AggregateIs(typeof(IEntityTenantable));
+        private static bool AggregateIsTenantable(this Type aggregateType) => aggregateType.AggregateIs(typeof(IEntityTenantable));
 
-        private static bool AggregateIs(this Type aggregateType, Type type) =>
-            aggregateType.GetInterfaces().Contains(type);
+        private static bool AggregateIs(this Type aggregateType, Type type) => aggregateType.GetInterfaces().Contains(type);
     }
 }
