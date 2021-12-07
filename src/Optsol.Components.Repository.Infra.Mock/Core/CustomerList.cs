@@ -46,7 +46,7 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
             return customers;
         }
 
-        public Customer FindByKey(Key id)
+        public Customer FindByKey(Key<Guid> id)
         {
             return FindByKeys(id).FirstOrDefault();
         }
@@ -56,7 +56,7 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
             return customers.Where(filterExpression.Compile());
         }
 
-        public IEnumerable<Customer> FindByKeys(params Key[] ids)
+        public IEnumerable<Customer> FindByKeys(params Key<Guid>[] ids)
         {
             return customers.Where(customer => ids.Contains(customer.Key));
         }

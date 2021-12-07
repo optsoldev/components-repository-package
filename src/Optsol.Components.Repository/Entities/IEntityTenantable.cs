@@ -1,11 +1,12 @@
 ﻿using Optsol.Components.Repository.Domain.ValueObjects;
+using System;
 
 namespace Optsol.Components.Repository.Domain.Entities
 {
     public interface IEntityTenantable
     {
-        Key TentantKey { get; }
+        Key<Guid> TentantKey { get; }
 
-        void SetTenantKey(Key tentantKey);
+        void SetTenantKey(Key<Guid> tentantKey);
     }
 }

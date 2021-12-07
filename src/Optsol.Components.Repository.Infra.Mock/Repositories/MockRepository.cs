@@ -27,13 +27,13 @@ namespace Optsol.Components.Repository.Infra.Mock.Repositories
             return Context.Customers.GetCustomers();
         }
 
-        public IEnumerable<Customer> GetAllByKeys(params Key[] ids)
+        public IEnumerable<Customer> GetAllByKeys(params KeyGuid[] ids)
         {
             var customers = Context.Customers.FindByKeys(ids);
             return customers;
         }
 
-        public Customer GetByKey(Key id)
+        public Customer GetByKey(KeyGuid id)
         {
             var customer = Context.Customers.FindByKey(id);
             return customer;

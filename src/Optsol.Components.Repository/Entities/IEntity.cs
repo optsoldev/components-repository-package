@@ -5,6 +5,6 @@ namespace Optsol.Components.Repository.Domain.Entities
 {
     public interface IEntity : IEquatable<IEntity>
     {
-        Key Key { get; }
+        KeyGuid Key { get; }
     }
 }

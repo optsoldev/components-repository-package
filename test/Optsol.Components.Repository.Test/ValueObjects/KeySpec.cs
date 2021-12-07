@@ -11,8 +11,8 @@ namespace Optsol.Components.Repository.Test.ValueObjects
         public void Deve_Comparar_Dois_Objetos_Tipo_Key_Verdadeiro()
         {
             //given
-            var objetoKeyUm = Key.Create(1);
-            var objetoKeyDois = Key.Create(1);
+            var objetoKeyUm = Key<int>.Create(1);
+            var objetoKeyDois = Key<int>.Create(1);
 
             //when
             var comparacaoEquals = objetoKeyUm.Equals(objetoKeyDois);
@@ -28,8 +28,8 @@ namespace Optsol.Components.Repository.Test.ValueObjects
         public void Deve_Comparar_Dois_Objetos_Tipo_Key_False()
         {
             //given
-            var objetoKeyUm = Key.Create(1);
-            var objetoKeyDois = Key.Create(2);
+            var objetoKeyUm = Key<int>.Create(1);
+            var objetoKeyDois = Key<int>.Create(2);
 
             //when
             var comparacao = objetoKeyUm != objetoKeyDois;
@@ -43,8 +43,8 @@ namespace Optsol.Components.Repository.Test.ValueObjects
         public void Deve_Comparar_Dois_Objetos_Tipo_Key_Nulo_False()
         {
             //given
-            Key objetoKeyUm = null;
-            Key objetoKeyDois = null;
+            Key<int> objetoKeyUm = null;
+            Key<int> objetoKeyDois = null;
 
             //when
             var comparacao = objetoKeyUm == objetoKeyDois;
