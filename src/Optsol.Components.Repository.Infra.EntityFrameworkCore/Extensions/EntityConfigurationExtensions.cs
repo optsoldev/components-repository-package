@@ -73,9 +73,7 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Extensions
         public static EntityTypeBuilder<TAggregateRoot> BuildQueryFilter<TAggregateRoot>(this EntityTypeBuilder<TAggregateRoot> builder, ITentantProvider tentnatProvider = null)
             where TAggregateRoot : AggregateRoot
         {
-            Expression<Func<TAggregateRoot, bool>> @default = aggregateRoot => true;
-
-            var expression = Expression.Lambda(@default);
+            LambdaExpression expression = True<TAggregateRoot>();
             var aggregateParameter = Expression.Parameter(typeof(TAggregateRoot), "aggregateRoot");
 
             expression = QueryFilterDeletable<TAggregateRoot>(expression, aggregateParameter);
@@ -122,5 +120,7 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Extensions
         private static bool AggregateIsTenantable(this Type aggregateType) => aggregateType.AggregateIs(typeof(IEntityTenantable));
 
         private static bool AggregateIs(this Type aggregateType, Type type) => aggregateType.GetInterfaces().Contains(type);
+
+        public static Expression<Func<T, bool>> True<T>() { return exp => true; }
     }
 }
