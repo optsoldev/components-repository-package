@@ -89,7 +89,7 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Extensions
 
             if (tentnatProvider is null)
             {
-                throw new EntityConfigurationException($"{nameof(tentnatProvider)} is required");
+                throw new EntityFrameworkCoreException($"{nameof(tentnatProvider)} is required");
             }
 
             var innerExpression = Expression.Lambda<Func<AggregateRoot, bool>>(
