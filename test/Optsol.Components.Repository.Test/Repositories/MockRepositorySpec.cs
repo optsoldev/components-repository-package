@@ -84,7 +84,7 @@ namespace Optsol.Components.Repository.Test.Repositories
         public void Deve_Retornar_Customers_Por_Expression()
         {
             //given
-            IReadRepository<Customer> readRepository = new MockRepository();
+            IExpressionReadRepository<Customer> readRepository = new MockRepository();
 
             var filterExpression = ExpressionFilter("Weslley");
 

@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Contexts
 {
-    public class Context : DbContext
+    public abstract class Context : DbContext
     {
         public Context() : base() { }
 

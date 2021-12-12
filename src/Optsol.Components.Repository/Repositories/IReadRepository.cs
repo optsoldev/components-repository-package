@@ -5,15 +5,19 @@ using System.Linq.Expressions;
 
 namespace Optsol.Components.Repository.Domain.Repositories
 {
-    public interface IReadRepository<TEntity>
-        where TEntity : IAggregateRoot
+    public interface IReadRepository<TAggregate>
+        where TAggregate : IAggregateRoot
     {
-        TEntity GetById(Guid id);
+        TAggregate GetById(Guid id);
 
-        IEnumerable<TEntity> GetAll();
+        IEnumerable<TAggregate> GetAll();
 
-        IEnumerable<TEntity> GetAllByIds(params Guid[] ids);
+        IEnumerable<TAggregate> GetAllByIds(params Guid[] ids);
+    }
 
-        IEnumerable<TEntity> GetWithExpression(Expression<Func<TEntity, bool>> filterExpression);
+    public interface IExpressionReadRepository<TAggregate> : IReadRepository<TAggregate>
+        where TAggregate : IAggregateRoot
+    { 
+        IEnumerable<TAggregate> GetWithExpression(Expression<Func<TAggregate, bool>> filterExpression);
     }
 }

@@ -104,7 +104,7 @@ namespace Optsol.Components.Repository.Test.Entities
 
             //then
             comparacaoEquals.Should().BeTrue("Os valores devem ser iguais");
-            comparacaoOperaror.Should().BeTrue("Os valroes devem ser iguais");
+            comparacaoOperaror.Should().BeTrue("Os valores devem ser iguais");
         }
 
         [Trait("Entities", "Comparar Objetos")]
@@ -123,7 +123,7 @@ namespace Optsol.Components.Repository.Test.Entities
 
             //then
             comparacaoEquals.Should().BeTrue("Os valores não devem ser iguais");
-            comparacaoOperaror.Should().BeTrue("Os valroes não devem ser iguais");
+            comparacaoOperaror.Should().BeTrue("Os valores não devem ser iguais");
         }
     }
 }

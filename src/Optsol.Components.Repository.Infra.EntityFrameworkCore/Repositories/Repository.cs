@@ -10,36 +10,36 @@ using System.Linq.Expressions;
 
 namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity>
-        where TEntity : class, IAggregateRoot, IDisposable
+    public class Repository<TAggregateRoot> : IRepository<TAggregateRoot>
+        where TAggregateRoot : class, IAggregateRoot, IDisposable
     {
         public Context Context { get; protected set; }
 
-        public DbSet<TEntity> Set { get; protected set; }
+        public DbSet<TAggregateRoot> Set { get; protected set; }
 
         public Repository(Context context)
         {
             Context = context;
-            Set = context.Set<TEntity>(); 
+            Set = context.Set<TAggregateRoot>(); 
         }
 
-        public virtual TEntity GetById(Guid id) => Set.Find(id);
+        public virtual TAggregateRoot GetById(Guid id) => Set.Find(id);
 
-        public virtual IEnumerable<TEntity> GetAllByIds(params Guid[] ids)
+        public virtual IEnumerable<TAggregateRoot> GetAllByIds(params Guid[] ids)
         {
             return Set.Where(entity => ids.Any(key => key == entity.Id));
         }
 
-        public virtual IEnumerable<TEntity> GetAll() => Set.AsEnumerable();
+        public virtual IEnumerable<TAggregateRoot> GetAll() => Set.AsEnumerable();
 
-        public virtual IEnumerable<TEntity> GetWithExpression(Expression<Func<TEntity, bool>> filterExpression)
+        public virtual IEnumerable<TAggregateRoot> GetWithExpression(Expression<Func<TAggregateRoot, bool>> filterExpression)
         {
             return Set.Where(filterExpression.Compile());
         }
 
-        public virtual void Insert(TEntity entity) => Set.Add(entity);
+        public virtual void Insert(TAggregateRoot entity) => Set.Add(entity);
 
-        public virtual void Update(TEntity entity)
+        public virtual void Update(TAggregateRoot entity)
         {
             var entityInLocal = Set.Local?.Any(localEntity => localEntity.Id == entity.Id) ?? false;
 
@@ -51,7 +51,7 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
             Set.Update(entity);
         }
 
-        public virtual void Delete(TEntity entity)
+        public virtual void Delete(TAggregateRoot entity)
         {
             if (entity is null) return;
 
