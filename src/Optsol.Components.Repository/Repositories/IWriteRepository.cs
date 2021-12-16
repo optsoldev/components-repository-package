@@ -2,14 +2,14 @@
 
 namespace Optsol.Components.Repository.Domain.Repositories
 {
-    public interface IWriteRepository<TEntity>
-        where TEntity: IAggregateRoot 
+    public interface IWriteRepository<TAggregate>
+        where TAggregate: IAggregateRoot 
     {
-        void Insert(TEntity entity);
+        void Insert(TAggregate aggregate);
         
-        void Update(TEntity entity);
+        void Update(TAggregate aggregate);
         
-        void Delete(TEntity entity);
+        void Delete(TAggregate aggregate);
 
         int SaveChanges();
     }

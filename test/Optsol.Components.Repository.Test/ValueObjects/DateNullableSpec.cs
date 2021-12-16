@@ -21,7 +21,7 @@ namespace Optsol.Components.Repository.Test.ValueObjects
 
             //then
             comparacaoEquals.Should().BeTrue("Os valores devem ser iguais");
-            comparacaoOperaror.Should().BeTrue("Os valroes devem ser iguais");
+            comparacaoOperaror.Should().BeTrue("Os valores devem ser iguais");
         }
 
         [Trait("Value Objects", "Comparar Objetos")]

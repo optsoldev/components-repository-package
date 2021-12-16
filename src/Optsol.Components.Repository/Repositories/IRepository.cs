@@ -2,9 +2,11 @@
 
 namespace Optsol.Components.Repository.Domain.Repositories
 {
-    public interface IRepository<TEntity> :
-        IReadRepository<TEntity>,
-        IWriteRepository<TEntity>
-        where TEntity : IAggregateRoot
+    public interface IRepository<TAggregateRoot> :
+        IReadRepository<TAggregateRoot>,
+        IExpressionReadRepository<TAggregateRoot>,
+        IPaginatedReadRepository<TAggregateRoot>,
+        IWriteRepository<TAggregateRoot>
+        where TAggregateRoot : IAggregateRoot
     { }
 }

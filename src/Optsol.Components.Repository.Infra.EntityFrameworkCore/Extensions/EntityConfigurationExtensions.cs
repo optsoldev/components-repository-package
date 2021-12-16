@@ -13,8 +13,8 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Extensions
 {
     public static class AggregateConfigurationExtensions
     {
-        public static EntityTypeBuilder<TEntity> BuildKey<TEntity>(this EntityTypeBuilder<TEntity> builder)
-            where TEntity : AggregateRoot, IEntity
+        public static EntityTypeBuilder<TAggregateRoot> BuildKey<TAggregateRoot>(this EntityTypeBuilder<TAggregateRoot> builder)
+            where TAggregateRoot : AggregateRoot, IEntity
         {
             builder.HasKey(entity => entity.Id);
             builder.Property(entity => entity.Id).ValueGeneratedNever();
@@ -22,8 +22,8 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Extensions
             return builder;
         }
 
-        public static EntityTypeBuilder<TEntity> BuildCreatable<TEntity>(this EntityTypeBuilder<TEntity> builder)
-            where TEntity : AggregateRoot
+        public static EntityTypeBuilder<TAggregateRoot> BuildCreatable<TAggregateRoot>(this EntityTypeBuilder<TAggregateRoot> builder)
+            where TAggregateRoot : AggregateRoot
         {
             builder.OwnsOne(entity => entity.CreatedDate, createDate =>
             {
@@ -89,7 +89,7 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Extensions
 
             if (tentnatProvider is null)
             {
-                throw new EntityConfigurationException($"{nameof(tentnatProvider)} is required");
+                throw new EntityFrameworkCoreException($"{nameof(tentnatProvider)} is required");
             }
 
             var innerExpression = Expression.Lambda<Func<AggregateRoot, bool>>(

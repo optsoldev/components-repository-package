@@ -1,6 +1,7 @@
 ﻿
 using FluentAssertions;
 using Optsol.Components.Repository.Domain.Repositories;
+using Optsol.Components.Repository.Domain.Repositories.Pagination;
 using Optsol.Components.Repository.Domain.ValueObjects;
 using Optsol.Components.Repository.Infra.Mock.Entities.Core;
 using Optsol.Components.Repository.Infra.Mock.Repositories;
@@ -80,21 +81,57 @@ namespace Optsol.Components.Repository.Test.Repositories
         }
 
         [Trait("Repositories", "Métodos Leitura")]
-        [Fact(DisplayName = "Deve retornar somente os customers com os ids informados")]
+        [Fact(DisplayName = "Deve retornar somente os customers pela expressão criada")]
         public void Deve_Retornar_Customers_Por_Expression()
         {
             //given
-            IReadRepository<Customer> readRepository = new MockRepository();
+            IExpressionReadRepository<Customer> readRepository = new MockRepository();
 
             var filterExpression = ExpressionFilter("Weslley");
 
             //when
-            var customers = readRepository.GetWithExpression(filterExpression);
+            var customers = readRepository.GetAll(filterExpression);
 
             //then
             customers.Should().NotBeNull("Não pode estar nulo");
             customers.Should().NotBeEmpty("Não pode estar vazio");
             customers.Should().HaveCount(1, "Deveria conter um registro");
+        }
+
+        public class FullSearch : ISearch<Customer>, IOrderBy<Customer>
+        {
+            public string Nome { get; private set; }
+
+            public FullSearch(string nome)
+            {
+                Nome = nome;
+            }
+
+            public Expression<Func<Customer, bool>> Searcher()
+            {
+                return (customer) => customer.Person.Name.Contains(Nome);
+            }
+
+            public Func<IQueryable<Customer>, IOrderedQueryable<Customer>> OrderBy()
+            {
+                return customer => customer.OrderBy(x => x.Person.Name);
+            }
+        }
+
+        [Trait("Repositories", "Métodos Leitura")]
+        [Fact(DisplayName = "Deve retornar somente os customers com os ids informados")]
+        public void Deve_Retornar_Customers_Paginado()
+        {
+            //given
+            IPaginatedReadRepository<Customer> readRepository = new MockRepository();
+            var fullSearch = new FullSearch("a");
+            var request = new SearchRequest<FullSearch>(fullSearch, 2, 5);
+
+            //when
+            var result = readRepository.GetAll(request);
+
+            //then
+            result.Should().NotBeNull("Não pode estar nulo");
         }
 
         [Trait("Repositories", "Métodos Escrita")]
@@ -189,5 +226,7 @@ namespace Optsol.Components.Repository.Test.Repositories
         {
             return (Customer customer) => customer.Person.Name.Contains(name);
         }
+
+
     }
 }
