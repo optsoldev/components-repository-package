@@ -1,23 +1,31 @@
 ﻿using Optsol.Components.Repository.Domain.Entities;
+using Optsol.Components.Repository.Domain.Repositories.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
 namespace Optsol.Components.Repository.Domain.Repositories
 {
-    public interface IReadRepository<TAggregate>
-        where TAggregate : IAggregateRoot
+    public interface IReadRepository<TAggregateRoot>
+        where TAggregateRoot : IAggregateRoot
     {
-        TAggregate GetById(Guid id);
+        TAggregateRoot GetById(Guid id);
 
-        IEnumerable<TAggregate> GetAll();
+        IEnumerable<TAggregateRoot> GetAll();
 
-        IEnumerable<TAggregate> GetAllByIds(params Guid[] ids);
+        IEnumerable<TAggregateRoot> GetAllByIds(params Guid[] ids);
     }
 
-    public interface IExpressionReadRepository<TAggregate> : IReadRepository<TAggregate>
-        where TAggregate : IAggregateRoot
-    { 
-        IEnumerable<TAggregate> GetWithExpression(Expression<Func<TAggregate, bool>> filterExpression);
+    public interface IExpressionReadRepository<TAggregateRoot> : IReadRepository<TAggregateRoot>
+        where TAggregateRoot : IAggregateRoot
+    {
+        IEnumerable<TAggregateRoot> GetAll(Expression<Func<TAggregateRoot, bool>> filterExpression);
+    }
+
+    public interface IPaginatedReadRepository<TAggregateRoot> : IExpressionReadRepository<TAggregateRoot>
+        where TAggregateRoot : IAggregateRoot
+    {
+        SearchResult<TAggregateRoot> GetAll<TSearch>(SearchRequest<TSearch> searchRequest)
+            where TSearch : class;
     }
 }

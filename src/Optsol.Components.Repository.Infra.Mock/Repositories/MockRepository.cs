@@ -1,4 +1,5 @@
 ﻿using Optsol.Components.Repository.Domain.Repositories;
+using Optsol.Components.Repository.Domain.Repositories.Pagination;
 using Optsol.Components.Repository.Domain.ValueObjects;
 using Optsol.Components.Repository.Infra.Mock.Core;
 using Optsol.Components.Repository.Infra.Mock.Entities.Core;
@@ -39,7 +40,7 @@ namespace Optsol.Components.Repository.Infra.Mock.Repositories
             return customer;
         }
 
-        public IEnumerable<Customer> GetWithExpression(Expression<Func<Customer, bool>> filterExpression)
+        public IEnumerable<Customer> GetAll(Expression<Func<Customer, bool>> filterExpression)
         {
             return Context.Customers.FindWithExpression(filterExpression);
         }
@@ -59,6 +60,11 @@ namespace Optsol.Components.Repository.Infra.Mock.Repositories
             var customerRemoved = Context.Customers.FindById(entity.Id);
             Context.Customers.Delete(customerRemoved);
             Context.Customers.Insert(entity);
+        }
+
+        public SearchResult<Customer> GetAll<TSearch>(SearchRequest<TSearch> searchRequest) where TSearch : class
+        {
+            return Context.Customers.GetPaginated(searchRequest);
         }
     }
 }
