@@ -27,7 +27,7 @@ namespace Optsol.Components.Repository.Test.Repositories
             //then
             customers.Should().NotBeNull("Não pode estar nulo");
             customers.Should().NotBeEmpty("Não pode estar vazio");
-            customers.Should().HaveCount(1, "Deve conter um registro");
+            customers.Should().HaveCount(18, "Deve conter um registro");
         }
 
         [Trait("Repositories", "Métodos Leitura")]
@@ -148,7 +148,7 @@ namespace Optsol.Components.Repository.Test.Repositories
 
             //then
             execute.Should().NotThrow();
-            (writeRepository as MockRepository).GetAll().Should().HaveCount(2);
+            (writeRepository as MockRepository).GetAll().Should().HaveCount(19);
 
         }
 
@@ -171,7 +171,7 @@ namespace Optsol.Components.Repository.Test.Repositories
             //then
             execute.Should().NotThrow("Não deveria de acontecer erro");
             (newCustomer == updateCustumer).Should().BeTrue("Devem ser a mesma entidade");
-            (writeRepository as MockRepository).GetAll().Should().HaveCount(2);
+            (writeRepository as MockRepository).GetAll().Should().HaveCount(19);
 
         }
 
@@ -190,7 +190,7 @@ namespace Optsol.Components.Repository.Test.Repositories
 
             //then
             execute.Should().NotThrow();
-            (writeRepository as MockRepository).GetAll().Should().HaveCount(1);
+            (writeRepository as MockRepository).GetAll().Should().HaveCount(18);
         }
 
         [Trait("Repositories", "Métodos Escrita")]
@@ -207,7 +207,7 @@ namespace Optsol.Components.Repository.Test.Repositories
             var totalItems = writeRepository.SaveChanges();
 
             //then
-            totalItems.Should().Be(2);
+            totalItems.Should().Be(19);
         }
 
         public static Customer CreateCustomer()
