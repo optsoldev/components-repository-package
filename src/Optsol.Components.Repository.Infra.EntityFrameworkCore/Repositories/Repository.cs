@@ -12,7 +12,7 @@ using System.Linq.Expressions;
 namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
 {
     public class Repository<TAggregateRoot> : IRepository<TAggregateRoot>
-        where TAggregateRoot : class, IAggregateRoot, IDisposable
+        where TAggregateRoot : class, IAggregateRoot
     {
         public Context Context { get; protected set; }
 
