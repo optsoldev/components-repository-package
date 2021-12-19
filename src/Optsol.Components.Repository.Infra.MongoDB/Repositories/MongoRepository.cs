@@ -41,17 +41,17 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
 
         public void Insert(TAggregate aggregate)
         {
-            Context.Transactions.AddTransaction(() => Set.InsertOneAsync(aggregate));
+            Context.AddTransaction(() => Set.InsertOneAsync(aggregate));
         }
 
         public void Update(TAggregate aggregate)
         {
-            Context.Transactions.AddTransaction(() => Set.ReplaceOneAsync(Builders<TAggregate>.Filter.Eq("_id", aggregate.Id), aggregate));
+            Context.AddTransaction(() => Set.ReplaceOneAsync(Builders<TAggregate>.Filter.Eq("_id", aggregate.Id), aggregate));
         }
 
         public void Delete(TAggregate aggregate)
         {
-            Context.Transactions.AddTransaction(() => Set.DeleteOneAsync(Builders<TAggregate>.Filter.Eq("_id", aggregate.Id)));
+            Context.AddTransaction(() => Set.DeleteOneAsync(Builders<TAggregate>.Filter.Eq("_id", aggregate.Id)));
         }
 
         public int SaveChanges() => Context.SaveChanges();

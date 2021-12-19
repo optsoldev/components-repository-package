@@ -3,20 +3,19 @@ using Optsol.Components.Repository.Infra.MongoDB.Exceptions;
 using Optsol.Components.Repository.Infra.MongoDB.Settings;
 using Optsol.Components.Repository.Infra.MongoDB.Transactions;
 using System;
+using System.Threading.Tasks;
 
 namespace Optsol.Components.Repository.Infra.MongoDB.Contexts
 {
     public abstract class Context : IDisposable
     {
         private bool disposed = false;
+        private IClientSessionHandle session;
+        private TransactionList transactions;
 
         public IMongoClient MongoClient { get; private set; }
 
         public IMongoDatabase Database { get; private set; }
-
-        public IClientSessionHandle Session { get; private set; }
-
-        public TransactionList Transactions { get; private set; }
 
         protected Context(MongoSettings mongoSettings, IMongoClient mongoClient)
         {
@@ -25,6 +24,8 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Contexts
                 throw new MongoDBException($"{nameof(mongoSettings)} está nulo");
             }
 
+            transactions = new TransactionList();
+
             MongoClient = mongoClient ?? throw new MongoDBException($"{nameof(mongoClient)} está nulo");
             Database = mongoClient.GetDatabase(mongoSettings.DatabaseName);
         }
@@ -32,15 +33,15 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Contexts
         public int SaveChanges()
         {
             var countSaveTasks = 0;
-            using (Session = MongoClient.StartSession())
+            using (session = MongoClient.StartSession())
             {
-                Session.StartTransaction();
+                session.StartTransaction();
 
-                Transactions.Execute();
-                countSaveTasks = Transactions.Transactions.Count;
-                Transactions.Clear();
+                transactions.Execute();
+                countSaveTasks = transactions.Transactions.Count;
+                transactions.Clear();
 
-                Session.CommitTransaction();
+                session.CommitTransaction();
             }
 
             return countSaveTasks;
@@ -59,9 +60,11 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Contexts
         {
             if (disposed is not true && disposing)
             {
-                Session?.Dispose();
+                session?.Dispose();
             }
             disposed = true;
         }
+
+        public void AddTransaction(Func<Task> transaction) => transactions.AddTransaction(transaction);
     }
 }
