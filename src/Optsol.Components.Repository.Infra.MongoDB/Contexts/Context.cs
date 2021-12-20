@@ -24,7 +24,7 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Contexts
                 throw new MongoDBException($"{nameof(mongoSettings)} está nulo");
             }
 
-            transactions = new TransactionList();
+            transactions = TransactionList.Create();
 
             MongoClient = mongoClient ?? throw new MongoDBException($"{nameof(mongoClient)} está nulo");
             Database = mongoClient.GetDatabase(mongoSettings.DatabaseName);
