@@ -3,7 +3,7 @@ using Optsol.Components.Repository.Domain.Entities;
 using Optsol.Components.Repository.Infra.MongoDB.Contexts;
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
+using System.Linq;
 
 namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
 {
@@ -16,43 +16,21 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
             Set = context.GetCollection<TAggregate>(typeof(TAggregate).Name);
         }
 
-
         public Context Context { get; private set; }
 
         public IMongoCollection<TAggregate> Set { get; private set; }
 
-        public IEnumerable<TAggregate> GetAll()
-        {
-            var allRegistries = Set.Find(Builders<TAggregate>.Filter.Empty);
-            return allRegistries.ToEnumerable();
-        }
+        public IEnumerable<TAggregate> GetAll() => Set.AsQueryable().ToEnumerable();
 
-        public IEnumerable<TAggregate> GetAllByIds(params Guid[] ids)
-        {
-            var allRegistries = Set.Find(Builders<TAggregate>.Filter.All("_id", ids));
-            return allRegistries.ToEnumerable();
-        }
+        public IEnumerable<TAggregate> GetAllByIds(params Guid[] ids) => Set.Find(f => ids.Contains(f.Id)).ToEnumerable();
 
-        public TAggregate GetById(Guid id)
-        {
-            var aggregate = Set.Find(Builders<TAggregate>.Filter.Eq("_id", id));
-            return aggregate.SingleOrDefault();
-        }
+        public TAggregate GetById(Guid id) => Set.Find(f => f.Id.Equals(id)).FirstOrDefault();
 
-        public void Insert(TAggregate aggregate)
-        {
-            Context.AddTransaction(() => Set.InsertOneAsync(aggregate));
-        }
+        public void Insert(TAggregate aggregate) => Context.AddTransaction(() => Set.InsertOneAsync(aggregate));
 
-        public void Update(TAggregate aggregate)
-        {
-            Context.AddTransaction(() => Set.ReplaceOneAsync(Builders<TAggregate>.Filter.Eq("_id", aggregate.Id), aggregate));
-        }
+        public void Update(TAggregate aggregate) => Context.AddTransaction(() => Set.ReplaceOneAsync(f => f.Id.Equals(aggregate.Id), aggregate));
 
-        public void Delete(TAggregate aggregate)
-        {
-            Context.AddTransaction(() => Set.DeleteOneAsync(Builders<TAggregate>.Filter.Eq("_id", aggregate.Id)));
-        }
+        public void Delete(TAggregate aggregate) => Context.AddTransaction(() => Set.DeleteOneAsync(f => f.Id.Equals(aggregate.Id)));
 
         public int SaveChanges() => Context.SaveChanges();
     }
