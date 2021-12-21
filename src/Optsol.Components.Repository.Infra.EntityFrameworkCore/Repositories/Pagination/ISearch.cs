@@ -2,9 +2,9 @@
 using System;
 using System.Linq.Expressions;
 
-namespace Optsol.Components.Repository.Domain.Repositories.Pagination
+namespace Optsol.Components.Repository.Infra.Repositories.Pagination
 {
-    public interface ISearch<TAggregateRoot>
+    public interface ISearch<TAggregateRoot> 
         where TAggregateRoot : IAggregateRoot
     {
         Expression<Func<TAggregateRoot, bool>> Searcher();

@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Optsol.Components.Repository.Infra.EntityFrameworkCore\Optsol.Components.Repository.Infra.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\Optsol.Components.Repository\Optsol.Components.Repository.Domain.csproj" />
   </ItemGroup>
 

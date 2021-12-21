@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 
-namespace Optsol.Components.Repository.Domain.Repositories.Pagination
+namespace Optsol.Components.Repository.Infra.Repositories.Pagination
 {
     public interface IOrderBy<TAggregateRoot>
          where TAggregateRoot : IAggregateRoot

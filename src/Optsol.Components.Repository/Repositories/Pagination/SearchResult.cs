@@ -7,26 +7,26 @@ namespace Optsol.Components.Repository.Domain.Repositories.Pagination
     public class SearchResult<TAggregateRoot>
         where TAggregateRoot : IAggregateRoot
     {
-        public uint Page { get; private set; }
+        public int Page { get; private set; }
 
-        public uint? Size { get; private set; }
+        public int? PageSize { get; private set; }
 
         public long TotalCount { get; private set; }
 
         public long PageCount => Items.Count();
-        
+
         public IEnumerable<TAggregateRoot> Items { get; private set; }
 
-        public SearchResult<TAggregateRoot> SetPage(uint page)
+        public SearchResult<TAggregateRoot> SetPage(int page)
         {
             Page = page;
 
             return this;
         }
 
-        public SearchResult<TAggregateRoot> SetSize(uint? size)
+        public SearchResult<TAggregateRoot> SetPageSize(int? pageSize)
         {
-            Size = size;
+            PageSize = pageSize;
 
             return this;
         }
@@ -38,10 +38,10 @@ namespace Optsol.Components.Repository.Domain.Repositories.Pagination
             return this;
         }
 
-        public SearchResult<TAggregateRoot> SetPaginatedItems(IEnumerable<TAggregateRoot> items) 
+        public SearchResult<TAggregateRoot> SetPaginatedItems(IEnumerable<TAggregateRoot> items)
         {
-            Items = items
-                ;
+            Items = items;
+
             return this;
         }
     }

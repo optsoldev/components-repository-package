@@ -5,11 +5,14 @@ using Optsol.Components.Repository.Infra.MongoDB.Contexts;
 
 namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
 {
-    public interface IMongoRepository<TAggregate> : IReadRepository<TAggregate>, IWriteRepository<TAggregate>
-        where TAggregate : class, IAggregateRoot
+    public interface IMongoRepository<TAggregateRoot> : 
+        IReadRepository<TAggregateRoot>, 
+        IPaginatedReadRepository<TAggregateRoot>,
+        IWriteRepository<TAggregateRoot>
+        where TAggregateRoot : class, IAggregateRoot
     {
         public Context Context { get; }
 
-        IMongoCollection<TAggregate> Set { get; }
+        IMongoCollection<TAggregateRoot> Set { get; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Optsol.Components.Repository.Domain.Repositories.Pagination;
 using Optsol.Components.Repository.Domain.ValueObjects;
 using Optsol.Components.Repository.Infra.Mock.Entities.Core;
+using Optsol.Components.Repository.Infra.Repositories.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -108,12 +109,12 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
 
             return new SearchResult<Customer>()
                 .SetPage(searchRequest.Page)
-                .SetSize(searchRequest.Size)
+                .SetPageSize(searchRequest.pageSize)
                 .SetTotalCount(query.Count())
-                .SetPaginatedItems(ApplyPagination(query, searchRequest.Page, searchRequest.Size));
+                .SetPaginatedItems(ApplyPagination(query, searchRequest.Page, searchRequest.pageSize));
         }
 
-        private static IEnumerable<Customer> ApplyPagination(IQueryable<Customer> query, uint page, uint? size)
+        private static IEnumerable<Customer> ApplyPagination(IQueryable<Customer> query, int page, int? size)
         {
             var skip = --page * (size ?? 0);
 

@@ -3,16 +3,16 @@
     public class SearchRequest<TSearch>
         where TSearch : class
     {
-        public SearchRequest(TSearch search, uint page, uint? size)
+        public SearchRequest(TSearch search, int page, int? size)
         {
             Page = page;
-            Size = size;
+            pageSize = size;
             Search = search;
         }
 
-        public uint Page { get; private set; }
+        public int Page { get; private set; }
 
-        public uint? Size { get; private set; }
+        public int? pageSize { get; private set; }
 
         public TSearch Search { get; private set; }
     }
