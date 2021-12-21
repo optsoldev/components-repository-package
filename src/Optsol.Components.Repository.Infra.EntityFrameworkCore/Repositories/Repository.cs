@@ -4,6 +4,7 @@ using Optsol.Components.Repository.Domain.Repositories;
 using Optsol.Components.Repository.Domain.Repositories.Pagination;
 using Optsol.Components.Repository.Domain.ValueObjects;
 using Optsol.Components.Repository.Infra.EntityFrameworkCore.Contexts;
+using Optsol.Components.Repository.Infra.Repositories.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,9 +56,9 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
 
             return new SearchResult<TAggregateRoot>()
                 .SetPage(searchRequest.Page)
-                .SetSize(searchRequest.Size)
+                .SetPageSize(searchRequest.pageSize)
                 .SetTotalCount(query.Count())
-                .SetPaginatedItems(ApplyPagination(query, searchRequest.Page, searchRequest.Size));
+                .SetPaginatedItems(ApplyPagination(query, searchRequest.Page, searchRequest.pageSize));
             ;
 
         }
@@ -94,15 +95,15 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
 
         public virtual int SaveChanges() => Context.SaveChanges();
 
-        private static IEnumerable<TAggregateRoot> ApplyPagination(IQueryable<TAggregateRoot> query, uint page, uint? size)
+        private static IEnumerable<TAggregateRoot> ApplyPagination(IQueryable<TAggregateRoot> query, int page, int? size)
         {
             var skip = --page * (size ?? 0);
 
-            query = query.Skip((int)skip);
+            query = query.Skip(skip);
 
             if (size.HasValue)
             {
-                query = query.Take((int)size.Value);
+                query = query.Take(size.Value);
             }
 
             return query.AsEnumerable();

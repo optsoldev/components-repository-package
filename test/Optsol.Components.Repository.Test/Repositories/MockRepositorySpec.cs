@@ -5,6 +5,7 @@ using Optsol.Components.Repository.Domain.Repositories.Pagination;
 using Optsol.Components.Repository.Domain.ValueObjects;
 using Optsol.Components.Repository.Infra.Mock.Entities.Core;
 using Optsol.Components.Repository.Infra.Mock.Repositories;
+using Optsol.Components.Repository.Infra.Repositories.Pagination;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
