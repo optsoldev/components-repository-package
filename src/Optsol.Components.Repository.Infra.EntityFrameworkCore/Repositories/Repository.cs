@@ -29,7 +29,7 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
 
         public virtual IEnumerable<TAggregateRoot> GetAllByIds(params Guid[] ids)
         {
-            return Set.Where(entity => ids.Any(key => key == entity.Id));
+            return Set.Where(aggregate => ids.Any(key => key == aggregate.Id));
         }
 
         public virtual IEnumerable<TAggregateRoot> GetAll() => Set.AsEnumerable();
@@ -63,34 +63,34 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
 
         }
 
-        public virtual void Insert(TAggregateRoot entity) => Set.Add(entity);
+        public virtual void Insert(TAggregateRoot aggregate) => Set.Add(aggregate);
 
-        public virtual void Update(TAggregateRoot entity)
+        public virtual void Update(TAggregateRoot aggregate)
         {
-            var entityInLocal = Set.Local?.Any(localEntity => localEntity.Id == entity.Id) ?? false;
+            var aggregateInLocal = Set.Local?.Any(localEntity => localEntity.Id == aggregate.Id) ?? false;
 
-            if (entityInLocal)
+            if (aggregateInLocal)
             {
-                Context.Entry(entity).State = EntityState.Detached;
+                Context.Entry(aggregate).State = EntityState.Detached;
             }
 
-            Set.Update(entity);
+            Set.Update(aggregate);
         }
 
-        public virtual void Delete(TAggregateRoot entity)
+        public virtual void Delete(TAggregateRoot aggregate)
         {
-            if (entity is null) return;
+            if (aggregate is null) return;
 
-            if (entity is IEntityDeletable)
+            if (aggregate is IEntityDeletable)
             {
-                (entity as IEntityDeletable).Delete();
+                (aggregate as IEntityDeletable).Delete();
 
-                Update(entity);
+                Update(aggregate);
 
                 return;
             }
 
-            Set.Attach(entity).State = EntityState.Detached;
+            Set.Attach(aggregate).State = EntityState.Detached;
         }
 
         public virtual int SaveChanges() => Context.SaveChanges();
