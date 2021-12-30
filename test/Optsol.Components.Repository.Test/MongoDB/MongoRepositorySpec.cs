@@ -19,6 +19,8 @@ namespace Optsol.Components.Repository.Test.MongoDB
 {
     public class MongoRepositorySpec
     {
+        public const string CONNECTION_STRING = "mongodb://127.0.0.1:30001";
+
         public abstract class Aggregate : AggregateRoot, INotification
         {
             public abstract bool CadastroCompleto { get; }
@@ -126,7 +128,7 @@ namespace Optsol.Components.Repository.Test.MongoDB
             var mongoSettings = new MongoSettings()
             {
                 DatabaseName = "dev-sdk-test",
-                ConnectionString = "mongodb://127.0.0.1:30001",
+                ConnectionString = CONNECTION_STRING,
             };
 
             MongoClientSettings settings = MongoClientSettings.FromUrl(
@@ -154,7 +156,7 @@ namespace Optsol.Components.Repository.Test.MongoDB
             var mongoSettings = new MongoSettings()
             {
                 DatabaseName = "dev-sdk-test",
-                ConnectionString = "mongodb://127.0.0.1:30001",
+                ConnectionString = CONNECTION_STRING,
             };
 
             MongoClientSettings settings = MongoClientSettings.FromUrl(
@@ -183,7 +185,7 @@ namespace Optsol.Components.Repository.Test.MongoDB
             var mongoSettings = new MongoSettings()
             {
                 DatabaseName = "dev-sdk-test",
-                ConnectionString = "mongodb://127.0.0.1:30001",
+                ConnectionString = CONNECTION_STRING,
             };
 
             MongoClientSettings settings = MongoClientSettings.FromUrl(
@@ -233,7 +235,7 @@ namespace Optsol.Components.Repository.Test.MongoDB
             var mongoSettings = new MongoSettings()
             {
                 DatabaseName = "dev-sdk-test",
-                ConnectionString = "mongodb://127.0.0.1:30001",
+                ConnectionString = CONNECTION_STRING,
             };
 
             MongoClientSettings settings = MongoClientSettings.FromUrl(

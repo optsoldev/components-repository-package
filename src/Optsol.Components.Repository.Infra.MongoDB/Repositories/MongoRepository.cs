@@ -84,7 +84,21 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
 
         public void Update(TAggregateRoot aggregate) => Context.AddTransaction(() => Set.ReplaceOneAsync(f => f.Id.Equals(aggregate.Id), aggregate));
 
-        public void Delete(TAggregateRoot aggregate) => Context.AddTransaction(() => Set.DeleteOneAsync(f => f.Id.Equals(aggregate.Id)));
+        public void Delete(TAggregateRoot aggregate)
+        {
+            if (aggregate is null) return;
+
+            if (aggregate is IEntityDeletable)
+            {
+                (aggregate as IEntityDeletable).Delete();
+
+                Update(aggregate);
+
+                return;
+            }
+
+            Context.AddTransaction(() => Set.DeleteOneAsync(f => f.Id.Equals(aggregate.Id)));
+        }
 
         public int SaveChanges() => Context.SaveChanges();
     }
