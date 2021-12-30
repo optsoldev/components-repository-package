@@ -57,6 +57,38 @@ namespace Optsol.Components.Repository.Test.MongoDB
             public StatusAvaliacao Status { get; private set; }
         }
 
+        public class Deletable : Aggregate, IEntityDeletable
+        {
+            public Deletable(Guid id, string nome, Metodologia metodologia, StatusAvaliacao status)
+                 : this(nome, metodologia, status)
+            {
+                Id = id;
+            }
+
+            public Deletable(string nome, Metodologia metodologia, StatusAvaliacao status)
+            {
+                Nome = nome;
+                Metodologia = metodologia;
+                Status = status;
+            }
+
+            public override bool CadastroCompleto => true;
+
+            public string Nome { get; private set; }
+
+            public Metodologia Metodologia { get; private set; }
+
+            public StatusAvaliacao Status { get; private set; }
+
+            public DateNullable DeletedDate { get; private set; }
+
+            public void Delete()
+            {
+                DeletedDate = new DateNullable()
+                    .SetDateValueWithDateOfNow();
+            }
+        }
+
         public enum TipoStatusAvaliacao
         {
             Aguardando,
@@ -121,7 +153,7 @@ namespace Optsol.Components.Repository.Test.MongoDB
         }
 
         [Trait("Repositories", "Métodos Escrita")]
-        [Fact(DisplayName = "Deve inserir pelo repositório no mongodb", Skip = "Teste Local")]
+        [Fact(DisplayName = "Deve inserir pelo repositório no mongodb", Skip = "teste local")]
         public void Deve_Inserir_Pelo_Repositorio()
         {
             //given
@@ -137,19 +169,18 @@ namespace Optsol.Components.Repository.Test.MongoDB
 
             var mongoClient = new MongoClient(settings);
             var context = new MongoContext(mongoSettings, mongoClient);
-            var mongoRepository = new MongoRepository<Teste>(context);
+            var mongoRepository = new MongoRepository<Deletable>(context);
 
             //when
-            mongoRepository.Insert(new Teste("Nome", new Metodologia(TipoMetodologia.NPS), new StatusAvaliacao(TipoStatusAvaliacao.Aguardando)));
+            mongoRepository.Insert(new Deletable("Nome 3", new Metodologia(TipoMetodologia.NPS), new StatusAvaliacao(TipoStatusAvaliacao.Aguardando)));
             var count = context.SaveChanges();
 
             //then
-            mongoRepository.Should().NotBeNull();
             count.Should().Be(1);
         }
 
         [Trait("Repositories", "Métodos Leitura")]
-        [Fact(DisplayName = "Deve buscar todos pelo repositório no mongodb", Skip = "Teste Local")]
+        [Fact(DisplayName = "Deve buscar todos pelo repositório no mongodb", Skip = "teste local")]
         public void Deve_Obter_Todos_Pelo_Repositorio()
         {
             //given
@@ -165,7 +196,7 @@ namespace Optsol.Components.Repository.Test.MongoDB
 
             var mongoClient = new MongoClient(settings);
             var context = new MongoContext(mongoSettings, mongoClient);
-            var mongoRepository = new MongoRepository<Teste>(context);
+            var mongoRepository = new MongoRepository<Deletable>(context);
 
             //when
             var all = mongoRepository.GetAll();
@@ -176,11 +207,11 @@ namespace Optsol.Components.Repository.Test.MongoDB
         }
 
         [Trait("Repositories", "Métodos Leitura")]
-        [Fact(DisplayName = "Deve buscar pelo repositório no mongodb", Skip = "Teste Local")]
+        [Fact(DisplayName = "Deve buscar pelo repositório no mongodb", Skip = "teste local")]
         public void Deve_Obter_Pelo_Repositorio()
         {
             //given
-            var id = Guid.Parse("4efaf95f-adaf-45db-9eae-e2fd0da0693c");
+            var id = Guid.Parse("67fbf9a1-adce-40ba-93b0-a1329e9ce66b");
 
             var mongoSettings = new MongoSettings()
             {
@@ -194,7 +225,7 @@ namespace Optsol.Components.Repository.Test.MongoDB
 
             var mongoClient = new MongoClient(settings);
             var context = new MongoContext(mongoSettings, mongoClient);
-            var mongoRepository = new MongoRepository<Teste>(context);
+            var mongoRepository = new MongoRepository<Deletable>(context);
 
             //when
             var aggregate = mongoRepository.GetById(id);
@@ -202,6 +233,40 @@ namespace Optsol.Components.Repository.Test.MongoDB
             //then
             aggregate.Should().NotBeNull();
             aggregate.Id.Should().Be(id);
+        }
+
+        [Trait("Repositories", "Métodos Leitura")]
+        [Fact(DisplayName = "Deve buscar todos pelos ids pelo repositório no mongodb", Skip = "teste local")]
+        public void Deve_Obter_Todos_Por_Ids_Pelo_Repositorio()
+        {
+            //given
+            var ids = new[]
+            {
+                Guid.Parse("67fbf9a1-adce-40ba-93b0-a1329e9ce66b"),
+                Guid.Parse("de3ce561-6c84-4d2f-ab4f-9d5c74ad5293")
+            };
+
+            var mongoSettings = new MongoSettings()
+            {
+                DatabaseName = "dev-sdk-test",
+                ConnectionString = CONNECTION_STRING,
+            };
+
+            MongoClientSettings settings = MongoClientSettings.FromUrl(
+              new MongoUrl(mongoSettings.ConnectionString)
+            );
+
+            var mongoClient = new MongoClient(settings);
+            var context = new MongoContext(mongoSettings, mongoClient);
+            var mongoRepository = new MongoRepository<Deletable>(context);
+
+            //when
+            var all = mongoRepository.GetAllByIds(ids);
+
+            //then
+            all.Should().NotBeNull();
+            all.Should().NotBeEmpty();
+            all.Should().HaveCount(ids.Length);
         }
 
         public class TesteSearchDto : ISearch<Teste>, IOrderBy<Teste>
@@ -256,6 +321,34 @@ namespace Optsol.Components.Repository.Test.MongoDB
             aggregate.TotalCount.Should().Be(10);
             aggregate.Items.Should().NotBeEmpty();
             aggregate.Items.Should().HaveCount(5);
+        }
+
+        [Fact(DisplayName = "Deve excluir o usuário", Skip = "Teste Local")]
+        public void Deve_Excluir()
+        {
+            //given
+            var mongoSettings = new MongoSettings()
+            {
+                DatabaseName = "dev-sdk-test",
+                ConnectionString = CONNECTION_STRING,
+            };
+
+            MongoClientSettings settings = MongoClientSettings.FromUrl(
+              new MongoUrl(mongoSettings.ConnectionString)
+            );
+
+            var mongoClient = new MongoClient(settings);
+            var context = new MongoContext(mongoSettings, mongoClient);
+            var mongoRepository = new MongoRepository<Deletable>(context);
+
+            var deletable = new Deletable(Guid.Parse("79c32c21-fe56-44f4-a230-5aeb2ace24c1"), "Nome 3", new Metodologia(TipoMetodologia.NPS), new StatusAvaliacao(TipoStatusAvaliacao.Aguardando));
+
+            //when
+            mongoRepository.Delete(deletable);
+            var count = context.SaveChanges();
+
+            //then
+            count.Should().Be(1);
         }
     }
 }
