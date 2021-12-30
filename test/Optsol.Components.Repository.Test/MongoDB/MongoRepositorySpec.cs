@@ -323,7 +323,7 @@ namespace Optsol.Components.Repository.Test.MongoDB
             aggregate.Items.Should().HaveCount(5);
         }
 
-        [Fact]
+        [Fact(DisplayName = "Deve excluir o usuário", Skip = "Teste Local")]
         public void Deve_Excluir()
         {
             //given
