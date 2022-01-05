@@ -69,7 +69,6 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
             if (aggregateInLocal is not null)
             {
                 Context.Entry(aggregateInLocal).State = EntityState.Detached;
-                return;
             }
 
             Context.Entry(aggregate).State = EntityState.Modified;
