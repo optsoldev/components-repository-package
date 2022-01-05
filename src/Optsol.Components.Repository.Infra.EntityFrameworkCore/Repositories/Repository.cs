@@ -66,7 +66,7 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
         public virtual void Update(TAggregateRoot aggregate)
         {
             var aggregateInLocal = Set.Local?.Any(localEntity => localEntity.Id == aggregate.Id) ?? false;
-            if (aggregateInLocal is false)
+            if (aggregateInLocal)
             {
                 Context.Entry(aggregate).State = EntityState.Detached;
             }
