@@ -65,13 +65,14 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
 
         public virtual void Update(TAggregateRoot aggregate)
         {
-            var aggregateInLocal = Set.Local?.Any(localEntity => localEntity.Id == aggregate.Id) ?? false;
-            if (aggregateInLocal)
+            var aggregateInLocal = Set.Local?.FirstOrDefault(localEntity => localEntity.Id == aggregate.Id);
+            if (aggregateInLocal is not null)
             {
-                Context.Entry(aggregate).State = EntityState.Detached;
+                Context.Entry(aggregateInLocal).State = EntityState.Detached;
+                return;
             }
 
-            Set.Update(aggregate);
+            Context.Entry(aggregate).State = EntityState.Modified;
         }
 
         public virtual void Delete(TAggregateRoot aggregate)
