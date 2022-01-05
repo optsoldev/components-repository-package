@@ -59,8 +59,6 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
                 .SetPageSize(searchRequest.pageSize)
                 .SetTotalCount(query.Count())
                 .SetPaginatedItems(ApplyPagination(query, searchRequest.Page, searchRequest.pageSize));
-            ;
-
         }
 
         public virtual void Insert(TAggregateRoot aggregate) => Set.Add(aggregate);
@@ -68,8 +66,7 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
         public virtual void Update(TAggregateRoot aggregate)
         {
             var aggregateInLocal = Set.Local?.Any(localEntity => localEntity.Id == aggregate.Id) ?? false;
-
-            if (aggregateInLocal)
+            if (aggregateInLocal is false)
             {
                 Context.Entry(aggregate).State = EntityState.Detached;
             }
