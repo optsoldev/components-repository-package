@@ -15,9 +15,6 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
     public class MongoRepository<TAggregateRoot> : IMongoRepository<TAggregateRoot>
         where TAggregateRoot : class, IAggregateRoot
     {
-
-        private readonly Func<IEntityDeletable, bool> NotIsDeleted = (aggregate) => (aggregate).DeletedDate is null;
-
         public MongoRepository(Context context)
         {
             Context = context ?? throw new ArgumentNullException(nameof(context));
@@ -28,23 +25,23 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
 
         public IMongoCollection<TAggregateRoot> Set { get; private set; }
 
-        public IEnumerable<TAggregateRoot> GetAll()
+        public virtual IEnumerable<TAggregateRoot> GetAll()
         {
             if (typeof(TAggregateRoot).GetInterfaces().Contains(typeof(IEntityDeletable)))
             {
-                var deletableDef = Builders<TAggregateRoot>.Filter.Eq("DeletedDate", BsonNull.Value);
+                var deletableDef = Builders<TAggregateRoot>.Filter.Eq("DeletedDate.Date", BsonNull.Value);
                 return Set.Find(deletableDef).ToEnumerable();
             }
 
             return Set.AsQueryable().ToEnumerable();
         }
 
-        public IEnumerable<TAggregateRoot> GetAllByIds(params Guid[] ids)
+        public virtual IEnumerable<TAggregateRoot> GetAllByIds(params Guid[] ids)
         {
             if (typeof(TAggregateRoot).GetInterfaces().Contains(typeof(IEntityDeletable)))
             {
                 var byIdDef = Builders<TAggregateRoot>.Filter.In(q => q.Id, ids);
-                var deletableDef = Builders<TAggregateRoot>.Filter.Eq("DeletedDate", BsonNull.Value);
+                var deletableDef = Builders<TAggregateRoot>.Filter.Eq("DeletedDate.Date", BsonNull.Value);
                 var filterDef = Builders<TAggregateRoot>.Filter.And(byIdDef, deletableDef);
 
                 return Set.Find(filterDef).ToEnumerable();
@@ -53,12 +50,12 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
             return Set.Find(f => ids.Contains(f.Id)).ToEnumerable();
         }
 
-        public TAggregateRoot GetById(Guid id)
+        public virtual TAggregateRoot GetById(Guid id)
         {
             if (typeof(TAggregateRoot).GetInterfaces().Contains(typeof(IEntityDeletable)))
             {
                 var byIdDef = Builders<TAggregateRoot>.Filter.Eq(q => q.Id, id);
-                var deletableDef = Builders<TAggregateRoot>.Filter.Eq("DeletedDate", BsonNull.Value);
+                var deletableDef = Builders<TAggregateRoot>.Filter.Eq("DeletedDate.Date", BsonNull.Value);
                 var filterDef = Builders<TAggregateRoot>.Filter.And(byIdDef, deletableDef);
                 return Set.Find(filterDef).FirstOrDefault();
             }
@@ -66,12 +63,12 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
             return Set.Find(f => f.Id.Equals(id)).FirstOrDefault();
         }
 
-        public IEnumerable<TAggregateRoot> GetAll(Expression<Func<TAggregateRoot, bool>> filterExpression)
+        public virtual IEnumerable<TAggregateRoot> GetAll(Expression<Func<TAggregateRoot, bool>> filterExpression)
         {
             if (typeof(TAggregateRoot).GetInterfaces().Contains(typeof(IEntityDeletable)))
             {
                 var expressionDef = Builders<TAggregateRoot>.Filter.Where(filterExpression);
-                var deletableDef = Builders<TAggregateRoot>.Filter.Eq("DeletedDate", BsonNull.Value);
+                var deletableDef = Builders<TAggregateRoot>.Filter.Eq("DeletedDate.Date", BsonNull.Value);
                 var filterDef = Builders<TAggregateRoot>.Filter.And(expressionDef, deletableDef);
 
                 return Set.Find(filterDef).ToEnumerable();
@@ -80,7 +77,7 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
             return Set.Find(filterExpression).ToEnumerable();
         }
 
-        public SearchResult<TAggregateRoot> GetAll<TSearch>(SearchRequest<TSearch> searchRequest) where TSearch : class
+        public virtual SearchResult<TAggregateRoot> GetAll<TSearch>(SearchRequest<TSearch> searchRequest) where TSearch : class
         {
             var search = searchRequest.Search as ISearch<TAggregateRoot>;
             var orderBy = searchRequest.Search as IOrderBy<TAggregateRoot>;
@@ -132,7 +129,7 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
             var defaultDef = Builders<TAggregateRoot>.Filter.Empty;
 
             var isDeletable = (typeof(TAggregateRoot).GetInterfaces().Contains(typeof(IEntityDeletable)));
-            var deletableDef = Builders<TAggregateRoot>.Filter.Eq("DeletedDate", BsonNull.Value);
+            var deletableDef = Builders<TAggregateRoot>.Filter.Eq("DeletedDate.Date", BsonNull.Value);
 
             if (search is null)
             {
@@ -151,11 +148,11 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
 
         }
 
-        public void Insert(TAggregateRoot aggregate) => Context.AddTransaction(() => Set.InsertOneAsync(aggregate));
+        public virtual void Insert(TAggregateRoot aggregate) => Context.AddTransaction(() => Set.InsertOneAsync(aggregate));
 
-        public void Update(TAggregateRoot aggregate) => Context.AddTransaction(() => Set.ReplaceOneAsync(f => f.Id.Equals(aggregate.Id), aggregate));
+        public virtual void Update(TAggregateRoot aggregate) => Context.AddTransaction(() => Set.ReplaceOneAsync(f => f.Id.Equals(aggregate.Id), aggregate));
 
-        public void Delete(TAggregateRoot aggregate)
+        public virtual void Delete(TAggregateRoot aggregate)
         {
             if (aggregate is null) return;
 
@@ -171,6 +168,6 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
             Context.AddTransaction(() => Set.DeleteOneAsync(f => f.Id.Equals(aggregate.Id)));
         }
 
-        public int SaveChanges() => Context.SaveChanges();
+        public virtual int SaveChanges() => Context.SaveChanges();
     }
 }

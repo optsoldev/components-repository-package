@@ -71,7 +71,7 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
                 Context.Entry(aggregateInLocal).State = EntityState.Detached;
             }
 
-            Context.Entry(aggregate).State = EntityState.Modified;
+            Set.Update(aggregate);
         }
 
         public virtual void Delete(TAggregateRoot aggregate)

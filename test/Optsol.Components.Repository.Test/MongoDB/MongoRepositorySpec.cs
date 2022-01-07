@@ -32,11 +32,12 @@ namespace Optsol.Components.Repository.Test.MongoDB
                 ValidationResult = new ValidationResult();
             }
 
-            public bool Valid => ValidationResult.IsValid;
-
-            public bool Invalid => Valid is false;
-
             public ValidationResult ValidationResult { get; protected set; }
+
+            public void Validate()
+            {
+                //TODO: Faz alguma validação
+            }
         }
 
         public class Teste : Aggregate
