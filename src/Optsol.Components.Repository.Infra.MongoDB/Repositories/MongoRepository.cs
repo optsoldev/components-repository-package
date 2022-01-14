@@ -1,6 +1,5 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
-using MongoDB.Driver.Linq;
 using Optsol.Components.Repository.Domain.Entities;
 using Optsol.Components.Repository.Domain.Repositories.Pagination;
 using Optsol.Components.Repository.Infra.MongoDB.Contexts;
@@ -145,10 +144,11 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
                 return Builders<TAggregateRoot>.Filter.And(searchDef, deletableDef);
 
             return searchDef;
-
         }
 
         public virtual void Insert(TAggregateRoot aggregate) => Context.AddTransaction(() => Set.InsertOneAsync(aggregate));
+
+        public virtual void InsertRange(List<TAggregateRoot> aggregates) => Context.AddTransaction(() => Set.InsertManyAsync(aggregates));
 
         public virtual void Update(TAggregateRoot aggregate) => Context.AddTransaction(() => Set.ReplaceOneAsync(f => f.Id.Equals(aggregate.Id), aggregate));
 
@@ -166,6 +166,14 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
             }
 
             Context.AddTransaction(() => Set.DeleteOneAsync(f => f.Id.Equals(aggregate.Id)));
+        }
+
+        public void DeleteRange(List<TAggregateRoot> aggregates)
+        {
+            foreach (var aggregate in aggregates)
+            {
+                Delete(aggregate);
+            }
         }
 
         public virtual int SaveChanges() => Context.SaveChanges();
