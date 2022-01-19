@@ -179,7 +179,7 @@ namespace Optsol.Components.Repository.Test.MongoDB
         }
 
         [Trait("Repositories", "Métodos Escrita de coleção")]
-        [Fact(DisplayName = "Deve inserir coleção pelo repositório no mongodb")]
+        [Fact(DisplayName = "Deve inserir coleção pelo repositório no mongodb", Skip = "teste local")]
         public void Deve_Inserir_Colecao_Pelo_Repositorio()
         {
             //given
