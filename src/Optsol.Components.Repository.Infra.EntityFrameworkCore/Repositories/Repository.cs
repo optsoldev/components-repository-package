@@ -2,7 +2,6 @@
 using Optsol.Components.Repository.Domain.Entities;
 using Optsol.Components.Repository.Domain.Repositories;
 using Optsol.Components.Repository.Domain.Repositories.Pagination;
-using Optsol.Components.Repository.Domain.ValueObjects;
 using Optsol.Components.Repository.Infra.EntityFrameworkCore.Contexts;
 using Optsol.Components.Repository.Infra.Repositories.Pagination;
 using System;
@@ -56,12 +55,14 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
 
             return new SearchResult<TAggregateRoot>()
                 .SetPage(searchRequest.Page)
-                .SetPageSize(searchRequest.pageSize)
+                .SetPageSize(searchRequest.PageSize)
                 .SetTotalCount(query.Count())
-                .SetPaginatedItems(ApplyPagination(query, searchRequest.Page, searchRequest.pageSize));
+                .SetPaginatedItems(ApplyPagination(query, searchRequest.Page, searchRequest.PageSize));
         }
 
         public virtual void Insert(TAggregateRoot aggregate) => Set.Add(aggregate);
+
+        public virtual void InsertRange(List<TAggregateRoot> aggregates) => Set.AddRange(aggregates);
 
         public virtual void Update(TAggregateRoot aggregate)
         {
@@ -88,6 +89,14 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
             }
 
             Set.Attach(aggregate).State = EntityState.Detached;
+        }
+
+        public virtual void DeleteRange(List<TAggregateRoot> aggregates)
+        {
+            foreach (var aggregate in aggregates)
+            {
+                Delete(aggregate);
+            }
         }
 
         public virtual int SaveChanges() => Context.SaveChanges();

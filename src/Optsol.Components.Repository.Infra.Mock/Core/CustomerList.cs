@@ -32,9 +32,25 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
             customers.Add(customer);
         }
 
+        public void InsertRange(List<Customer> customerCollection)
+        {
+            foreach (var customer in customerCollection)
+            {
+                Insert(customer);
+            }
+        }
+
         public void Delete(Customer customer)
         {
             customers.Remove(customer);
+        }
+
+        public void DeleteRange(List<Customer> customersCollection)
+        {
+            foreach (var customer in customersCollection)
+            {
+                customers.Remove(customer);
+            }
         }
 
         public IEnumerable<Customer> Init()
@@ -109,9 +125,9 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
 
             return new SearchResult<Customer>()
                 .SetPage(searchRequest.Page)
-                .SetPageSize(searchRequest.pageSize)
+                .SetPageSize(searchRequest.PageSize)
                 .SetTotalCount(query.Count())
-                .SetPaginatedItems(ApplyPagination(query, searchRequest.Page, searchRequest.pageSize));
+                .SetPaginatedItems(ApplyPagination(query, searchRequest.Page, searchRequest.PageSize));
         }
 
         private static IEnumerable<Customer> ApplyPagination(IQueryable<Customer> query, int page, int? size)
