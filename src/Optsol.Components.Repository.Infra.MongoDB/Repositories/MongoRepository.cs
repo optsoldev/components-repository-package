@@ -96,8 +96,8 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
                 PipelineDefinition<TAggregateRoot, TAggregateRoot>.Create(new[]
                 {
                     PipelineStageDefinitionBuilder.Sort(sortDef),
-                    PipelineStageDefinitionBuilder.Skip<TAggregateRoot>((searchRequest.Page - 1) * (searchRequest.pageSize ?? 0)),
-                    PipelineStageDefinitionBuilder.Limit<TAggregateRoot>(searchRequest.pageSize.Value)
+                    PipelineStageDefinitionBuilder.Skip<TAggregateRoot>((searchRequest.Page - 1) * (searchRequest.PageSize ?? 0)),
+                    PipelineStageDefinitionBuilder.Limit<TAggregateRoot>(searchRequest.PageSize.Value)
                 }));
 
             var filterDef = GetFilterDef(search);
@@ -119,7 +119,7 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
 
             return new SearchResult<TAggregateRoot>()
                 .SetPage(searchRequest.Page)
-                .SetPageSize(searchRequest.pageSize)
+                .SetPageSize(searchRequest.PageSize)
                 .SetPaginatedItems(data)
                 .SetTotalCount((int)count);
         }

@@ -1,19 +1,19 @@
 ﻿namespace Optsol.Components.Repository.Domain.Repositories.Pagination
 {
-    public class SearchRequest<TSearch>
+    public sealed class SearchRequest<TSearch>
         where TSearch : class
     {
         public SearchRequest(TSearch search, int page, int? size)
         {
             Page = page;
-            pageSize = size;
+            PageSize = size;
             Search = search;
         }
 
-        public int Page { get; private set; }
+        public int Page { get; set; }
 
-        public int? pageSize { get; private set; }
+        public int? PageSize { get; set; }
 
-        public TSearch Search { get; private set; }
+        public TSearch Search { get; set; }
     }
 }

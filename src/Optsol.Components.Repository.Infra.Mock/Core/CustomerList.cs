@@ -109,9 +109,9 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
 
             return new SearchResult<Customer>()
                 .SetPage(searchRequest.Page)
-                .SetPageSize(searchRequest.pageSize)
+                .SetPageSize(searchRequest.PageSize)
                 .SetTotalCount(query.Count())
-                .SetPaginatedItems(ApplyPagination(query, searchRequest.Page, searchRequest.pageSize));
+                .SetPaginatedItems(ApplyPagination(query, searchRequest.Page, searchRequest.PageSize));
         }
 
         private static IEnumerable<Customer> ApplyPagination(IQueryable<Customer> query, int page, int? size)

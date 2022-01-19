@@ -56,9 +56,9 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
 
             return new SearchResult<TAggregateRoot>()
                 .SetPage(searchRequest.Page)
-                .SetPageSize(searchRequest.pageSize)
+                .SetPageSize(searchRequest.PageSize)
                 .SetTotalCount(query.Count())
-                .SetPaginatedItems(ApplyPagination(query, searchRequest.Page, searchRequest.pageSize));
+                .SetPaginatedItems(ApplyPagination(query, searchRequest.Page, searchRequest.PageSize));
         }
 
         public virtual void Insert(TAggregateRoot aggregate) => Set.Add(aggregate);
