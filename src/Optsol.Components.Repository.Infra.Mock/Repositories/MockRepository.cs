@@ -1,6 +1,5 @@
 ﻿using Optsol.Components.Repository.Domain.Repositories;
 using Optsol.Components.Repository.Domain.Repositories.Pagination;
-using Optsol.Components.Repository.Domain.ValueObjects;
 using Optsol.Components.Repository.Infra.Mock.Core;
 using Optsol.Components.Repository.Infra.Mock.Entities.Core;
 using System;
@@ -21,6 +20,11 @@ namespace Optsol.Components.Repository.Infra.Mock.Repositories
         public void Delete(Customer entity)
         {
             Context.Customers.Delete(entity);
+        }
+
+        public void DeleteRange(List<Customer> entities)
+        {
+            Context.Customers.DeleteRange(entities);
         }
 
         public IEnumerable<Customer> GetAll()
@@ -48,6 +52,11 @@ namespace Optsol.Components.Repository.Infra.Mock.Repositories
         public void Insert(Customer entity)
         {
             Context.Customers.Insert(entity);
+        }
+
+        public void InsertRange(List<Customer> entities)
+        {
+            Context.Customers.InsertRange(entities);
         }
 
         public int SaveChanges()

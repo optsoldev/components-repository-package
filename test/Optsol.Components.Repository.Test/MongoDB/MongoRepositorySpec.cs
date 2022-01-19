@@ -12,7 +12,6 @@ using Optsol.Components.Repository.Infra.MongoDB.Settings;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq.Expressions;
 using Xunit;
 
 namespace Optsol.Components.Repository.Test.MongoDB
@@ -123,7 +122,7 @@ namespace Optsol.Components.Repository.Test.MongoDB
 
             public TipoStatusAvaliacao Tipo { get; private set; }
 
-            #endregion
+            #endregion Properties
 
             #region Constructors
 
@@ -132,17 +131,16 @@ namespace Optsol.Components.Repository.Test.MongoDB
                 Tipo = tipo;
             }
 
-            #endregion
+            #endregion Constructors
 
             #region Methods
-
 
             public override IEnumerable<object> GetEqualityComponents()
             {
                 yield return Tipo;
             }
 
-            #endregion
+            #endregion Methods
         }
 
         public class MongoContext : Context
@@ -174,6 +172,39 @@ namespace Optsol.Components.Repository.Test.MongoDB
 
             //when
             mongoRepository.Insert(new Deletable("Nome 3", new Metodologia(TipoMetodologia.NPS), new StatusAvaliacao(TipoStatusAvaliacao.Aguardando)));
+            var count = context.SaveChanges();
+
+            //then
+            count.Should().Be(1);
+        }
+
+        [Trait("Repositories", "Métodos Escrita de coleção")]
+        [Fact(DisplayName = "Deve inserir coleção pelo repositório no mongodb")]
+        public void Deve_Inserir_Colecao_Pelo_Repositorio()
+        {
+            //given
+            var mongoSettings = new MongoSettings()
+            {
+                DatabaseName = "dev-sdk-test",
+                ConnectionString = CONNECTION_STRING,
+            };
+
+            MongoClientSettings settings = MongoClientSettings.FromUrl(
+              new MongoUrl(mongoSettings.ConnectionString)
+            );
+
+            var mongoClient = new MongoClient(settings);
+            var context = new MongoContext(mongoSettings, mongoClient);
+            var mongoRepository = new MongoRepository<Deletable>(context);
+
+            //when
+            List<Deletable> entities = new List<Deletable>
+            {
+                new Deletable("Nome 3", new Metodologia(TipoMetodologia.NPS), new StatusAvaliacao(TipoStatusAvaliacao.Aguardando)),
+                new Deletable("Nome 4", new Metodologia(TipoMetodologia.NPS), new StatusAvaliacao(TipoStatusAvaliacao.Aguardando))
+            };
+
+            mongoRepository.InsertRange(entities);
             var count = context.SaveChanges();
 
             //then
@@ -342,7 +373,7 @@ namespace Optsol.Components.Repository.Test.MongoDB
             var context = new MongoContext(mongoSettings, mongoClient);
             var mongoRepository = new MongoRepository<Deletable>(context);
 
-            var deletable = new Deletable(Guid.Parse("79c32c21-fe56-44f4-a230-5aeb2ace24c1"), "Nome 3", new Metodologia(TipoMetodologia.NPS), new StatusAvaliacao(TipoStatusAvaliacao.Aguardando));
+            var deletable = new Deletable(Guid.Parse("3f32762f-7ed0-484f-90ca-1cc5e6a980c1"), "Nome 3", new Metodologia(TipoMetodologia.NPS), new StatusAvaliacao(TipoStatusAvaliacao.Aguardando));
 
             //when
             mongoRepository.Delete(deletable);
@@ -350,6 +381,38 @@ namespace Optsol.Components.Repository.Test.MongoDB
 
             //then
             count.Should().Be(1);
+        }
+
+        [Fact(DisplayName = "Deve excluir uma coleção de usuários", Skip = "Teste Local")]
+        public void Deve_Excluir_Colecao_Usuarios()
+        {
+            //given
+            var mongoSettings = new MongoSettings()
+            {
+                DatabaseName = "dev-sdk-test",
+                ConnectionString = CONNECTION_STRING,
+            };
+
+            MongoClientSettings settings = MongoClientSettings.FromUrl(
+              new MongoUrl(mongoSettings.ConnectionString)
+            );
+
+            var mongoClient = new MongoClient(settings);
+            var context = new MongoContext(mongoSettings, mongoClient);
+            var mongoRepository = new MongoRepository<Deletable>(context);
+
+            var deletables = new List<Deletable>
+            {
+                new Deletable(Guid.Parse("02915140-06d3-4981-8118-c42f4f9b0f69"), "Nome 3", new Metodologia(TipoMetodologia.NPS), new StatusAvaliacao(TipoStatusAvaliacao.Aguardando)),
+                new Deletable(Guid.Parse("864fad4d-a6b0-433d-8024-4856274ccb1e"), "Nome 4", new Metodologia(TipoMetodologia.NPS), new StatusAvaliacao(TipoStatusAvaliacao.Aguardando))
+            };
+
+            //when
+            mongoRepository.DeleteRange(deletables);
+            var count = context.SaveChanges();
+
+            //then
+            count.Should().Be(2);
         }
     }
 }

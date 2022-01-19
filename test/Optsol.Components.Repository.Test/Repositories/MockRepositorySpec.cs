@@ -1,5 +1,4 @@
-﻿
-using FluentAssertions;
+﻿using FluentAssertions;
 using Optsol.Components.Repository.Domain.Repositories;
 using Optsol.Components.Repository.Domain.Repositories.Pagination;
 using Optsol.Components.Repository.Domain.ValueObjects;
@@ -7,6 +6,7 @@ using Optsol.Components.Repository.Infra.Mock.Entities.Core;
 using Optsol.Components.Repository.Infra.Mock.Repositories;
 using Optsol.Components.Repository.Infra.Repositories.Pagination;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Xunit;
@@ -150,7 +150,23 @@ namespace Optsol.Components.Repository.Test.Repositories
             //then
             execute.Should().NotThrow();
             (writeRepository as MockRepository).GetAll().Should().HaveCount(19);
+        }
 
+        [Trait("Repositories", "Métodos Escrita de Coleção")]
+        [Fact(DisplayName = "Deve inserir uma coleção de customer no contexto")]
+        public void Deve_Inserir_Colecao_Customer()
+        {
+            //given
+            var customers = CreateCustomerCollection();
+
+            IWriteRepository<Customer> writeRepository = new MockRepository();
+
+            //when
+            Action execute = () => writeRepository.InsertRange(customers);
+
+            //then
+            execute.Should().NotThrow();
+            (writeRepository as MockRepository).GetAll().Should().HaveCount(20);
         }
 
         [Trait("Repositories", "Métodos Escrita")]
@@ -173,7 +189,6 @@ namespace Optsol.Components.Repository.Test.Repositories
             execute.Should().NotThrow("Não deveria de acontecer erro");
             (newCustomer == updateCustumer).Should().BeTrue("Devem ser a mesma entidade");
             (writeRepository as MockRepository).GetAll().Should().HaveCount(19);
-
         }
 
         [Trait("Repositories", "Métodos Escrita")]
@@ -188,6 +203,24 @@ namespace Optsol.Components.Repository.Test.Repositories
 
             //when
             Action execute = () => writeRepository.Delete(newCustomer);
+
+            //then
+            execute.Should().NotThrow();
+            (writeRepository as MockRepository).GetAll().Should().HaveCount(18);
+        }
+
+        [Trait("Repositories", "Métodos Escrita")]
+        [Fact(DisplayName = "Deve remover uma coleção customer do contexto")]
+        public void Deve_Deletar_Colecao_Customer()
+        {
+            //given
+            var customers = CreateCustomerCollection();
+
+            IWriteRepository<Customer> writeRepository = new MockRepository();
+            writeRepository.InsertRange(customers);
+
+            //when
+            Action execute = () => writeRepository.DeleteRange(customers);
 
             //then
             execute.Should().NotThrow();
@@ -211,6 +244,23 @@ namespace Optsol.Components.Repository.Test.Repositories
             totalItems.Should().Be(19);
         }
 
+        [Trait("Repositories", "Métodos Escrita")]
+        [Fact(DisplayName = "Deve salvar mudanças no contexto com coleção")]
+        public void Deve_Salvar_Mudancas_Contexto_Com_Colecao()
+        {
+            //given
+            var customers = CreateCustomerCollection();
+
+            IWriteRepository<Customer> writeRepository = new MockRepository();
+
+            //when
+            writeRepository.InsertRange(customers);
+            var totalItems = writeRepository.SaveChanges();
+
+            //then
+            totalItems.Should().Be(20);
+        }
+
         public static Customer CreateCustomer()
         {
             var novaPessoa = Person.Create("Novo Customer", "Teste");
@@ -223,11 +273,25 @@ namespace Optsol.Components.Repository.Test.Repositories
             return customerObject;
         }
 
+        public static List<Customer> CreateCustomerCollection()
+        {
+            var novaPessoa = Person.Create("Novo Customer", "Teste");
+            var novoEmail = Email.Create("email@optsol.com.br");
+            var novaDataNascimento = DateValue.Create().SetDateValueWithDate(DateTime.Parse("01/01/2011"));
+
+            var outraPessoa = Person.Create("Outro Customer", "Teste");
+            var outroEmail = Email.Create("email@optsol.com.br");
+            var outraDataNascimento = DateValue.Create().SetDateValueWithDate(DateTime.Parse("01/01/2011"));
+
+            return new List<Customer> {
+                Customer.Create(novaPessoa, novoEmail, novaDataNascimento),
+                Customer.Create(outraPessoa, outroEmail, outraDataNascimento)
+            };
+        }
+
         private static Expression<Func<Customer, bool>> ExpressionFilter(string name)
         {
             return (Customer customer) => customer.Person.Name.Contains(name);
         }
-
-
     }
 }

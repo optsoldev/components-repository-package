@@ -32,9 +32,25 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
             customers.Add(customer);
         }
 
+        public void InsertRange(List<Customer> customerCollection)
+        {
+            foreach (var customer in customerCollection)
+            {
+                Insert(customer);
+            }
+        }
+
         public void Delete(Customer customer)
         {
             customers.Remove(customer);
+        }
+
+        public void DeleteRange(List<Customer> customersCollection)
+        {
+            foreach (var customer in customersCollection)
+            {
+                customers.Remove(customer);
+            }
         }
 
         public IEnumerable<Customer> Init()
