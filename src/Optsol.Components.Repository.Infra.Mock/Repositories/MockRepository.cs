@@ -1,10 +1,11 @@
-﻿using Optsol.Components.Repository.Domain.Repositories;
-using Optsol.Components.Repository.Domain.Repositories.Pagination;
-using Optsol.Components.Repository.Infra.Mock.Core;
+﻿using Optsol.Components.Repository.Infra.Mock.Core;
 using Optsol.Components.Repository.Infra.Mock.Entities.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using Optsol.Repository;
+using Optsol.Repository.Base.Pagination;
+using Optsol.Repository.Pagination;
 
 namespace Optsol.Components.Repository.Infra.Mock.Repositories
 {
@@ -22,7 +23,7 @@ namespace Optsol.Components.Repository.Infra.Mock.Repositories
             Context.Customers.Delete(entity);
         }
 
-        public void DeleteRange(List<Customer> entities)
+        public void DeleteRange(IList<Customer> entities)
         {
             Context.Customers.DeleteRange(entities);
         }
@@ -54,7 +55,7 @@ namespace Optsol.Components.Repository.Infra.Mock.Repositories
             Context.Customers.Insert(entity);
         }
 
-        public void InsertRange(List<Customer> entities)
+        public void InsertRange(IList<Customer> entities)
         {
             Context.Customers.InsertRange(entities);
         }
@@ -71,9 +72,10 @@ namespace Optsol.Components.Repository.Infra.Mock.Repositories
             Context.Customers.Insert(entity);
         }
 
-        public SearchResult<Customer> GetAll<TSearch>(SearchRequest<TSearch> searchRequest) where TSearch : class
+        public ISearchResult<Customer> GetAll<TSearch>(ISearchRequest<TSearch> searchRequest) where TSearch : class
         {
             return Context.Customers.GetPaginated(searchRequest);
         }
+        
     }
 }

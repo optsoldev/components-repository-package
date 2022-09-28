@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2283c497-6dfa-4dd4-ad9e-b7810f8dbcee" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Optsol.Repository.Base/IExpressionReadRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Optsol.Repository.Base/IPaginatedReadRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Optsol.Repository.Base/IReadRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Optsol.Repository.Base/IRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Optsol.Repository.Base/IWriteRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Optsol.Repository.Base/Pagination/ISearchRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Optsol.Repository.Base/Pagination/ISearchResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Optsol.Repository/IExpressionReadRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Optsol.Repository/IPaginatedReadRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components-repository-package.sln" beforeDir="false" afterPath="$PROJECT_DIR$/components-repository-package.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Configurations/AggregateConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Configurations/AggregateConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Extensions/EntityConfigurationExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Extensions/EntityConfigurationExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Optsol.Components.Repository.Infra.EntityFrameworkCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Optsol.Components.Repository.Infra.EntityFrameworkCore.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Providers/ITentnatProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Providers/ITentnatProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Repositories/Pagination/IInclude.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Repositories/Pagination/IInclude.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Repositories/Pagination/IOrderBy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Repositories/Pagination/IOrderBy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Repositories/Pagination/ISearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Repositories/Pagination/ISearch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Repositories/Repository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Repositories/Repository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Repositories/RepositoryTenant.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Repositories/RepositoryTenant.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Core/CreaditCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Core/CreaditCard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Core/Customer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Core/Customer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Core/CustomerList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Core/CustomerList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Core/Email.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Core/Email.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Optsol.Components.Repository.Infra.Mock.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Optsol.Components.Repository.Infra.Mock.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Repositories/IMockReadRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Repositories/IMockReadRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Repositories/IMockWriteRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Repositories/IMockWriteRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Repositories/MockRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Repositories/MockRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.MongoDB/Contexts/Context.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.MongoDB/Contexts/Context.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.MongoDB/Exceptions/MongoDBException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.MongoDB/Exceptions/MongoDBException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.MongoDB/Optsol.Components.Repository.Infra.MongoDB.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.MongoDB/Optsol.Components.Repository.Infra.MongoDB.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.MongoDB/Repositories/IMongoRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.MongoDB/Repositories/IMongoRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.MongoDB/Repositories/MongoRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.MongoDB/Repositories/MongoRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.MongoDB/Repositories/Pagination/IOrderBy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.MongoDB/Repositories/Pagination/IOrderBy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.MongoDB/Repositories/Pagination/ISearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.MongoDB/Repositories/Pagination/ISearch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Entities/AggregateRoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository/Entities/AggregateRoot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Entities/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository/Entities/Entity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Entities/IAggregateRoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository/Entities/IAggregateRoot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Entities/IEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository/Entities/IEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Entities/IEntityCreatable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository/Entities/IEntityCreatable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Entities/IEntityDeletable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository/Entities/IEntityDeletable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Entities/IEntityTenantable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository/Entities/IEntityTenantable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Exceptions/DateValueException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository/Exceptions/DateValueException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Exceptions/NotificationException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository/Exceptions/NotificationException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Notifications/INotification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository/Notifications/INotification.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Notifications/Notification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository/Notifications/Notification.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Notifications/NotificationCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository/Notifications/NotificationCollection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Notifications/NotificationContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository/Notifications/NotificationContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Optsol.Components.Repository.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository/Optsol.Domain.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Repositories/IReadRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Repository/IReadRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Repositories/IRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Repository/IRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Repositories/IWriteRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Repository/IWriteRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Repositories/Pagination/SearchRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Repository/Pagination/SearchRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Repositories/Pagination/SearchResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Repository/Pagination/SearchResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/ValueObjects/DateNullable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository/ValueObjects/DateNullable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/ValueObjects/DateValue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository/ValueObjects/DateValue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/ValueObjects/IValueObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository/ValueObjects/IValueObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/ValueObjects/ValueObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository/ValueObjects/ValueObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Entities/AggregateSpec.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Entities/AggregateSpec.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Entities/EntitySpec.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Entities/EntitySpec.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/MongoDB/MongoRepositorySpec.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/MongoDB/MongoRepositorySpec.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Notifications/NotificationCollectionSpec.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Notifications/NotificationCollectionSpec.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Notifications/NotificationContextSpec.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Notifications/NotificationContextSpec.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Notifications/NotificationSpec.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Notifications/NotificationSpec.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Optsol.Components.Repository.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Optsol.Components.Repository.Test.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Repositories/MockRepositorySpec.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Repositories/MockRepositorySpec.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/ValueObjects/DateNullableSpec.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/ValueObjects/DateNullableSpec.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/ValueObjects/DateValueSpec.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/ValueObjects/DateValueSpec.cs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2FPGUXtRcBJHNXrfzYIxBCGJPxi" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2283c497-6dfa-4dd4-ad9e-b7810f8dbcee" name="Changes" comment="" />
+      <created>1664386321587</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1664386321587</updated>
+      <workItem from="1664386324668" duration="16174000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>

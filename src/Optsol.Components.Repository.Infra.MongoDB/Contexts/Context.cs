@@ -9,30 +9,30 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Contexts
 {
     public abstract class Context : IDisposable
     {
-        private bool disposed = false;
+        private bool disposed;
         private IClientSessionHandle session;
-        private TransactionList transactions;
+        private readonly TransactionList transactions;
 
-        public IMongoClient MongoClient { get; private set; }
+        private IMongoClient MongoClient { get; }
 
-        public IMongoDatabase Database { get; private set; }
+        private IMongoDatabase Database { get; }
 
         protected Context(MongoSettings mongoSettings, IMongoClient mongoClient)
         {
             if (mongoSettings is null)
             {
-                throw new MongoDBException($"{nameof(mongoSettings)} está nulo");
+                throw new MongoDbException($"{nameof(mongoSettings)} está nulo");
             }
 
             transactions = TransactionList.Create();
 
-            MongoClient = mongoClient ?? throw new MongoDBException($"{nameof(mongoClient)} está nulo");
+            MongoClient = mongoClient ?? throw new MongoDbException($"{nameof(mongoClient)} está nulo");
             Database = mongoClient.GetDatabase(mongoSettings.DatabaseName);
         }
 
         public int SaveChanges()
         {
-            var countSaveTasks = 0;
+            int countSaveTasks;
             using (session = MongoClient.StartSession())
             {
                 session.StartTransaction();

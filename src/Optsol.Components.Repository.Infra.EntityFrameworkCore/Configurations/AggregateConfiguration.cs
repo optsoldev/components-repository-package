@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Optsol.Components.Repository.Domain.Entities;
+using Optsol.Domain.Entities;
 using Optsol.Components.Repository.Infra.EntityFrameworkCore.Extensions;
 
 namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Configurations

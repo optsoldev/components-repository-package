@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Optsol.Components.Repository.Domain.ValueObjects
+namespace Optsol.Domain.ValueObjects
 {
     public interface IValueObject: IEquatable<IValueObject>
     {

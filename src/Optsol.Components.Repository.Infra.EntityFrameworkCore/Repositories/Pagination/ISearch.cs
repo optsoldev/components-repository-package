@@ -1,8 +1,8 @@
-﻿using Optsol.Components.Repository.Domain.Entities;
-using System;
+﻿using System;
 using System.Linq.Expressions;
+using Optsol.Domain.Entities;
 
-namespace Optsol.Components.Repository.Infra.Repositories.Pagination
+namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories.Pagination
 {
     public interface ISearch<TAggregateRoot> 
         where TAggregateRoot : IAggregateRoot

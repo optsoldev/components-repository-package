@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Optsol.Components.Repository.Domain.Exceptions
+namespace Optsol.Domain.Exceptions
 {
     [Serializable]
     public class DateValueException : Exception

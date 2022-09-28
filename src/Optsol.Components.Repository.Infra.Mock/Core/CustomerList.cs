@@ -1,12 +1,13 @@
-﻿using Optsol.Components.Repository.Domain.Repositories.Pagination;
-using Optsol.Components.Repository.Domain.ValueObjects;
-using Optsol.Components.Repository.Infra.Mock.Entities.Core;
-using Optsol.Components.Repository.Infra.Repositories.Pagination;
+﻿using Optsol.Components.Repository.Infra.Mock.Entities.Core;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
+using Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories.Pagination;
+using Optsol.Domain.ValueObjects;
+using Optsol.Repository.Base.Pagination;
+using Optsol.Repository.Pagination;
 
 namespace Optsol.Components.Repository.Infra.Mock.Core
 {
@@ -23,8 +24,8 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
 
         public IReadOnlyCollection<Customer> GetCustomers()
         {
-            IReadOnlyCollection<Customer> customers = new ReadOnlyCollection<Customer>(this.customers);
-            return customers;
+            IReadOnlyCollection<Customer> getCustomers = new ReadOnlyCollection<Customer>(this.customers);
+            return getCustomers;
         }
 
         public void Insert(Customer customer)
@@ -32,7 +33,7 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
             customers.Add(customer);
         }
 
-        public void InsertRange(List<Customer> customerCollection)
+        public void InsertRange(IList<Customer> customerCollection)
         {
             foreach (var customer in customerCollection)
             {
@@ -45,7 +46,7 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
             customers.Remove(customer);
         }
 
-        public void DeleteRange(List<Customer> customersCollection)
+        public void DeleteRange(IList<Customer> customersCollection)
         {
             foreach (var customer in customersCollection)
             {
@@ -109,11 +110,16 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
             return customers.Where(customer => ids.Contains(customer.Id));
         }
 
-        public SearchResult<Customer> GetPaginated<TSearch>(SearchRequest<TSearch> searchRequest) where TSearch : class
+        public ISearchResult<Customer> GetPaginated<TSearch>(ISearchRequest<TSearch> searchRequest) where TSearch : class
         {
             var search = searchRequest.Search as ISearch<Customer>;
             var include = searchRequest.Search as IInclude<Customer>;
             var orderBy = searchRequest.Search as IOrderBy<Customer>;
+
+            var page = searchRequest.Page is not null && searchRequest.Page.Value > 0 ? searchRequest.Page.Value : 1;
+            var pageSize = searchRequest.PageSize is not null && searchRequest.PageSize.Value > 0
+                ? searchRequest.PageSize.Value
+                : 10;
 
             var query = customers.AsQueryable();
 
@@ -124,21 +130,21 @@ namespace Optsol.Components.Repository.Infra.Mock.Core
             query = ApplyOrderBy(query, orderBy?.OrderBy());
 
             return new SearchResult<Customer>()
-                .SetPage(searchRequest.Page)
+                .SetPage(page)
                 .SetPageSize(searchRequest.PageSize)
                 .SetTotalCount(query.Count())
-                .SetPaginatedItems(ApplyPagination(query, searchRequest.Page, searchRequest.PageSize));
+                .SetPaginatedItems(ApplyPagination(query, page, pageSize));
         }
 
         private static IEnumerable<Customer> ApplyPagination(IQueryable<Customer> query, int page, int? size)
         {
             var skip = --page * (size ?? 0);
 
-            query = query.Skip((int)skip);
+            query = query.Skip(skip);
 
             if (size.HasValue)
             {
-                query = query.Take((int)size.Value);
+                query = query.Take(size.Value);
             }
 
             return query.AsEnumerable();

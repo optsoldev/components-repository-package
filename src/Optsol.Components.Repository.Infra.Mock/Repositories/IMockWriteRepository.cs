@@ -1,5 +1,5 @@
-﻿using Optsol.Components.Repository.Domain.Repositories;
-using Optsol.Components.Repository.Infra.Mock.Entities.Core;
+﻿using Optsol.Components.Repository.Infra.Mock.Entities.Core;
+using Optsol.Repository;
 
 namespace Optsol.Components.Repository.Infra.Mock.Repositories
 {

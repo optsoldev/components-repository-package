@@ -1,6 +1,6 @@
-﻿using Optsol.Components.Repository.Domain.Entities;
+﻿using Optsol.Domain.Entities;
 
-namespace Optsol.Components.Repository.Domain.Repositories
+namespace Optsol.Repository
 {
     public interface IRepository<TAggregateRoot> :
         IReadRepository<TAggregateRoot>,

@@ -1,6 +1,6 @@
-﻿using Optsol.Components.Repository.Domain.Exceptions;
+﻿using Optsol.Domain.Exceptions;
 
-namespace Optsol.Components.Repository.Domain.Notifications
+namespace Optsol.Domain.Notifications
 {
     public class Notification
     {

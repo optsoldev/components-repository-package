@@ -1,10 +1,9 @@
 ﻿using FluentAssertions;
 using FluentValidation.Results;
 using MongoDB.Driver;
-using Optsol.Components.Repository.Domain.Entities;
-using Optsol.Components.Repository.Domain.Notifications;
-using Optsol.Components.Repository.Domain.Repositories.Pagination;
-using Optsol.Components.Repository.Domain.ValueObjects;
+using Optsol.Domain.Entities;
+using Optsol.Domain.Notifications;
+using Optsol.Domain.ValueObjects;
 using Optsol.Components.Repository.Infra.MongoDB.Contexts;
 using Optsol.Components.Repository.Infra.MongoDB.Repositories;
 using Optsol.Components.Repository.Infra.MongoDB.Repositories.Pagination;
@@ -12,6 +11,7 @@ using Optsol.Components.Repository.Infra.MongoDB.Settings;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Optsol.Repository.Pagination;
 using Xunit;
 
 namespace Optsol.Components.Repository.Test.MongoDB

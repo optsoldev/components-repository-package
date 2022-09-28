@@ -1,8 +1,8 @@
-﻿using Optsol.Components.Repository.Domain.Exceptions;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Optsol.Domain.Exceptions;
 
-namespace Optsol.Components.Repository.Domain.ValueObjects
+namespace Optsol.Domain.ValueObjects
 {
     public class DateValue : ValueObject
     {

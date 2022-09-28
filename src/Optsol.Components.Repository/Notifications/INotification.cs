@@ -1,6 +1,6 @@
 ﻿using FluentValidation.Results;
 
-namespace Optsol.Components.Repository.Domain.Notifications
+namespace Optsol.Domain.Notifications
 {
     public interface INotification
     {

@@ -1,4 +1,4 @@
-﻿namespace Optsol.Components.Repository.Domain.Entities
+﻿namespace Optsol.Domain.Entities
 {
     public interface IAggregateRoot : IEntityCreatable { }
 }

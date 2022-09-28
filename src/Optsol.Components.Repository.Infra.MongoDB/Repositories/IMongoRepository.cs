@@ -1,7 +1,7 @@
 ﻿using MongoDB.Driver;
-using Optsol.Components.Repository.Domain.Entities;
-using Optsol.Components.Repository.Domain.Repositories;
+using Optsol.Domain.Entities;
 using Optsol.Components.Repository.Infra.MongoDB.Contexts;
+using Optsol.Repository;
 
 namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
 {

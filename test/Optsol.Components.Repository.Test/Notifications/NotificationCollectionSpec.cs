@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using Optsol.Components.Repository.Domain.Notifications;
+using Optsol.Domain.Notifications;
 using Xunit;
 
 namespace Optsol.Components.Repository.Test.Notifications

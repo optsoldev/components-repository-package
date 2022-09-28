@@ -1,24 +1,25 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Optsol.Components.Repository.Domain.Entities;
-using Optsol.Components.Repository.Domain.Repositories;
-using Optsol.Components.Repository.Domain.Repositories.Pagination;
+using Optsol.Domain.Entities;
 using Optsol.Components.Repository.Infra.EntityFrameworkCore.Contexts;
-using Optsol.Components.Repository.Infra.Repositories.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories.Pagination;
+using Optsol.Repository;
+using Optsol.Repository.Base.Pagination;
+using Optsol.Repository.Pagination;
 
 namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
 {
     public class Repository<TAggregateRoot> : IRepository<TAggregateRoot>
         where TAggregateRoot : class, IAggregateRoot
     {
-        public Context Context { get; protected set; }
+        protected Context Context { get; init; }
 
-        public DbSet<TAggregateRoot> Set { get; protected set; }
+        protected DbSet<TAggregateRoot> Set { get; }
 
-        public Repository(Context context)
+        protected Repository(Context context)
         {
             Context = context;
             Set = context.Set<TAggregateRoot>();
@@ -27,24 +28,25 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
         public virtual TAggregateRoot GetById(Guid id) => Set.Find(id);
 
         public virtual IEnumerable<TAggregateRoot> GetAllByIds(params Guid[] ids)
-        {
-            return Set.Where(aggregate => ids.Any(key => key == aggregate.Id));
-        }
-
+            => Set.Where(aggregate => ids.Any(key => key == aggregate.Id));
+    
         public virtual IEnumerable<TAggregateRoot> GetAll() => Set.AsEnumerable();
 
         public virtual IEnumerable<TAggregateRoot> GetAll(Expression<Func<TAggregateRoot, bool>> filterExpression)
-        {
-            return Set.Where(filterExpression.Compile());
-        }
-
-        public SearchResult<TAggregateRoot> GetAll<TSearch>(SearchRequest<TSearch> searchRequest)
+            => Set.Where(filterExpression.Compile());
+        
+        public ISearchResult<TAggregateRoot> GetAll<TSearch>(ISearchRequest<TSearch> searchRequest)
             where TSearch : class
         {
             var search = searchRequest.Search as ISearch<TAggregateRoot>;
             var include = searchRequest.Search as IInclude<TAggregateRoot>;
             var orderBy = searchRequest.Search as IOrderBy<TAggregateRoot>;
 
+            var page = searchRequest.Page is not null && searchRequest.Page.Value > 0 ? searchRequest.Page.Value : 1;
+            var pageSize = searchRequest.PageSize is not null && searchRequest.PageSize.Value > 0
+                ? searchRequest.PageSize.Value
+                : 10;
+            
             IQueryable<TAggregateRoot> query = this.Set;
 
             query = ApplySearch(query, search?.Searcher());
@@ -54,19 +56,19 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
             query = ApplyOrderBy(query, orderBy?.OrderBy());
 
             return new SearchResult<TAggregateRoot>()
-                .SetPage(searchRequest.Page)
+                .SetPage(page)
                 .SetPageSize(searchRequest.PageSize)
                 .SetTotalCount(query.Count())
-                .SetPaginatedItems(ApplyPagination(query, searchRequest.Page, searchRequest.PageSize));
+                .SetPaginatedItems(ApplyPagination(query, page, pageSize));
         }
 
         public virtual void Insert(TAggregateRoot aggregate) => Set.Add(aggregate);
 
-        public virtual void InsertRange(List<TAggregateRoot> aggregates) => Set.AddRange(aggregates);
+        public virtual void InsertRange(IList<TAggregateRoot> aggregates) => Set.AddRange(aggregates);
 
         public virtual void Update(TAggregateRoot aggregate)
         {
-            var aggregateInLocal = Set.Local?.FirstOrDefault(localEntity => localEntity.Id == aggregate.Id);
+            var aggregateInLocal = Set.Local.FirstOrDefault(localEntity => localEntity.Id == aggregate.Id);
             if (aggregateInLocal is not null)
             {
                 Context.Entry(aggregateInLocal).State = EntityState.Detached;
@@ -79,9 +81,9 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
         {
             if (aggregate is null) return;
 
-            if (aggregate is IEntityDeletable)
+            if (aggregate is IEntityDeletable deletable)
             {
-                (aggregate as IEntityDeletable).Delete();
+                deletable.Delete();
 
                 Update(aggregate);
 
@@ -91,7 +93,7 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
             Set.Attach(aggregate).State = EntityState.Detached;
         }
 
-        public virtual void DeleteRange(List<TAggregateRoot> aggregates)
+        public virtual void DeleteRange(IList<TAggregateRoot> aggregates)
         {
             foreach (var aggregate in aggregates)
             {
@@ -101,20 +103,9 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
 
         public virtual int SaveChanges() => Context.SaveChanges();
 
-        private static IEnumerable<TAggregateRoot> ApplyPagination(IQueryable<TAggregateRoot> query, int page, int? size)
-        {
-            var skip = --page * (size ?? 0);
-
-            query = query.Skip(skip);
-
-            if (size.HasValue)
-            {
-                query = query.Take(size.Value);
-            }
-
-            return query.AsEnumerable();
-        }
-
+        private static IEnumerable<TAggregateRoot> ApplyPagination(IQueryable<TAggregateRoot> query, int page, int size)
+            => query.Skip(--page * size).Take(size).AsEnumerable();
+      
         private static IQueryable<TAggregateRoot> ApplySearch(IQueryable<TAggregateRoot> query, Expression<Func<TAggregateRoot, bool>> search = null)
         {
             var searchIsNotNull = search != null;

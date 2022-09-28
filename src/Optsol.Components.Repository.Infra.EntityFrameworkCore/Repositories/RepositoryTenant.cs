@@ -1,8 +1,8 @@
-﻿using Optsol.Components.Repository.Domain.Entities;
-using Optsol.Components.Repository.Domain.Repositories;
+﻿using Optsol.Domain.Entities;
 using Optsol.Components.Repository.Infra.EntityFrameworkCore.Contexts;
 using Optsol.Components.Repository.Infra.EntityFrameworkCore.Providers;
 using System;
+using Optsol.Repository;
 
 namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
 {

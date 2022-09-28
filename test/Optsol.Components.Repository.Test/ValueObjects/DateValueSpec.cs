@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
-using Optsol.Components.Repository.Domain.Exceptions;
-using Optsol.Components.Repository.Domain.ValueObjects;
+using Optsol.Domain.Exceptions;
+using Optsol.Domain.ValueObjects;
 using System;
 using Xunit;
 
