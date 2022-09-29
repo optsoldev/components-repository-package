@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
 using Optsol.Domain.Entities;
 using Optsol.Domain.ValueObjects;
-using Optsol.Components.Repository.Infra.Mock.Entities.Core;
-using Optsol.Components.Repository.Infra.Mock.Repositories;
+using Optsol.Repository.Test.Mock.Entities.Core;
+using Optsol.Repository.Test.Mock.Repositories;
 using Optsol.Components.Repository.Test.Repositories;
 using System;
 using System.Diagnostics.CodeAnalysis;

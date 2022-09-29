@@ -8,9 +8,9 @@ public interface ISearchResult<T>
 
     public long TotalCount { get; }
 
-    public long PageCount => Items.Count();
+    public long PageCount => Items?.Count() ?? 0;
 
-    public IEnumerable<T> Items { get; }
+    public IEnumerable<T>? Items { get; }
 
     public ISearchResult<T> SetPage(int page);
 

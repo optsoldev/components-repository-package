@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace Optsol.Components.Repository.Infra.Mock.Entities.Core
+namespace Optsol.Repository.Test.Mock.Entities.Core
 {
     public class Email : ValueObject
     {

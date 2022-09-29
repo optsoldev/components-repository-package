@@ -1,7 +1,7 @@
 ﻿using Optsol.Domain.Entities;
 using Optsol.Domain.ValueObjects;
 
-namespace Optsol.Components.Repository.Infra.Mock.Entities.Core
+namespace Optsol.Repository.Test.Mock.Entities.Core
 {
     public sealed class Customer : AggregateRoot
     {

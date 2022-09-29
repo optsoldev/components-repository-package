@@ -1,9 +1,9 @@
 ﻿using Optsol.Domain.Entities;
 using Optsol.Domain.ValueObjects;
-using Optsol.Components.Repository.Infra.Mock.Exceptions;
 using System.Text.RegularExpressions;
+using Optsol.Repository.Test.Mock.Exceptions;
 
-namespace Optsol.Components.Repository.Infra.Mock.Core
+namespace Optsol.Repository.Test.Mock.Core
 {
     public class CreditCard : Entity, IEntityCreatable
     {
