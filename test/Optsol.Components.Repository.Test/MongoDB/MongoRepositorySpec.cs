@@ -11,14 +11,14 @@ using Optsol.Components.Repository.Infra.MongoDB.Settings;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using Optsol.Repository.Pagination;
+using Optsol.Repository.Base.Pagination;
 using Xunit;
 
 namespace Optsol.Components.Repository.Test.MongoDB
 {
     public class MongoRepositorySpec
     {
-        public const string CONNECTION_STRING = "mongodb://127.0.0.1:30001";
+        public const string CONNECTION_STRING = "mongodb://127.0.0.2:30001";
 
         public abstract class Aggregate : AggregateRoot, INotification
         {

@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Optsol.Domain.Entities;
-using Optsol.Components.Repository.Infra.EntityFrameworkCore.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +7,11 @@ using System.Linq.Expressions;
 using Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories.Pagination;
 using Optsol.Repository;
 using Optsol.Repository.Base.Pagination;
-using Optsol.Repository.Pagination;
+using Optsol.Repository.Infra.EFCore.Base.Contexts;
 
-namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
-{
-    public class Repository<TAggregateRoot> : IRepository<TAggregateRoot>
+namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories;
+
+    public abstract class Repository<TAggregateRoot> : IRepository<TAggregateRoot>
         where TAggregateRoot : class, IAggregateRoot
     {
         protected Context Context { get; init; }
@@ -139,4 +138,3 @@ namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories
             return query;
         }
     }
-}
