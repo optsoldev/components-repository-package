@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Optsol.Repository.Base.Pagination;
-using Optsol.Repository.Pagination;
 
 namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
 {

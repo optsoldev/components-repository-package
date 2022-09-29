@@ -2,15 +2,50 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2283c497-6dfa-4dd4-ad9e-b7810f8dbcee" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.components-repository-package/.idea/indexLayout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.components-repository-package/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.components-repository-package/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Optsol.Repository.Base/Pagination/SearchResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/Contexts/Context.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/Optsol.Repository.Infra.EFCore.Base.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/Pagination/IInclude.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/Pagination/IOrderBy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/Pagination/ISearch.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/ReadRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/Repository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/WriteRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.components-repository-package/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.components-repository-package/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components-repository-package.sln" beforeDir="false" afterPath="$PROJECT_DIR$/components-repository-package.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Contexts/Context.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Optsol.Components.Repository.Infra.EntityFrameworkCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Optsol.Components.Repository.Infra.EntityFrameworkCore.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Providers/ITentnatProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Providers/ITentantProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Repositories/Pagination/IInclude.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Repositories/Pagination/IInclude.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Repositories/Pagination/IOrderBy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Repositories/Pagination/IOrderBy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Repositories/Pagination/ISearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Repositories/Pagination/ISearch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Repositories/Repository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Repositories/Repository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Repositories/RepositoryTenant.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Repositories/RepositoryTenant.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Core/CustomerList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Core/CustomerList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Repositories/MockRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Repositories/MockRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.MongoDB/Optsol.Components.Repository.Infra.MongoDB.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.MongoDB/Optsol.Components.Repository.Infra.MongoDB.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.MongoDB/Repositories/MongoRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.MongoDB/Repositories/MongoRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Optsol.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository/Optsol.Domain.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Optsol.Components.Repository.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Optsol.Components.Repository.Test.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Repository.Base/Optsol.Repository.Base.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Repository.Base/Optsol.Repository.Base.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Repository/Optsol.Repository.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Repository/Optsol.Repository.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Repository/Pagination/SearchRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Repository.Base/Pagination/SearchRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Repository/Pagination/SearchResult.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/MongoDB/MongoRepositorySpec.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/MongoDB/MongoRepositorySpec.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Repositories/MockRepositorySpec.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Repositories/MockRepositorySpec.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/Pagination/IInclude.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/Pagination/IOrderBy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/Pagination/ISearch.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/Repository.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -20,15 +55,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -37,7 +72,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664386321587</updated>
-      <workItem from="1664386324668" duration="17081000" />
+      <workItem from="1664386324668" duration="17674000" />
+      <workItem from="1664454629874" duration="5471000" />
     </task>
     <servers />
   </component>
@@ -59,5 +95,24 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/Repository.cs</url>
+          <line>13</line>
+          <properties documentPath="$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/Repository.cs" initialLine="8" containingFunctionPresentation="property 'Set'">
+            <startOffsets>
+              <option value="448" />
+            </startOffsets>
+            <endOffsets>
+              <option value="452" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

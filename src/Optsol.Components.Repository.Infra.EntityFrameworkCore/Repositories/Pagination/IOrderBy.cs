@@ -1,12 +1,6 @@
-﻿using System;
-using System.Linq;
-using Optsol.Domain.Entities;
+﻿using Optsol.Domain.Entities;
 
-namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories.Pagination
-{
-    public interface IOrderBy<TAggregateRoot>
-         where TAggregateRoot : IAggregateRoot
+namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories.Pagination;
+public interface IOrderBy<TAggregateRoot> : Optsol.Repository.Infra.EFCore.Base.Pagination.IOrderBy<TAggregateRoot> where TAggregateRoot : IAggregateRoot
     {
-        Func<IQueryable<TAggregateRoot>, IOrderedQueryable<TAggregateRoot>> OrderBy();
     }
-}

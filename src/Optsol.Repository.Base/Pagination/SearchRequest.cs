@@ -1,6 +1,5 @@
-﻿using Optsol.Repository.Base.Pagination;
+namespace Optsol.Repository.Base.Pagination;
 
-namespace Optsol.Repository.Pagination;
 public sealed class SearchRequest<TSearch> : ISearchRequest<TSearch>
 {
     public SearchRequest(TSearch search, int? page, int? size)

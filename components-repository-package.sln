@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Optsol.Repository", "src\Op
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Optsol.Repository.Base", "src\Optsol.Repository.Base\Optsol.Repository.Base.csproj", "{06F0AF3E-7AB8-4DA7-8EF1-CA6051D280CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Optsol.Repository.Infra.EFCore.Base", "src\Optsol.Repository.Infra.EFCore.Base\Optsol.Repository.Infra.EFCore.Base.csproj", "{780B6AC7-35DD-487E-BAE2-E9AC1985A720}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -126,6 +128,18 @@ Global
 		{06F0AF3E-7AB8-4DA7-8EF1-CA6051D280CD}.Release|x64.Build.0 = Release|Any CPU
 		{06F0AF3E-7AB8-4DA7-8EF1-CA6051D280CD}.Release|x86.ActiveCfg = Release|Any CPU
 		{06F0AF3E-7AB8-4DA7-8EF1-CA6051D280CD}.Release|x86.Build.0 = Release|Any CPU
+		{780B6AC7-35DD-487E-BAE2-E9AC1985A720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{780B6AC7-35DD-487E-BAE2-E9AC1985A720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{780B6AC7-35DD-487E-BAE2-E9AC1985A720}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{780B6AC7-35DD-487E-BAE2-E9AC1985A720}.Debug|x64.Build.0 = Debug|Any CPU
+		{780B6AC7-35DD-487E-BAE2-E9AC1985A720}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{780B6AC7-35DD-487E-BAE2-E9AC1985A720}.Debug|x86.Build.0 = Debug|Any CPU
+		{780B6AC7-35DD-487E-BAE2-E9AC1985A720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{780B6AC7-35DD-487E-BAE2-E9AC1985A720}.Release|Any CPU.Build.0 = Release|Any CPU
+		{780B6AC7-35DD-487E-BAE2-E9AC1985A720}.Release|x64.ActiveCfg = Release|Any CPU
+		{780B6AC7-35DD-487E-BAE2-E9AC1985A720}.Release|x64.Build.0 = Release|Any CPU
+		{780B6AC7-35DD-487E-BAE2-E9AC1985A720}.Release|x86.ActiveCfg = Release|Any CPU
+		{780B6AC7-35DD-487E-BAE2-E9AC1985A720}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,6 +152,7 @@ Global
 		{0BF89713-0450-4439-B2BB-CEE0B9D6938D} = {03581B11-2B9F-4A1E-9CD4-78608027C29A}
 		{DFE301F7-F531-4B04-B5DA-CB9AA899A9A8} = {03581B11-2B9F-4A1E-9CD4-78608027C29A}
 		{06F0AF3E-7AB8-4DA7-8EF1-CA6051D280CD} = {03581B11-2B9F-4A1E-9CD4-78608027C29A}
+		{780B6AC7-35DD-487E-BAE2-E9AC1985A720} = {03581B11-2B9F-4A1E-9CD4-78608027C29A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0EED129D-EB8B-424E-BDF2-7B1BA78CDA90}

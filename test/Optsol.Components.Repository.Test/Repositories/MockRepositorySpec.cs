@@ -8,7 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories.Pagination;
 using Optsol.Repository;
-using Optsol.Repository.Pagination;
+using Optsol.Repository.Base.Pagination;
 using Xunit;
 
 namespace Optsol.Components.Repository.Test.Repositories
