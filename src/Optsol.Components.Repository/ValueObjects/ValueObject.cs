@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Optsol.Components.Repository.Domain.ValueObjects
+namespace Optsol.Domain.ValueObjects
 {
     public abstract class ValueObject : IValueObject
     {

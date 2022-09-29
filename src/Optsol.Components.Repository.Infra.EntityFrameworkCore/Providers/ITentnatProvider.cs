@@ -1,5 +1,4 @@
-﻿using Optsol.Components.Repository.Domain.ValueObjects;
-using System;
+﻿using System;
 
 namespace Optsol.Components.Repository.Infra.EntityFrameworkCore.Providers
 {

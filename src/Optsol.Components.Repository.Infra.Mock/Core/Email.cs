@@ -1,4 +1,4 @@
-﻿using Optsol.Components.Repository.Domain.ValueObjects;
+﻿using Optsol.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;

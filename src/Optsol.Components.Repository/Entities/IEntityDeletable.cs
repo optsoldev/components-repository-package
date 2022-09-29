@@ -1,6 +1,6 @@
-﻿using Optsol.Components.Repository.Domain.ValueObjects;
+﻿using Optsol.Domain.ValueObjects;
 
-namespace Optsol.Components.Repository.Domain.Entities
+namespace Optsol.Domain.Entities
 {
     public interface IEntityDeletable
     {

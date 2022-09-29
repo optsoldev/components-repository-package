@@ -1,5 +1,5 @@
 ﻿using MongoDB.Driver;
-using Optsol.Components.Repository.Domain.Entities;
+using Optsol.Domain.Entities;
 using System;
 
 namespace Optsol.Components.Repository.Infra.MongoDB.Repositories.Pagination;

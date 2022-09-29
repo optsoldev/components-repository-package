@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using Optsol.Components.Repository.Domain.ValueObjects;
+using Optsol.Domain.ValueObjects;
 using System;
 using Xunit;
 

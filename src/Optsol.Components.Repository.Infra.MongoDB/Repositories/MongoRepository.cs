@@ -1,17 +1,18 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
-using Optsol.Components.Repository.Domain.Entities;
-using Optsol.Components.Repository.Domain.Repositories.Pagination;
+using Optsol.Domain.Entities;
 using Optsol.Components.Repository.Infra.MongoDB.Contexts;
 using Optsol.Components.Repository.Infra.MongoDB.Repositories.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Optsol.Repository.Base.Pagination;
+using Optsol.Repository.Pagination;
 
 namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
 {
-    public class MongoRepository<TAggregateRoot> : IMongoRepository<TAggregateRoot>
+    public sealed class MongoRepository<TAggregateRoot> : IMongoRepository<TAggregateRoot>
         where TAggregateRoot : class, IAggregateRoot
     {
         public MongoRepository(Context context)
@@ -20,11 +21,11 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
             Set = context.GetCollection<TAggregateRoot>(typeof(TAggregateRoot).Name);
         }
 
-        public Context Context { get; private set; }
+        public Context Context { get; }
 
-        public IMongoCollection<TAggregateRoot> Set { get; private set; }
+        public IMongoCollection<TAggregateRoot> Set { get; }
 
-        public virtual IEnumerable<TAggregateRoot> GetAll()
+        public IEnumerable<TAggregateRoot> GetAll()
         {
             if (typeof(TAggregateRoot).GetInterfaces().Contains(typeof(IEntityDeletable)))
             {
@@ -35,7 +36,7 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
             return Set.AsQueryable().ToEnumerable();
         }
 
-        public virtual IEnumerable<TAggregateRoot> GetAllByIds(params Guid[] ids)
+        public IEnumerable<TAggregateRoot> GetAllByIds(params Guid[] ids)
         {
             if (typeof(TAggregateRoot).GetInterfaces().Contains(typeof(IEntityDeletable)))
             {
@@ -49,7 +50,7 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
             return Set.Find(f => ids.Contains(f.Id)).ToEnumerable();
         }
 
-        public virtual TAggregateRoot GetById(Guid id)
+        public TAggregateRoot GetById(Guid id)
         {
             if (typeof(TAggregateRoot).GetInterfaces().Contains(typeof(IEntityDeletable)))
             {
@@ -62,7 +63,7 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
             return Set.Find(f => f.Id.Equals(id)).FirstOrDefault();
         }
 
-        public virtual IEnumerable<TAggregateRoot> GetAll(Expression<Func<TAggregateRoot, bool>> filterExpression)
+        public IEnumerable<TAggregateRoot> GetAll(Expression<Func<TAggregateRoot, bool>> filterExpression)
         {
             if (typeof(TAggregateRoot).GetInterfaces().Contains(typeof(IEntityDeletable)))
             {
@@ -76,11 +77,16 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
             return Set.Find(filterExpression).ToEnumerable();
         }
 
-        public virtual SearchResult<TAggregateRoot> GetAll<TSearch>(SearchRequest<TSearch> searchRequest) where TSearch : class
+        public ISearchResult<TAggregateRoot> GetAll<TSearch>(ISearchRequest<TSearch> searchRequest) where TSearch : class
         {
             var search = searchRequest.Search as ISearch<TAggregateRoot>;
             var orderBy = searchRequest.Search as IOrderBy<TAggregateRoot>;
 
+            var page = searchRequest.Page is not null && searchRequest.Page.Value > 0 ? searchRequest.Page.Value : 1;
+            var pageSize = searchRequest.PageSize is not null && searchRequest.PageSize.Value > 0
+                ? searchRequest.PageSize.Value
+                : 10;
+        
             var countFacet = AggregateFacet.Create("countFacet",
                 PipelineDefinition<TAggregateRoot, AggregateCountResult>.Create(new[]
                 {
@@ -95,8 +101,8 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
                 PipelineDefinition<TAggregateRoot, TAggregateRoot>.Create(new[]
                 {
                     PipelineStageDefinitionBuilder.Sort(sortDef),
-                    PipelineStageDefinitionBuilder.Skip<TAggregateRoot>((searchRequest.Page - 1) * (searchRequest.PageSize ?? 0)),
-                    PipelineStageDefinitionBuilder.Limit<TAggregateRoot>(searchRequest.PageSize.Value)
+                    PipelineStageDefinitionBuilder.Skip<TAggregateRoot>((page - 1) * pageSize),
+                    PipelineStageDefinitionBuilder.Limit<TAggregateRoot>(pageSize)
                 }));
 
             var filterDef = GetFilterDef(search);
@@ -117,7 +123,7 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
                 .Output<TAggregateRoot>();
 
             return new SearchResult<TAggregateRoot>()
-                .SetPage(searchRequest.Page)
+                .SetPage(page)
                 .SetPageSize(searchRequest.PageSize)
                 .SetPaginatedItems(data)
                 .SetTotalCount((int)count);
@@ -146,19 +152,19 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
             return searchDef;
         }
 
-        public virtual void Insert(TAggregateRoot aggregate) => Context.AddTransaction(() => Set.InsertOneAsync(aggregate));
+        public void Insert(TAggregateRoot aggregate) => Context.AddTransaction(() => Set.InsertOneAsync(aggregate));
 
-        public virtual void InsertRange(List<TAggregateRoot> aggregates) => Context.AddTransaction(() => Set.InsertManyAsync(aggregates));
+        public void InsertRange(IList<TAggregateRoot> aggregates) => Context.AddTransaction(() => Set.InsertManyAsync(aggregates));
 
-        public virtual void Update(TAggregateRoot aggregate) => Context.AddTransaction(() => Set.ReplaceOneAsync(f => f.Id.Equals(aggregate.Id), aggregate));
+        public void Update(TAggregateRoot aggregate) => Context.AddTransaction(() => Set.ReplaceOneAsync(f => f.Id.Equals(aggregate.Id), aggregate));
 
-        public virtual void Delete(TAggregateRoot aggregate)
+        public void Delete(TAggregateRoot aggregate)
         {
             if (aggregate is null) return;
 
-            if (aggregate is IEntityDeletable)
+            if (aggregate is IEntityDeletable deletable)
             {
-                (aggregate as IEntityDeletable).Delete();
+                deletable.Delete();
 
                 Update(aggregate);
 
@@ -168,7 +174,7 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
             Context.AddTransaction(() => Set.DeleteOneAsync(f => f.Id.Equals(aggregate.Id)));
         }
 
-        public void DeleteRange(List<TAggregateRoot> aggregates)
+        public void DeleteRange(IList<TAggregateRoot> aggregates)
         {
             foreach (var aggregate in aggregates)
             {
@@ -176,6 +182,6 @@ namespace Optsol.Components.Repository.Infra.MongoDB.Repositories
             }
         }
 
-        public virtual int SaveChanges() => Context.SaveChanges();
+        public int SaveChanges() => Context.SaveChanges();
     }
 }

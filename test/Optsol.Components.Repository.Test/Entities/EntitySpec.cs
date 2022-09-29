@@ -1,7 +1,6 @@
 ﻿using FluentAssertions;
-using Optsol.Components.Repository.Domain.Entities;
-using Optsol.Components.Repository.Domain.Repositories;
-using Optsol.Components.Repository.Domain.ValueObjects;
+using Optsol.Domain.Entities;
+using Optsol.Domain.ValueObjects;
 using Optsol.Components.Repository.Infra.Mock.Core;
 using Optsol.Components.Repository.Infra.Mock.Entities.Core;
 using Optsol.Components.Repository.Infra.Mock.Repositories;
@@ -9,6 +8,7 @@ using Optsol.Components.Repository.Test.Repositories;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Optsol.Repository;
 using Xunit;
 
 namespace Optsol.Components.Repository.Test.Entities

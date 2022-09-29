@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Version>0.0.1</Version>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Optsol.Components.Repository\Optsol.Domain.csproj" />
+      <ProjectReference Include="..\Optsol.Repository.Base\Optsol.Repository.Base.csproj" />
+    </ItemGroup>
+
+</Project>

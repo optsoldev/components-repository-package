@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
-using Optsol.Components.Repository.Domain.Exceptions;
-using Optsol.Components.Repository.Domain.Notifications;
+using Optsol.Domain.Exceptions;
+using Optsol.Domain.Notifications;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using Xunit;

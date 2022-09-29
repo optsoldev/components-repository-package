@@ -2,9 +2,9 @@
 
 namespace Optsol.Components.Repository.Infra.MongoDB.Exceptions
 {
-    public class MongoDBException : Exception
+    public class MongoDbException : Exception
     {
-        public MongoDBException(string message) : base(message)
+        public MongoDbException(string message) : base(message)
         {
         }
     }

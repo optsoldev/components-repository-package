@@ -1,7 +1,6 @@
-﻿using Optsol.Components.Repository.Domain.ValueObjects;
-using System;
+﻿using System;
 
-namespace Optsol.Components.Repository.Domain.Entities
+namespace Optsol.Domain.Entities
 {
     public abstract class Entity : IEntity
     {

@@ -1,11 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Optsol.Components.Repository.Domain.Entities;
-using Optsol.Components.Repository.Domain.ValueObjects;
+using Optsol.Domain.Entities;
 using Optsol.Components.Repository.Infra.EntityFrameworkCore.Exceptions;
 using Optsol.Components.Repository.Infra.EntityFrameworkCore.Providers;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 

@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using FluentValidation.Results;
 using Moq;
-using Optsol.Components.Repository.Domain.Notifications;
+using Optsol.Domain.Notifications;
 using System.Collections.Generic;
 using Xunit;
 

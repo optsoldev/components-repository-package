@@ -1,14 +1,14 @@
 ﻿using FluentAssertions;
-using Optsol.Components.Repository.Domain.Repositories;
-using Optsol.Components.Repository.Domain.Repositories.Pagination;
-using Optsol.Components.Repository.Domain.ValueObjects;
+using Optsol.Domain.ValueObjects;
 using Optsol.Components.Repository.Infra.Mock.Entities.Core;
 using Optsol.Components.Repository.Infra.Mock.Repositories;
-using Optsol.Components.Repository.Infra.Repositories.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories.Pagination;
+using Optsol.Repository;
+using Optsol.Repository.Pagination;
 using Xunit;
 
 namespace Optsol.Components.Repository.Test.Repositories

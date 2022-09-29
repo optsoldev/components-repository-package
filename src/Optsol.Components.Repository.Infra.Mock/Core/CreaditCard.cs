@@ -1,5 +1,5 @@
-﻿using Optsol.Components.Repository.Domain.Entities;
-using Optsol.Components.Repository.Domain.ValueObjects;
+﻿using Optsol.Domain.Entities;
+using Optsol.Domain.ValueObjects;
 using Optsol.Components.Repository.Infra.Mock.Exceptions;
 using System.Text.RegularExpressions;
 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Optsol.Components.Repository.Domain.Entities
+namespace Optsol.Domain.Entities
 {
     public interface IEntity : IEquatable<IEntity>
     {

@@ -1,7 +1,7 @@
-﻿using Optsol.Components.Repository.Domain.ValueObjects;
-using System;
+﻿using System;
+using Optsol.Domain.ValueObjects;
 
-namespace Optsol.Components.Repository.Domain.Entities
+namespace Optsol.Domain.Entities
 {
     public abstract class AggregateRoot : Entity, IAggregateRoot
     {
