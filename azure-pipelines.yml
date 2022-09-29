@@ -42,7 +42,7 @@ steps:
   inputs:
     command: 'custom'
     projects: |
-      **/src/*.csproj
+      **/src/**/*.csproj
       !**/*Test*.csproj
     custom: 'pack'
     arguments: '-c $(buildConfiguration) --no-restore --no-build -o packages'
