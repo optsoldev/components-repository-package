@@ -3,23 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2283c497-6dfa-4dd4-ad9e-b7810f8dbcee" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.components-repository-package/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.components-repository-package/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components-repository-package.sln" beforeDir="false" afterPath="$PROJECT_DIR$/components-repository-package.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Core/Context.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Core/CreaditCard.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Core/Customer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Core/CustomerList.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Core/Email.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Core/Name.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Exceptions/CreditCardException.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Optsol.Components.Repository.Infra.Mock.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Repositories/IMockReadRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Repositories/IMockWriteRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.Mock/Repositories/MockRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Optsol.Repository.Base/Pagination/ISearchResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Repository.Base/Pagination/ISearchResult.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Entities/AggregateSpec.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Entities/AggregateSpec.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Entities/EntitySpec.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Entities/EntitySpec.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Optsol.Components.Repository.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Optsol.Components.Repository.Test.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Repositories/MockRepositorySpec.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Repositories/MockRepositorySpec.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
