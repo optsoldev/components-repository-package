@@ -4,6 +4,6 @@
     <Version>0.0.1</Version>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="10.3.6" />
+    <PackageReference Include="FluentValidation" Version="11.2.2" />
   </ItemGroup>
 </Project>
