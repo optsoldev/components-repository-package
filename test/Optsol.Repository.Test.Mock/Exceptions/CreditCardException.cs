@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Optsol.Components.Repository.Infra.Mock.Exceptions
+namespace Optsol.Repository.Test.Mock.Exceptions
 {
     public class CreditCardException : Exception
     {

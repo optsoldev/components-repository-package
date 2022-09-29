@@ -1,5 +1,4 @@
-﻿using Optsol.Components.Repository.Infra.Mock.Entities.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -7,8 +6,9 @@ using System.Linq.Expressions;
 using Optsol.Components.Repository.Infra.EntityFrameworkCore.Repositories.Pagination;
 using Optsol.Domain.ValueObjects;
 using Optsol.Repository.Base.Pagination;
+using Optsol.Repository.Test.Mock.Entities.Core;
 
-namespace Optsol.Components.Repository.Infra.Mock.Core
+namespace Optsol.Repository.Test.Mock.Core
 {
     public sealed class CustomerCollection
     {

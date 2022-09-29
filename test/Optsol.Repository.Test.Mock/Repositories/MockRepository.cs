@@ -1,12 +1,12 @@
-﻿using Optsol.Components.Repository.Infra.Mock.Core;
-using Optsol.Components.Repository.Infra.Mock.Entities.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using Optsol.Repository;
 using Optsol.Repository.Base.Pagination;
+using Optsol.Repository.Test.Mock.Core;
+using Optsol.Repository.Test.Mock.Entities.Core;
 
-namespace Optsol.Components.Repository.Infra.Mock.Repositories
+namespace Optsol.Repository.Test.Mock.Repositories
 {
     public class MockRepository : IRepository<Customer>
     {

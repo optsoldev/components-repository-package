@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Optsol.Components.Repository.Infra.EntityFrameworkCore\Optsol.Components.Repository.Infra.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\..\src\Optsol.Components.Repository.Infra.Mock\Optsol.Components.Repository.Infra.Mock.csproj" />
+    <ProjectReference Include="..\Optsol.Repository.Test.Mock\Optsol.Repository.Test.Mock.csproj" />
     <ProjectReference Include="..\..\src\Optsol.Components.Repository.Infra.MongoDB\Optsol.Components.Repository.Infra.MongoDB.csproj" />
     <ProjectReference Include="..\..\src\Optsol.Components.Repository\Optsol.Domain.csproj" />
   </ItemGroup>

@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using Optsol.Domain.ValueObjects;
-using Optsol.Components.Repository.Infra.Mock.Entities.Core;
-using Optsol.Components.Repository.Infra.Mock.Repositories;
+using Optsol.Repository.Test.Mock.Entities.Core;
+using Optsol.Repository.Test.Mock.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

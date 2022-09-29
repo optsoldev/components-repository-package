@@ -1,4 +1,4 @@
-﻿namespace Optsol.Components.Repository.Infra.Mock.Core
+﻿namespace Optsol.Repository.Test.Mock.Core
 {
     public class Context
     {
