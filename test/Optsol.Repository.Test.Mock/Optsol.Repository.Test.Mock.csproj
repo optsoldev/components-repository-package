@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Optsol.Components.Repository.Infra.EntityFrameworkCore\Optsol.Components.Repository.Infra.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\..\src\Optsol.Components.Repository\Optsol.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Optsol.Domain\Optsol.Domain.csproj" />
     <ProjectReference Include="..\..\src\Optsol.Repository\Optsol.Repository.csproj" />
   </ItemGroup>
 

@@ -13,7 +13,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.9" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Optsol.Components.Repository\Optsol.Domain.csproj" />
+    <ProjectReference Include="..\Optsol.Domain\Optsol.Domain.csproj" />
     <ProjectReference Include="..\Optsol.Repository.Infra.EFCore.Base\Optsol.Repository.Infra.EFCore.Base.csproj" />
     <ProjectReference Include="..\Optsol.Repository\Optsol.Repository.csproj" />
   </ItemGroup>
