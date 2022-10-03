@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2283c497-6dfa-4dd4-ad9e-b7810f8dbcee" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/AsyncEnumerableNullException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/RepositoryExtensions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.components-repository-package/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.components-repository-package/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/ReadRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/ReadRepository.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +48,7 @@
       <workItem from="1664454629874" duration="5471000" />
       <workItem from="1664543199180" duration="1324000" />
       <workItem from="1664568368818" duration="1909000" />
-      <workItem from="1664818278033" duration="2479000" />
+      <workItem from="1664818278033" duration="3897000" />
     </task>
     <servers />
   </component>
