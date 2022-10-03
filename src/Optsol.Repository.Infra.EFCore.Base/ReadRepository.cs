@@ -25,7 +25,15 @@ public abstract class ReadRepository<T> : IReadRepository<T> where T : class
         
     public virtual Task<IEnumerable<T>> GetAll(Func<IQueryable<T>, IQueryable<T>> Includes)
     {
-        throw new NotImplementedException();
+        var querable = Set.AsQueryable();
+
+        var hasInclude = Includes != null;
+        if (hasInclude)
+        {
+            querable = Includes.Invoke(querable);
+        }
+
+        return querable.AsAsyncEnumerable().AsyncEnumerableToEnumerable();
     }
     
     public ISearchResult<T> GetAll<TSearch>(ISearchRequest<TSearch> searchRequest)
