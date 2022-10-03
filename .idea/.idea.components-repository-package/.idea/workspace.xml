@@ -1,13 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2283c497-6dfa-4dd4-ad9e-b7810f8dbcee" name="Changes" comment="" />
+    <list default="true" id="2283c497-6dfa-4dd4-ad9e-b7810f8dbcee" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/IReadRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.components-repository-package/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.components-repository-package/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components-repository-package.sln" beforeDir="false" afterPath="$PROJECT_DIR$/components-repository-package.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Optsol.Components.Repository.Infra.EntityFrameworkCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.EntityFrameworkCore/Optsol.Components.Repository.Infra.EntityFrameworkCore.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.MongoDB/Optsol.Components.Repository.Infra.MongoDB.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Components.Repository.Infra.MongoDB/Optsol.Components.Repository.Infra.MongoDB.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Entities/AggregateRoot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Entities/Entity.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Entities/IAggregateRoot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Entities/IEntity.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Entities/IEntityCreatable.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Entities/IEntityDeletable.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Entities/IEntityTenantable.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Exceptions/DateValueException.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Exceptions/NotificationException.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Notifications/INotification.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Notifications/Notification.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Notifications/NotificationCollection.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Notifications/NotificationContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/Optsol.Domain.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/ValueObjects/DateNullable.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/ValueObjects/DateValue.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/ValueObjects/IValueObject.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Components.Repository/ValueObjects/ValueObject.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/ReadRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/ReadRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optsol.Repository/Optsol.Repository.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optsol.Repository/Optsol.Repository.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Optsol.Components.Repository.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/test/Optsol.Components.Repository.Test/Optsol.Components.Repository.Test.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Optsol.Repository.Test.Mock/Optsol.Repository.Test.Mock.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/test/Optsol.Repository.Test.Mock/Optsol.Repository.Test.Mock.csproj" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/58ad8c9398d04582abcbd822c8d0b66a4c8400/c7/9fc9d8ff/Expression`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/Pagination/IInclude.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/Pagination/IOrderBy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Optsol.Repository.Infra.EFCore.Base/Pagination/ISearch.cs" root0="FORCE_HIGHLIGHTING" />
@@ -43,6 +72,9 @@
       <updated>1664386321587</updated>
       <workItem from="1664386324668" duration="17674000" />
       <workItem from="1664454629874" duration="5471000" />
+      <workItem from="1664543199180" duration="1324000" />
+      <workItem from="1664568368818" duration="1909000" />
+      <workItem from="1664818278033" duration="1302000" />
     </task>
     <servers />
   </component>

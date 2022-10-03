@@ -1,6 +1,5 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
-using Optsol.Repository.Base;
 using Optsol.Repository.Base.Pagination;
 using Optsol.Repository.Infra.EFCore.Base.Contexts;
 using Optsol.Repository.Infra.EFCore.Base.Pagination;
@@ -24,6 +23,11 @@ public abstract class ReadRepository<T> : IReadRepository<T> where T : class
     public virtual IEnumerable<T> GetAll(Expression<Func<T, bool>> filterExpression)
         => Set.Where(filterExpression.Compile());
         
+    public virtual Task<IEnumerable<T>> GetAll(Func<IQueryable<T>, IQueryable<T>> Includes)
+    {
+        throw new NotImplementedException();
+    }
+    
     public ISearchResult<T> GetAll<TSearch>(ISearchRequest<TSearch> searchRequest)
         where TSearch : class
     {
